@@ -13,11 +13,12 @@ namespace WindowsFormsApp1
 {
     public partial class MainForm : Form
     {
-        DataSet ds;
-        string connectionString;
+        //DataSet ds;
+        //string connectionString;
         public MainForm()
         {
             InitializeComponent();
+            /*
             //узнаем где находится бд и выбираем строчку подключения
             if (Properties.Settings.Default.Wireless == true)
             {
@@ -51,7 +52,7 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show(ex.Message);
             }
-
+            */
         }
 
         private void подключениеКБДToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,15 +64,26 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "libraryDataSet.BOOKS". При необходимости она может быть перемещена или удалена.
+            try
+            {
+                this.bOOKSTableAdapter.Fill(this.libraryDataSet.BOOKS);
+                this.auT_ACCOUNTSTableAdapter1.Fill(this.libraryDataSet.AUT_ACCOUNTS);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void butt_authorized_Click(object sender, EventArgs e)
         {
             //авторизация
             bool aut_flag = false;
-            foreach (DataRow row in ds.Tables[1].Rows)
+            foreach (DataRow row in this.libraryDataSet.AUT_ACCOUNTS.Rows)
             {
+                DataRow newrow = row;
                 if (row["LOGIN"].ToString().Contains(tb_login.Text))
                 {
                     if (row["PASSWORD"].ToString().Contains(tb_password.Text))
@@ -85,18 +97,19 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Логин/Пароль введены неверно");
             }
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //поиск по имени
-            ds.Tables[0].DefaultView.RowFilter = string.Format("[BOOK_NAME] LIKE '%{0}%'", tb_book_search.Text);
-            dataGridView1.DataSource = ds.Tables[0];
+            this.libraryDataSet.BOOKS.DefaultView.RowFilter = string.Format("[BOOK_NAME] LIKE '%{0}%'", tb_book_search.Text);
+            dataGridView1.DataSource = this.libraryDataSet.BOOKS;
         }
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            //просто для теста на данный момент
             MessageBox.Show("hello");
         }
     }

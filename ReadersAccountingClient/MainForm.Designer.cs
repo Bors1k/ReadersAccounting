@@ -29,10 +29,16 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.подключениеКБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.bOOKIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bOOKNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aVAILABILITYDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.bOOKSBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.libraryDataSet = new WindowsFormsApp1.LibraryDataSet();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_login = new System.Windows.Forms.TextBox();
@@ -43,8 +49,13 @@ namespace WindowsFormsApp1
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.bOOKSTableAdapter = new WindowsFormsApp1.LibraryDataSetTableAdapters.BOOKSTableAdapter();
+            this.tableAdapterManager = new WindowsFormsApp1.LibraryDataSetTableAdapters.TableAdapterManager();
+            this.auT_ACCOUNTSTableAdapter1 = new WindowsFormsApp1.LibraryDataSetTableAdapters.AUT_ACCOUNTSTableAdapter();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.libraryDataSet)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.SuspendLayout();
@@ -76,13 +87,51 @@ namespace WindowsFormsApp1
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.bOOKIDDataGridViewTextBoxColumn,
+            this.bOOKNAMEDataGridViewTextBoxColumn,
+            this.aVAILABILITYDataGridViewCheckBoxColumn});
+            this.dataGridView1.DataSource = this.bOOKSBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(7, 62);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(364, 339);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(850, 585);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
+            // 
+            // bOOKIDDataGridViewTextBoxColumn
+            // 
+            this.bOOKIDDataGridViewTextBoxColumn.DataPropertyName = "BOOK_ID";
+            this.bOOKIDDataGridViewTextBoxColumn.HeaderText = "BOOK_ID";
+            this.bOOKIDDataGridViewTextBoxColumn.Name = "bOOKIDDataGridViewTextBoxColumn";
+            this.bOOKIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bOOKNAMEDataGridViewTextBoxColumn
+            // 
+            this.bOOKNAMEDataGridViewTextBoxColumn.DataPropertyName = "BOOK_NAME";
+            this.bOOKNAMEDataGridViewTextBoxColumn.HeaderText = "BOOK_NAME";
+            this.bOOKNAMEDataGridViewTextBoxColumn.Name = "bOOKNAMEDataGridViewTextBoxColumn";
+            this.bOOKNAMEDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // aVAILABILITYDataGridViewCheckBoxColumn
+            // 
+            this.aVAILABILITYDataGridViewCheckBoxColumn.DataPropertyName = "AVAILABILITY";
+            this.aVAILABILITYDataGridViewCheckBoxColumn.HeaderText = "AVAILABILITY";
+            this.aVAILABILITYDataGridViewCheckBoxColumn.Name = "aVAILABILITYDataGridViewCheckBoxColumn";
+            this.aVAILABILITYDataGridViewCheckBoxColumn.ReadOnly = true;
+            // 
+            // bOOKSBindingSource
+            // 
+            this.bOOKSBindingSource.DataMember = "BOOKS";
+            this.bOOKSBindingSource.DataSource = this.libraryDataSet;
+            // 
+            // libraryDataSet
+            // 
+            this.libraryDataSet.DataSetName = "LibraryDataSet";
+            this.libraryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -111,6 +160,7 @@ namespace WindowsFormsApp1
             this.tb_login.Name = "tb_login";
             this.tb_login.Size = new System.Drawing.Size(100, 20);
             this.tb_login.TabIndex = 4;
+            this.tb_login.Text = "admin";
             // 
             // tb_password
             // 
@@ -120,6 +170,7 @@ namespace WindowsFormsApp1
             this.tb_password.PasswordChar = '*';
             this.tb_password.Size = new System.Drawing.Size(100, 20);
             this.tb_password.TabIndex = 5;
+            this.tb_password.Text = "admin";
             // 
             // butt_authorized
             // 
@@ -188,6 +239,23 @@ namespace WindowsFormsApp1
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // bOOKSTableAdapter
+            // 
+            this.bOOKSTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.AUT_ACCOUNTSTableAdapter = null;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.BOOKSTableAdapter = this.bOOKSTableAdapter;
+            this.tableAdapterManager.DEBTSTableAdapter = null;
+            this.tableAdapterManager.READERSTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = WindowsFormsApp1.LibraryDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // auT_ACCOUNTSTableAdapter1
+            // 
+            this.auT_ACCOUNTSTableAdapter1.ClearBeforeFill = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -209,6 +277,8 @@ namespace WindowsFormsApp1
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.libraryDataSet)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -233,6 +303,14 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private LibraryDataSet libraryDataSet;
+        private System.Windows.Forms.BindingSource bOOKSBindingSource;
+        private LibraryDataSetTableAdapters.BOOKSTableAdapter bOOKSTableAdapter;
+        private LibraryDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bOOKIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bOOKNAMEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn aVAILABILITYDataGridViewCheckBoxColumn;
+        private LibraryDataSetTableAdapters.AUT_ACCOUNTSTableAdapter auT_ACCOUNTSTableAdapter1;
     }
 }
 
