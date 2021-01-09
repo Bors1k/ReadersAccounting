@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
             Properties.Settings.Default.Upgrade();
             
             //на основе настроек прописываем строку подключения к бд
-            if (Properties.Settings.Default.Wireless == true)
+            if (chbox_wireless.Checked == true)
             {
                 Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ", " + Properties.Settings.Default.Port + ";Initial Catalog=Library;Integrated Security=True";
             }

@@ -13,46 +13,10 @@ namespace WindowsFormsApp1
 {
     public partial class MainForm : Form
     {
-        //DataSet ds;
-        //string connectionString;
         public MainForm()
         {
             InitializeComponent();
-            /*
-            //узнаем где находится бд и выбираем строчку подключения
-            if (Properties.Settings.Default.Wireless == true)
-            {
-                connectionString = @"Data Source=" + Properties.Settings.Default.IP + ", " + Properties.Settings.Default.Port + ";Initial Catalog=Library;Integrated Security=True";
-            }
-            else
-            {
-                connectionString = @"Data Source=" + Properties.Settings.Default.IP + ";Initial Catalog=Library;Integrated Security=True";
-            }
-
-            //запрос на таблицы
-            string sql = "SELECT * FROM BOOKS; SELECT * FROM AUT_ACCOUNTS";
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-                    // Создаем объект DataAdapter
-                    SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
-                    // Создаем объект Dataset
-                    ds = new DataSet();
-                    // Заполняем Dataset
-                    adapter.Fill(ds);
-                    // Отображаем данные
-                    dataGridView1.DataSource = ds.Tables[0];
-                    //connection.Close();
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            */
+         
         }
 
         private void подключениеКБДToolStripMenuItem_Click(object sender, EventArgs e)
@@ -60,22 +24,51 @@ namespace WindowsFormsApp1
             //открываем форму настроек
             DB_Settings_Form settings = new DB_Settings_Form();
             settings.Show();
+            settings.FormClosing += Settings_FormClosing;
+        }
+
+        private void Settings_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.UpdateConnectionString();
+            this.LoadFromDB("all");
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "libraryDataSet.BOOKS". При необходимости она может быть перемещена или удалена.
+            this.LoadFromDB("all");
+        }
+
+        private void LoadFromDB(String settings)
+        {
+            //загрузка данных
             try
             {
-                this.bOOKSTableAdapter.Fill(this.libraryDataSet.BOOKS);
-                this.auT_ACCOUNTSTableAdapter1.Fill(this.libraryDataSet.AUT_ACCOUNTS);
+                if (settings == "all")
+                {
+                    this.bOOKSTableAdapter.Fill(this.libraryDataSet.BOOKS);
+                    this.auT_ACCOUNTSTableAdapter1.Fill(this.libraryDataSet.AUT_ACCOUNTS);
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
+        private void UpdateConnectionString()
+        {
+            //обновление строк подключения
+            try
+            {
+                this.bOOKSTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
+                this.auT_ACCOUNTSTableAdapter1.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
 
         private void butt_authorized_Click(object sender, EventArgs e)
         {
@@ -111,6 +104,11 @@ namespace WindowsFormsApp1
         {
             //просто для теста на данный момент
             MessageBox.Show("hello");
+        }
+
+        private void разлогинитьсяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.tabControl1.Visible = false;
         }
     }
 }

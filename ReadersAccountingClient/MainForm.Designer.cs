@@ -33,10 +33,8 @@ namespace WindowsFormsApp1
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.подключениеКБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.разлогинитьсяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.bOOKIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bOOKNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aVAILABILITYDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.bOOKSBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.libraryDataSet = new WindowsFormsApp1.LibraryDataSet();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,17 +45,20 @@ namespace WindowsFormsApp1
             this.tb_book_search = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tp_books = new System.Windows.Forms.TabPage();
+            this.tp_readers = new System.Windows.Forms.TabPage();
             this.bOOKSTableAdapter = new WindowsFormsApp1.LibraryDataSetTableAdapters.BOOKSTableAdapter();
             this.tableAdapterManager = new WindowsFormsApp1.LibraryDataSetTableAdapters.TableAdapterManager();
             this.auT_ACCOUNTSTableAdapter1 = new WindowsFormsApp1.LibraryDataSetTableAdapters.AUT_ACCOUNTSTableAdapter();
+            this.bOOKIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bOOKNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aVAILABILITYDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.libraryDataSet)).BeginInit();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tp_books.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -73,7 +74,8 @@ namespace WindowsFormsApp1
             // настройкиToolStripMenuItem
             // 
             this.настройкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.подключениеКБДToolStripMenuItem});
+            this.подключениеКБДToolStripMenuItem,
+            this.разлогинитьсяToolStripMenuItem});
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
             this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.настройкиToolStripMenuItem.Text = "Настройки";
@@ -84,6 +86,13 @@ namespace WindowsFormsApp1
             this.подключениеКБДToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.подключениеКБДToolStripMenuItem.Text = "Подключение к БД";
             this.подключениеКБДToolStripMenuItem.Click += new System.EventHandler(this.подключениеКБДToolStripMenuItem_Click);
+            // 
+            // разлогинитьсяToolStripMenuItem
+            // 
+            this.разлогинитьсяToolStripMenuItem.Name = "разлогинитьсяToolStripMenuItem";
+            this.разлогинитьсяToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.разлогинитьсяToolStripMenuItem.Text = "Разлогиниться";
+            this.разлогинитьсяToolStripMenuItem.Click += new System.EventHandler(this.разлогинитьсяToolStripMenuItem_Click);
             // 
             // dataGridView1
             // 
@@ -98,30 +107,9 @@ namespace WindowsFormsApp1
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(850, 585);
+            this.dataGridView1.Size = new System.Drawing.Size(1075, 585);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
-            // 
-            // bOOKIDDataGridViewTextBoxColumn
-            // 
-            this.bOOKIDDataGridViewTextBoxColumn.DataPropertyName = "BOOK_ID";
-            this.bOOKIDDataGridViewTextBoxColumn.HeaderText = "BOOK_ID";
-            this.bOOKIDDataGridViewTextBoxColumn.Name = "bOOKIDDataGridViewTextBoxColumn";
-            this.bOOKIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bOOKNAMEDataGridViewTextBoxColumn
-            // 
-            this.bOOKNAMEDataGridViewTextBoxColumn.DataPropertyName = "BOOK_NAME";
-            this.bOOKNAMEDataGridViewTextBoxColumn.HeaderText = "BOOK_NAME";
-            this.bOOKNAMEDataGridViewTextBoxColumn.Name = "bOOKNAMEDataGridViewTextBoxColumn";
-            this.bOOKNAMEDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // aVAILABILITYDataGridViewCheckBoxColumn
-            // 
-            this.aVAILABILITYDataGridViewCheckBoxColumn.DataPropertyName = "AVAILABILITY";
-            this.aVAILABILITYDataGridViewCheckBoxColumn.HeaderText = "AVAILABILITY";
-            this.aVAILABILITYDataGridViewCheckBoxColumn.Name = "aVAILABILITYDataGridViewCheckBoxColumn";
-            this.aVAILABILITYDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // bOOKSBindingSource
             // 
@@ -188,12 +176,12 @@ namespace WindowsFormsApp1
             this.tb_book_search.Location = new System.Drawing.Point(7, 25);
             this.tb_book_search.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_book_search.Name = "tb_book_search";
-            this.tb_book_search.Size = new System.Drawing.Size(364, 20);
+            this.tb_book_search.Size = new System.Drawing.Size(988, 20);
             this.tb_book_search.TabIndex = 6;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(403, 20);
+            this.button1.Location = new System.Drawing.Point(1008, 23);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(74, 25);
@@ -204,8 +192,8 @@ namespace WindowsFormsApp1
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tp_books);
+            this.tabControl1.Controls.Add(this.tp_readers);
             this.tabControl1.Location = new System.Drawing.Point(0, 27);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabControl1.Name = "tabControl1";
@@ -214,30 +202,30 @@ namespace WindowsFormsApp1
             this.tabControl1.TabIndex = 8;
             this.tabControl1.Visible = false;
             // 
-            // tabPage1
+            // tp_books
             // 
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.tb_book_search);
-            this.tabPage1.Controls.Add(this.dataGridView1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 23);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage1.Size = new System.Drawing.Size(1089, 653);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tp_books.Controls.Add(this.button1);
+            this.tp_books.Controls.Add(this.tb_book_search);
+            this.tp_books.Controls.Add(this.dataGridView1);
+            this.tp_books.Location = new System.Drawing.Point(4, 23);
+            this.tp_books.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tp_books.Name = "tp_books";
+            this.tp_books.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tp_books.Size = new System.Drawing.Size(1089, 653);
+            this.tp_books.TabIndex = 0;
+            this.tp_books.Text = "Книги";
+            this.tp_books.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tp_readers
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 23);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tabPage2.Size = new System.Drawing.Size(1089, 653);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tp_readers.Location = new System.Drawing.Point(4, 23);
+            this.tp_readers.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tp_readers.Name = "tp_readers";
+            this.tp_readers.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.tp_readers.Size = new System.Drawing.Size(1089, 653);
+            this.tp_readers.TabIndex = 1;
+            this.tp_readers.Text = "Читатели";
+            this.tp_readers.UseVisualStyleBackColor = true;
             // 
             // bOOKSTableAdapter
             // 
@@ -245,7 +233,7 @@ namespace WindowsFormsApp1
             // 
             // tableAdapterManager
             // 
-            this.tableAdapterManager.AUT_ACCOUNTSTableAdapter = null;
+            this.tableAdapterManager.AUT_ACCOUNTSTableAdapter = this.auT_ACCOUNTSTableAdapter1;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.BOOKSTableAdapter = this.bOOKSTableAdapter;
             this.tableAdapterManager.DEBTSTableAdapter = null;
@@ -255,6 +243,30 @@ namespace WindowsFormsApp1
             // auT_ACCOUNTSTableAdapter1
             // 
             this.auT_ACCOUNTSTableAdapter1.ClearBeforeFill = true;
+            // 
+            // bOOKIDDataGridViewTextBoxColumn
+            // 
+            this.bOOKIDDataGridViewTextBoxColumn.DataPropertyName = "BOOK_ID";
+            this.bOOKIDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.bOOKIDDataGridViewTextBoxColumn.Name = "bOOKIDDataGridViewTextBoxColumn";
+            this.bOOKIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.bOOKIDDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // bOOKNAMEDataGridViewTextBoxColumn
+            // 
+            this.bOOKNAMEDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.bOOKNAMEDataGridViewTextBoxColumn.DataPropertyName = "BOOK_NAME";
+            this.bOOKNAMEDataGridViewTextBoxColumn.HeaderText = "Имя";
+            this.bOOKNAMEDataGridViewTextBoxColumn.Name = "bOOKNAMEDataGridViewTextBoxColumn";
+            this.bOOKNAMEDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // aVAILABILITYDataGridViewCheckBoxColumn
+            // 
+            this.aVAILABILITYDataGridViewCheckBoxColumn.DataPropertyName = "AVAILABILITY";
+            this.aVAILABILITYDataGridViewCheckBoxColumn.HeaderText = "Доступность";
+            this.aVAILABILITYDataGridViewCheckBoxColumn.Name = "aVAILABILITYDataGridViewCheckBoxColumn";
+            this.aVAILABILITYDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.aVAILABILITYDataGridViewCheckBoxColumn.Width = 80;
             // 
             // MainForm
             // 
@@ -280,8 +292,8 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.libraryDataSet)).EndInit();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tp_books.ResumeLayout(false);
+            this.tp_books.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -301,16 +313,17 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox tb_book_search;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tp_books;
+        private System.Windows.Forms.TabPage tp_readers;
         private LibraryDataSet libraryDataSet;
         private System.Windows.Forms.BindingSource bOOKSBindingSource;
         private LibraryDataSetTableAdapters.BOOKSTableAdapter bOOKSTableAdapter;
         private LibraryDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private LibraryDataSetTableAdapters.AUT_ACCOUNTSTableAdapter auT_ACCOUNTSTableAdapter1;
+        private System.Windows.Forms.ToolStripMenuItem разлогинитьсяToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn bOOKIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn bOOKNAMEDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn aVAILABILITYDataGridViewCheckBoxColumn;
-        private LibraryDataSetTableAdapters.AUT_ACCOUNTSTableAdapter auT_ACCOUNTSTableAdapter1;
     }
 }
 
