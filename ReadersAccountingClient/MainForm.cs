@@ -13,10 +13,19 @@ namespace WindowsFormsApp1
 {
     public partial class MainForm : Form
     {
+        enum TypeOfLoadDB
+        {
+            //для душевного спокойствия
+            all,
+            book,
+            readers,
+            debts
+        }
         public MainForm()
         {
             InitializeComponent();
-         
+            //стартовый ресайз, чтобы было удобно работать с конструктором и 
+            ResizeForm(this, 320, 240,false);
         }
 
         private void подключениеКБДToolStripMenuItem_Click(object sender, EventArgs e)
@@ -31,7 +40,7 @@ namespace WindowsFormsApp1
         {
             //обновляем подключение к бд после настройки 
             this.UpdateConnectionString();
-            this.LoadFromDB("all");
+            this.LoadFromDB(TypeOfLoadDB.all);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -39,18 +48,21 @@ namespace WindowsFormsApp1
             this.reades_debtsTableAdapter.Fill(this.library451DataSet.reades_debts);
             this.readersTableAdapter.Fill(this.library451DataSet.Readers);
             this.booksTableAdapter.Fill(this.library451DataSet.Books);
-            this.LoadFromDB("all");
+            this.LoadFromDB(TypeOfLoadDB.all);
         }
 
-        private void LoadFromDB(String settings)
+        private void LoadFromDB(TypeOfLoadDB type)
         {
             //загрузка данных
             try
             {
-                if (settings == "all")
+                if (type == TypeOfLoadDB.all)
                 {
+                    this.reades_debtsTableAdapter.Fill(this.library451DataSet.reades_debts);
+                    this.readersTableAdapter.Fill(this.library451DataSet.Readers);
                     this.booksTableAdapter.Fill(this.library451DataSet.Books);
                     this.autTableAdapter.Fill(this.library451DataSet.aut);
+                    this.readersDataGridView.Refresh();
                 }
             }
             catch (Exception ex)
@@ -65,6 +77,8 @@ namespace WindowsFormsApp1
             {
                 this.booksTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
                 this.autTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
+                this.readersTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
+                this.reades_debtsTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
             }
             catch (Exception ex)
             {
@@ -87,6 +101,8 @@ namespace WindowsFormsApp1
                     {
                         aut_flag = true;
                         tabControl1.Visible = true;
+                        //делаем ресайз для дальнейшей работы
+                        ResizeForm(this, 1280, 720,true);
                     }
                 }
             }
@@ -94,13 +110,22 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Логин/Пароль введены неверно");
             }
-            
+        }
+
+        private void ResizeForm(Form form,int width, int height, bool stateOfUnlogin)
+        {
+            //ресайз формы для авторизации
+            form.MaximumSize = new Size(width, height);
+            form.MinimumSize = new Size(width, height);
+            form.Size = new Size(width, height);
+            form.Location = new Point(Screen.PrimaryScreen.Bounds.Size.Width/2 - width/2, Screen.PrimaryScreen.Bounds.Size.Height/2-height/2);
+            this.разлогинитьсяToolStripMenuItem.Enabled = stateOfUnlogin;
         }
 
         private void but_books_search_Click(object sender, EventArgs e)
         {
             //сброс поиска книг
-            tb_book_search.Text = "";
+            tb_book_search.Clear();
         }
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -112,6 +137,7 @@ namespace WindowsFormsApp1
         private void разлогинитьсяToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.tabControl1.Visible = false;
+            ResizeForm(this, 320, 240,false);
         }
 
 
@@ -121,16 +147,14 @@ namespace WindowsFormsApp1
 
         private void rEADERSDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (!groupBox1.Visible) groupBox1.Visible = true;
             //Фильтрация задолженностей для читателя
-            int reader_id = Convert.ToInt32(reader_IDTextBox.Text.Trim());
-            this.reades_debtsBindingSource.Filter = string.Format("[Reader_ID] = {0}", reader_id);
+            this.reades_debtsBindingSource.Filter = string.Format("[Reader_ID] = {0}", Convert.ToInt32(reader_IDTextBox.Text));
         }
 
         private void but_readers_search_reset_Click(object sender, EventArgs e)
         {
             //сброс поиска читателей
-            tb_readers_search.Text = "";
+            tb_readers_search.Clear();
         }
 
         private void tb_book_search_TextChanged(object sender, EventArgs e)
@@ -146,8 +170,7 @@ namespace WindowsFormsApp1
             //фильтрация задолженностей
             try
             {
-                int reader_id = Convert.ToInt32(reader_IDTextBox.Text.Trim());
-                this.reades_debtsBindingSource.Filter = string.Format("[Reader_ID] = {0}", reader_id);
+                this.reades_debtsBindingSource.Filter = string.Format("[Reader_ID] = {0}", Convert.ToInt32(reader_IDTextBox.Text));
             }
             catch(Exception ex)
             {
@@ -156,6 +179,113 @@ namespace WindowsFormsApp1
             {
                 this.reades_debtsBindingSource.Filter = string.Format("[Reader_ID] = {0}", -1);
             }
+        }
+
+        private void but_change_book_Click(object sender, EventArgs e)
+        {
+            //включаем видимость формы на изменение
+            this.groupBox3.Visible = true;
+        }
+
+        private void but_book_chages_back_Click(object sender, EventArgs e)
+        {
+            //отменяем изменения в книге
+            this.booksBindingSource.CancelEdit();
+            book_NameTextBox.ReadOnly = true;
+            availabilityCheckBox.Enabled = false;
+        }
+
+        private void but_save_book_changes_Click(object sender, EventArgs e)
+        {
+            //сохраняем изменения по книге
+            this.booksBindingSource.EndEdit();
+            this.booksTableAdapter.Update(this.library451DataSet.Books);
+            this.library451DataSet.AcceptChanges();
+            LoadFromDB(TypeOfLoadDB.all);
+            book_NameTextBox.ReadOnly = true;
+            availabilityCheckBox.Enabled = false;
+        }
+
+        private void but_vis_add_book_Click(object sender, EventArgs e)
+        {
+            //открываем форму на добавление
+            AddBook_Form addbook = new AddBook_Form();
+            addbook.Show();
+            //событие, которое сработает при закрытии формы
+            addbook.FormClosing += Addbook_FormClosing;
+        }
+
+        private void Addbook_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //обновляем данные, при закрытии формы
+            LoadFromDB(TypeOfLoadDB.all);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //даем доступ на редактирование
+            book_NameTextBox.ReadOnly = false;
+            availabilityCheckBox.Enabled = true;
+        }
+
+        private void but_delete_book_Click(object sender, EventArgs e)
+        {
+            //удаление книги из БД
+            DialogResult dr = MessageBox.Show("Точно хотите удалить?", "Удаление", MessageBoxButtons.YesNoCancel,
+            MessageBoxIcon.Information);
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+                    this.booksBindingSource.EndEdit();
+                    this.library451DataSet.AcceptChanges();
+                    this.booksTableAdapter.Delete(Int32.Parse(book_IDTextBox.Text), availabilityCheckBox.Checked);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                LoadFromDB(TypeOfLoadDB.all);
+            }
+        }
+
+        private void change_readonly_reader(bool state)
+        {
+            //изменение состояния инпутов читателя, чтобы уменьшить объем кода
+            fIOTextBox.ReadOnly = state;
+            tELEPHONETextBox.ReadOnly = state;
+            aDDRESSTextBox.ReadOnly = state;
+            pASSPORTTextBox.ReadOnly = state;
+        }
+
+        private void but_change_reader_Click(object sender, EventArgs e)
+        {
+            //открываем возможность изменить
+            change_readonly_reader(false);
+        }
+
+        private void but_back_changes_reader_Click(object sender, EventArgs e)
+        {
+            //отменяем изменения
+            this.readersBindingSource.CancelEdit();
+            //закрываем возможность изменить
+            change_readonly_reader(true);
+        }
+
+        private void but_save_changes_reader_Click(object sender, EventArgs e)
+        {
+            //сохраняем изменения
+            this.readersBindingSource.EndEdit();
+            this.readersTableAdapter.Update(this.library451DataSet.Readers);
+            this.library451DataSet.AcceptChanges();
+            LoadFromDB(TypeOfLoadDB.all);
+            //закрываем возможность изменить
+            change_readonly_reader(true);
+        }
+
+        private void but_add_new_reader_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
