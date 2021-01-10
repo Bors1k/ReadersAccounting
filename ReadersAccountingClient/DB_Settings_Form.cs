@@ -38,11 +38,11 @@ namespace WindowsFormsApp1
             //на основе настроек прописываем строку подключения к бд
             if (chbox_wireless.Checked == true)
             {
-                Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ", " + Properties.Settings.Default.Port + ";Initial Catalog=Library;Integrated Security=True";
+                Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ", " + Properties.Settings.Default.Port + ";Initial Catalog=Library451;Integrated Security=True";
             }
             else
             {
-                Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ";Initial Catalog=Library;Integrated Security=True";
+                Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ";Initial Catalog=Library451;Integrated Security=True";
             }
 
             Properties.Settings.Default.Save();

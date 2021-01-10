@@ -29,12 +29,16 @@ namespace WindowsFormsApp1
 
         private void Settings_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //обновляем подключение к бд после настройки 
             this.UpdateConnectionString();
             this.LoadFromDB("all");
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.reades_debtsTableAdapter.Fill(this.library451DataSet.reades_debts);
+            this.readersTableAdapter.Fill(this.library451DataSet.Readers);
+            this.booksTableAdapter.Fill(this.library451DataSet.Books);
             this.LoadFromDB("all");
         }
 
@@ -45,8 +49,8 @@ namespace WindowsFormsApp1
             {
                 if (settings == "all")
                 {
-                    this.bOOKSTableAdapter.Fill(this.libraryDataSet.BOOKS);
-                    this.auT_ACCOUNTSTableAdapter1.Fill(this.libraryDataSet.AUT_ACCOUNTS);
+                    this.booksTableAdapter.Fill(this.library451DataSet.Books);
+                    this.autTableAdapter.Fill(this.library451DataSet.aut);
                 }
             }
             catch (Exception ex)
@@ -59,8 +63,8 @@ namespace WindowsFormsApp1
             //обновление строк подключения
             try
             {
-                this.bOOKSTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
-                this.auT_ACCOUNTSTableAdapter1.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
+                this.booksTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
+                this.autTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
             }
             catch (Exception ex)
             {
@@ -74,12 +78,12 @@ namespace WindowsFormsApp1
         {
             //авторизация
             bool aut_flag = false;
-            foreach (DataRow row in this.libraryDataSet.AUT_ACCOUNTS.Rows)
+            foreach (DataRow row in this.library451DataSet.aut.Rows)
             {
                 DataRow newrow = row;
-                if (row["LOGIN"].ToString().Contains(tb_login.Text))
+                if (row["login"].ToString().Contains(tb_login.Text))
                 {
-                    if (row["PASSWORD"].ToString().Contains(tb_password.Text))
+                    if (row["password"].ToString().Contains(tb_password.Text))
                     {
                         aut_flag = true;
                         tabControl1.Visible = true;
@@ -93,11 +97,10 @@ namespace WindowsFormsApp1
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void but_books_search_Click(object sender, EventArgs e)
         {
-            //поиск по имени
-            this.libraryDataSet.BOOKS.DefaultView.RowFilter = string.Format("[BOOK_NAME] LIKE '%{0}%'", tb_book_search.Text);
-            dataGridView1.DataSource = this.libraryDataSet.BOOKS;
+            //сброс поиска книг
+            tb_book_search.Text = "";
         }
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -109,6 +112,50 @@ namespace WindowsFormsApp1
         private void разлогинитьсяToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.tabControl1.Visible = false;
+        }
+
+
+        //int row_id = this.rEADERSDataGridView.SelectedRows[0].Cells[0].RowIndex;
+        //Readers_profile profile_form = new Readers_profile(row_id);
+        //profile_form.Show();
+
+        private void rEADERSDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!groupBox1.Visible) groupBox1.Visible = true;
+            //Фильтрация задолженностей для читателя
+            int reader_id = Convert.ToInt32(reader_IDTextBox.Text.Trim());
+            this.reades_debtsBindingSource.Filter = string.Format("[Reader_ID] = {0}", reader_id);
+        }
+
+        private void but_readers_search_reset_Click(object sender, EventArgs e)
+        {
+            //сброс поиска читателей
+            tb_readers_search.Text = "";
+        }
+
+        private void tb_book_search_TextChanged(object sender, EventArgs e)
+        {
+           //поиск книги
+           booksBindingSource.Filter = string.Format("[Book_Name] LIKE '%{0}%'", tb_book_search.Text);
+        }
+
+        private void tb_readers_search_TextChanged(object sender, EventArgs e)
+        {
+            //поиск читателя
+            readersBindingSource.Filter = string.Format("[FIO] LIKE '%{0}%'", tb_readers_search.Text);
+            //фильтрация задолженностей
+            try
+            {
+                int reader_id = Convert.ToInt32(reader_IDTextBox.Text.Trim());
+                this.reades_debtsBindingSource.Filter = string.Format("[Reader_ID] = {0}", reader_id);
+            }
+            catch(Exception ex)
+            {
+            }
+            finally
+            {
+                this.reades_debtsBindingSource.Filter = string.Format("[Reader_ID] = {0}", -1);
+            }
         }
     }
 }
