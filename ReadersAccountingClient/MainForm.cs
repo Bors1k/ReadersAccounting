@@ -78,20 +78,22 @@ namespace WindowsFormsApp1
                     this.readersTableAdapter.Fill(this.library451DataSet.Readers);
                     this.booksTableAdapter.Fill(this.library451DataSet.Books);
                     this.autTableAdapter.Fill(this.library451DataSet.aut);
+                    this.reades_debtsTableAdapter.Fill(this.library451DataSet.reades_debts);
                 }
-                else if (type == TypeOfLoadDB.book)
+                if (type == TypeOfLoadDB.book)
                 {
                     this.booksTableAdapter.Fill(this.library451DataSet.Books);
                 }
-                else if (type == TypeOfLoadDB.debts)
+                if (type == TypeOfLoadDB.debts)
                 {
                     this.reades_debtsTableAdapter.Fill(this.library451DataSet.reades_debts);
+                    this.debtsTableAdapter1.Fill(this.library451DataSet.Debts);
                 }
-                else if (type == TypeOfLoadDB.readers)
+                if (type == TypeOfLoadDB.readers)
                 {
                     this.readersTableAdapter.Fill(this.library451DataSet.Readers);
                 }
-                else if (type == TypeOfLoadDB.aut)
+                if (type == TypeOfLoadDB.aut)
                 {
                     this.autTableAdapter.Fill(this.library451DataSet.aut);
                 }
@@ -110,6 +112,7 @@ namespace WindowsFormsApp1
                 this.autTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
                 this.readersTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
                 this.reades_debtsTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
+                this.debtsTableAdapter1.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
             }
             catch (Exception ex)
             {
@@ -339,6 +342,7 @@ namespace WindowsFormsApp1
 
         private void but_add_new_reader_Click(object sender, EventArgs e)
         {
+            //Открываем форму добавления нового читателя
             ReaderAddForm readeradd = new ReaderAddForm();
             readeradd.Show();
             readeradd.FormClosing += Readeradd_FormClosing;
@@ -346,6 +350,7 @@ namespace WindowsFormsApp1
 
         private void Readeradd_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //обновляем данные по читателям из бд, после закрытия формы 
             LoadFromDB(TypeOfLoadDB.readers);
         }
 
@@ -359,8 +364,8 @@ namespace WindowsFormsApp1
                 try
                 {
                     this.readersBindingSource.EndEdit();
-                    this.library451DataSet.AcceptChanges();
                     this.readersTableAdapter.Delete(Int32.Parse(reader_IDTextBox.Text));
+                    this.library451DataSet.AcceptChanges();
                 }
                 catch (Exception ex)
                 {
@@ -372,7 +377,45 @@ namespace WindowsFormsApp1
 
         private void обновитьДанныеToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //пункт меню на обновление данных из бд
             LoadFromDB(TypeOfLoadDB.all);
+        }
+
+        private void butAddDebt_Click(object sender, EventArgs e)
+        {
+            //открываем форму добавления новой записи о задолженности
+;           AddReaderDebt addReaderDebt = new AddReaderDebt(Int32.Parse(reader_IDTextBox.Text));
+            addReaderDebt.Show();
+            addReaderDebt.FormClosing += AddReaderDebt_FormClosing;
+        }
+
+        private void AddReaderDebt_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //после закрытия формы закрытия записи о задолженности обновляем данные из бд
+            LoadFromDB(TypeOfLoadDB.debts);
+            LoadFromDB(TypeOfLoadDB.readers);
+        }
+
+        private void butDeleteDebt_Click(object sender, EventArgs e)
+        {
+            //удаление задолженности из БД
+            DialogResult dr = MessageBox.Show("Точно хотите удалить?", "Удаление", MessageBoxButtons.YesNoCancel,
+            MessageBoxIcon.Information);
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+                    this.debtsTableAdapter1.Delete(Int32.Parse(iDTextBox.Text), Int32.Parse(reades_debtsDataGridView.CurrentRow.Cells["dataGridViewTextBoxColumn7"].Value.ToString()), 
+                        Int32.Parse(reades_debtsDataGridView.CurrentRow.Cells["Book_ID"].Value.ToString()), 
+                        дата_выдачиDateTimePicker.Value, дата_возвратаDateTimePicker.Value, возвращеноCheckBox.Checked);
+                    this.library451DataSet.AcceptChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                LoadFromDB(TypeOfLoadDB.all);
+            } 
         }
     }
 }
