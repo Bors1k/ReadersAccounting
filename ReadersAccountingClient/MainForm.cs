@@ -19,36 +19,52 @@ namespace WindowsFormsApp1
             all,
             book,
             readers,
-            debts
+            debts,
+            aut
         }
+        public bool IsSettingUserClose = true;
         public MainForm()
         {
             InitializeComponent();
             //стартовый ресайз, чтобы было удобно работать с конструктором и 
             ResizeForm(this, 320, 240,false);
+
+
         }
 
         private void подключениеКБДToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //открываем форму настроек
-            DB_Settings_Form settings = new DB_Settings_Form();
+            DBSettingsForm settings = new DBSettingsForm();
+            settings.Owner = this;
             settings.Show();
             settings.FormClosing += Settings_FormClosing;
+
         }
 
         private void Settings_FormClosing(object sender, FormClosingEventArgs e)
         {
             //обновляем подключение к бд после настройки 
-            this.UpdateConnectionString();
-            this.LoadFromDB(TypeOfLoadDB.all);
+            if(IsSettingUserClose == true)
+            {
+                this.UpdateConnectionString();
+                this.LoadFromDB(TypeOfLoadDB.all);
+            }
+            IsSettingUserClose = true;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.reades_debtsTableAdapter.Fill(this.library451DataSet.reades_debts);
-            this.readersTableAdapter.Fill(this.library451DataSet.Readers);
-            this.booksTableAdapter.Fill(this.library451DataSet.Books);
-            this.LoadFromDB(TypeOfLoadDB.all);
+            if (Properties.Settings.Default.Wireless == true)
+            {
+                Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ", " + Properties.Settings.Default.Port + ";Initial Catalog=Library451;Integrated Security=True";
+            }
+            else
+            {
+                Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ";Initial Catalog=Library451;Integrated Security=True";
+            }
+            //this.LoadFromDB(TypeOfLoadDB.all);
         }
 
         private void LoadFromDB(TypeOfLoadDB type)
@@ -62,7 +78,22 @@ namespace WindowsFormsApp1
                     this.readersTableAdapter.Fill(this.library451DataSet.Readers);
                     this.booksTableAdapter.Fill(this.library451DataSet.Books);
                     this.autTableAdapter.Fill(this.library451DataSet.aut);
-                    this.readersDataGridView.Refresh();
+                }
+                else if (type == TypeOfLoadDB.book)
+                {
+                    this.booksTableAdapter.Fill(this.library451DataSet.Books);
+                }
+                else if (type == TypeOfLoadDB.debts)
+                {
+                    this.reades_debtsTableAdapter.Fill(this.library451DataSet.reades_debts);
+                }
+                else if (type == TypeOfLoadDB.readers)
+                {
+                    this.readersTableAdapter.Fill(this.library451DataSet.Readers);
+                }
+                else if (type == TypeOfLoadDB.aut)
+                {
+                    this.autTableAdapter.Fill(this.library451DataSet.aut);
                 }
             }
             catch (Exception ex)
@@ -90,25 +121,33 @@ namespace WindowsFormsApp1
 
         private void butt_authorized_Click(object sender, EventArgs e)
         {
-            //авторизация
-            bool aut_flag = false;
-            foreach (DataRow row in this.library451DataSet.aut.Rows)
+            try
             {
-                DataRow newrow = row;
-                if (row["login"].ToString().Contains(tb_login.Text))
+                this.LoadFromDB(TypeOfLoadDB.all);
+                //авторизация
+                bool aut_flag = false;
+                foreach (DataRow row in this.library451DataSet.aut.Rows)
                 {
-                    if (row["password"].ToString().Contains(tb_password.Text))
+                    DataRow newrow = row;
+                    if (row["login"].ToString() == tb_login.Text)
                     {
-                        aut_flag = true;
-                        tabControl1.Visible = true;
-                        //делаем ресайз для дальнейшей работы
-                        ResizeForm(this, 1280, 720,true);
+                        if (row["password"].ToString() == tb_password.Text)
+                        {
+                            aut_flag = true;
+                            tabControl1.Visible = true;
+                            //делаем ресайз для дальнейшей работы
+                            ResizeForm(this, 1280, 720, true);
+                        }
                     }
                 }
+                if (aut_flag == false)
+                {
+                    MessageBox.Show("Логин/Пароль введены неверно");
+                }
             }
-            if(aut_flag == false)
+            catch (Exception ex)
             {
-                MessageBox.Show("Логин/Пароль введены неверно");
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -174,6 +213,7 @@ namespace WindowsFormsApp1
             }
             catch(Exception ex)
             {
+
             }
             finally
             {
@@ -198,10 +238,17 @@ namespace WindowsFormsApp1
         private void but_save_book_changes_Click(object sender, EventArgs e)
         {
             //сохраняем изменения по книге
-            this.booksBindingSource.EndEdit();
-            this.booksTableAdapter.Update(this.library451DataSet.Books);
-            this.library451DataSet.AcceptChanges();
-            LoadFromDB(TypeOfLoadDB.all);
+            try
+            {
+                this.booksBindingSource.EndEdit();
+                this.booksTableAdapter.Update(this.library451DataSet.Books);
+                this.library451DataSet.AcceptChanges();
+                LoadFromDB(TypeOfLoadDB.all);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             book_NameTextBox.ReadOnly = true;
             availabilityCheckBox.Enabled = false;
         }
@@ -209,7 +256,7 @@ namespace WindowsFormsApp1
         private void but_vis_add_book_Click(object sender, EventArgs e)
         {
             //открываем форму на добавление
-            AddBook_Form addbook = new AddBook_Form();
+            AddBookForm addbook = new AddBookForm();
             addbook.Show();
             //событие, которое сработает при закрытии формы
             addbook.FormClosing += Addbook_FormClosing;
@@ -275,9 +322,16 @@ namespace WindowsFormsApp1
         private void but_save_changes_reader_Click(object sender, EventArgs e)
         {
             //сохраняем изменения
-            this.readersBindingSource.EndEdit();
-            this.readersTableAdapter.Update(this.library451DataSet.Readers);
-            this.library451DataSet.AcceptChanges();
+            try
+            {
+                this.readersBindingSource.EndEdit();
+                this.readersTableAdapter.Update(this.library451DataSet.Readers);
+                this.library451DataSet.AcceptChanges();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             LoadFromDB(TypeOfLoadDB.all);
             //закрываем возможность изменить
             change_readonly_reader(true);
@@ -285,7 +339,40 @@ namespace WindowsFormsApp1
 
         private void but_add_new_reader_Click(object sender, EventArgs e)
         {
+            ReaderAddForm readeradd = new ReaderAddForm();
+            readeradd.Show();
+            readeradd.FormClosing += Readeradd_FormClosing;
+        }
 
+        private void Readeradd_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            LoadFromDB(TypeOfLoadDB.readers);
+        }
+
+        private void but_delete_reader_Click(object sender, EventArgs e)
+        {
+            //удаление книги из БД
+            DialogResult dr = MessageBox.Show("Точно хотите удалить?", "Удаление", MessageBoxButtons.YesNoCancel,
+            MessageBoxIcon.Information);
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+                    this.readersBindingSource.EndEdit();
+                    this.library451DataSet.AcceptChanges();
+                    this.readersTableAdapter.Delete(Int32.Parse(reader_IDTextBox.Text));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                LoadFromDB(TypeOfLoadDB.readers);
+            }
+        }
+
+        private void обновитьДанныеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadFromDB(TypeOfLoadDB.all);
         }
     }
 }

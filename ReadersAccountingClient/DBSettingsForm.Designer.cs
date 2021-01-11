@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsApp1
 {
-    partial class DB_Settings_Form
+    partial class DBSettingsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -109,7 +109,7 @@ namespace WindowsFormsApp1
             this.label3.TabIndex = 7;
             this.label3.Text = "Удаленная БД";
             // 
-            // Form2
+            // DB_Settings_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -123,7 +123,9 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tb_ip);
             this.Controls.Add(this.button1);
-            this.Name = "Form2";
+            this.MaximumSize = new System.Drawing.Size(289, 218);
+            this.MinimumSize = new System.Drawing.Size(289, 218);
+            this.Name = "DB_Settings_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Настройки подключения к БД";
             this.Load += new System.EventHandler(this.Form2_Load);

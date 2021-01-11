@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class DB_Settings_Form : Form
+    public partial class DBSettingsForm : Form
     {
-        public DB_Settings_Form()
+        public DBSettingsForm()
         {
             InitializeComponent();
         }
@@ -47,12 +47,15 @@ namespace WindowsFormsApp1
 
             Properties.Settings.Default.Save();
             Properties.Settings.Default.Upgrade();
+
             this.Close();
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            MainForm owner = this.Owner as MainForm; 
+            owner.IsSettingUserClose = false;
             this.Close();
         }
 

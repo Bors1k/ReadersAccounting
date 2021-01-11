@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsApp1
 {
-    partial class AddBook_Form
+    partial class AddBookForm
     {
         /// <summary>
         /// Required designer variable.
@@ -62,7 +62,7 @@ namespace WindowsFormsApp1
             // 
             // but_close_add_new_book
             // 
-            this.but_close_add_new_book.Location = new System.Drawing.Point(126, 77);
+            this.but_close_add_new_book.Location = new System.Drawing.Point(399, 77);
             this.but_close_add_new_book.Name = "but_close_add_new_book";
             this.but_close_add_new_book.Size = new System.Drawing.Size(96, 23);
             this.but_close_add_new_book.TabIndex = 19;
@@ -104,7 +104,7 @@ namespace WindowsFormsApp1
             this.library451DataSet.DataSetName = "Library451DataSet";
             this.library451DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // AddBook_Form
+            // AddBookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -117,7 +117,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(label5);
             this.MaximumSize = new System.Drawing.Size(530, 160);
             this.MinimumSize = new System.Drawing.Size(530, 160);
-            this.Name = "AddBook_Form";
+            this.Name = "AddBookForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить книгу";
             ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).EndInit();

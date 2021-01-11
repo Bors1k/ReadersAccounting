@@ -57,19 +57,11 @@ namespace WindowsFormsApp1
             this.but_book_chages_back = new System.Windows.Forms.Button();
             this.but_save_book_changes = new System.Windows.Forms.Button();
             this.availabilityCheckBox = new System.Windows.Forms.CheckBox();
-            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.library451DataSet = new WindowsFormsApp1.Library451DataSet();
             this.book_IDTextBox = new System.Windows.Forms.TextBox();
             this.book_NameTextBox = new System.Windows.Forms.TextBox();
             this.booksDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tp_readers = new System.Windows.Forms.TabPage();
             this.readersDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.readersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.reader_IDTextBox = new System.Windows.Forms.TextBox();
             this.fIOTextBox = new System.Windows.Forms.TextBox();
@@ -80,6 +72,19 @@ namespace WindowsFormsApp1
             this.tb_readers_search = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.reades_debtsDataGridView = new System.Windows.Forms.DataGridView();
+            this.but_delete_book = new System.Windows.Forms.Button();
+            this.but_change_reader = new System.Windows.Forms.Button();
+            this.but_save_changes_reader = new System.Windows.Forms.Button();
+            this.but_back_changes_reader = new System.Windows.Forms.Button();
+            this.but_add_new_reader = new System.Windows.Forms.Button();
+            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.library451DataSet = new WindowsFormsApp1.Library451DataSet();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.readersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,11 +96,8 @@ namespace WindowsFormsApp1
             this.autTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.autTableAdapter();
             this.readersTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.ReadersTableAdapter();
             this.reades_debtsTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.reades_debtsTableAdapter();
-            this.but_delete_book = new System.Windows.Forms.Button();
-            this.but_change_reader = new System.Windows.Forms.Button();
-            this.but_save_changes_reader = new System.Windows.Forms.Button();
-            this.but_back_changes_reader = new System.Windows.Forms.Button();
-            this.but_add_new_reader = new System.Windows.Forms.Button();
+            this.but_delete_reader = new System.Windows.Forms.Button();
+            this.обновитьДанныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             reader_IDLabel = new System.Windows.Forms.Label();
             fIOLabel = new System.Windows.Forms.Label();
             pASSPORTLabel = new System.Windows.Forms.Label();
@@ -108,15 +110,15 @@ namespace WindowsFormsApp1
             this.tabControl1.SuspendLayout();
             this.tp_books.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataGridView)).BeginInit();
             this.tp_readers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.readersDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.readersBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reades_debtsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.readersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reades_debtsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -206,6 +208,7 @@ namespace WindowsFormsApp1
             // 
             this.настройкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.подключениеКБДToolStripMenuItem,
+            this.обновитьДанныеToolStripMenuItem,
             this.разлогинитьсяToolStripMenuItem});
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
             this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
@@ -394,16 +397,6 @@ namespace WindowsFormsApp1
             this.availabilityCheckBox.TabIndex = 12;
             this.availabilityCheckBox.UseVisualStyleBackColor = true;
             // 
-            // booksBindingSource
-            // 
-            this.booksBindingSource.DataMember = "Books";
-            this.booksBindingSource.DataSource = this.library451DataSet;
-            // 
-            // library451DataSet
-            // 
-            this.library451DataSet.DataSetName = "Library451DataSet";
-            this.library451DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // book_IDTextBox
             // 
             this.book_IDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.booksBindingSource, "Book_ID", true));
@@ -440,30 +433,6 @@ namespace WindowsFormsApp1
             this.booksDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.booksDataGridView.Size = new System.Drawing.Size(707, 565);
             this.booksDataGridView.TabIndex = 7;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Book_ID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Book_Name";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Книга";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Availability";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Доступность";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.Width = 80;
             // 
             // tp_readers
             // 
@@ -502,29 +471,9 @@ namespace WindowsFormsApp1
             this.readersDataGridView.TabIndex = 23;
             this.readersDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rEADERSDataGridView_CellClick);
             // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Reader_ID";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Учетный номер";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Width = 110;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "FIO";
-            this.dataGridViewTextBoxColumn9.HeaderText = "ФИО";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // readersBindingSource
-            // 
-            this.readersBindingSource.DataMember = "Readers";
-            this.readersBindingSource.DataSource = this.library451DataSet;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.but_delete_reader);
             this.groupBox1.Controls.Add(this.but_back_changes_reader);
             this.groupBox1.Controls.Add(this.but_save_changes_reader);
             this.groupBox1.Controls.Add(this.but_change_reader);
@@ -639,6 +588,112 @@ namespace WindowsFormsApp1
             this.reades_debtsDataGridView.Size = new System.Drawing.Size(1214, 191);
             this.reades_debtsDataGridView.TabIndex = 23;
             // 
+            // but_delete_book
+            // 
+            this.but_delete_book.BackColor = System.Drawing.Color.Transparent;
+            this.but_delete_book.Location = new System.Drawing.Point(403, 116);
+            this.but_delete_book.Name = "but_delete_book";
+            this.but_delete_book.Size = new System.Drawing.Size(89, 23);
+            this.but_delete_book.TabIndex = 17;
+            this.but_delete_book.Text = "Удалить книгу";
+            this.but_delete_book.UseVisualStyleBackColor = false;
+            this.but_delete_book.Click += new System.EventHandler(this.but_delete_book_Click);
+            // 
+            // but_change_reader
+            // 
+            this.but_change_reader.Location = new System.Drawing.Point(27, 180);
+            this.but_change_reader.Name = "but_change_reader";
+            this.but_change_reader.Size = new System.Drawing.Size(93, 25);
+            this.but_change_reader.TabIndex = 33;
+            this.but_change_reader.Text = "Редактировать";
+            this.but_change_reader.UseVisualStyleBackColor = true;
+            this.but_change_reader.Click += new System.EventHandler(this.but_change_reader_Click);
+            // 
+            // but_save_changes_reader
+            // 
+            this.but_save_changes_reader.Location = new System.Drawing.Point(126, 180);
+            this.but_save_changes_reader.Name = "but_save_changes_reader";
+            this.but_save_changes_reader.Size = new System.Drawing.Size(93, 25);
+            this.but_save_changes_reader.TabIndex = 34;
+            this.but_save_changes_reader.Text = "Сохранить";
+            this.but_save_changes_reader.UseVisualStyleBackColor = true;
+            this.but_save_changes_reader.Click += new System.EventHandler(this.but_save_changes_reader_Click);
+            // 
+            // but_back_changes_reader
+            // 
+            this.but_back_changes_reader.Location = new System.Drawing.Point(225, 180);
+            this.but_back_changes_reader.Name = "but_back_changes_reader";
+            this.but_back_changes_reader.Size = new System.Drawing.Size(93, 25);
+            this.but_back_changes_reader.TabIndex = 35;
+            this.but_back_changes_reader.Text = "Отменить";
+            this.but_back_changes_reader.UseVisualStyleBackColor = true;
+            this.but_back_changes_reader.Click += new System.EventHandler(this.but_back_changes_reader_Click);
+            // 
+            // but_add_new_reader
+            // 
+            this.but_add_new_reader.Location = new System.Drawing.Point(658, 12);
+            this.but_add_new_reader.Name = "but_add_new_reader";
+            this.but_add_new_reader.Size = new System.Drawing.Size(109, 23);
+            this.but_add_new_reader.TabIndex = 24;
+            this.but_add_new_reader.Text = "Добавить читателя";
+            this.but_add_new_reader.UseVisualStyleBackColor = true;
+            this.but_add_new_reader.Click += new System.EventHandler(this.but_add_new_reader_Click);
+            // 
+            // booksBindingSource
+            // 
+            this.booksBindingSource.DataMember = "Books";
+            this.booksBindingSource.DataSource = this.library451DataSet;
+            // 
+            // library451DataSet
+            // 
+            this.library451DataSet.DataSetName = "Library451DataSet";
+            this.library451DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Book_ID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Book_Name";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Книга";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Availability";
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Доступность";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Reader_ID";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Учетный номер";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "FIO";
+            this.dataGridViewTextBoxColumn9.HeaderText = "ФИО";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // readersBindingSource
+            // 
+            this.readersBindingSource.DataMember = "Readers";
+            this.readersBindingSource.DataSource = this.library451DataSet;
+            // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "ID";
@@ -707,56 +762,22 @@ namespace WindowsFormsApp1
             // 
             this.reades_debtsTableAdapter.ClearBeforeFill = true;
             // 
-            // but_delete_book
+            // but_delete_reader
             // 
-            this.but_delete_book.BackColor = System.Drawing.Color.Transparent;
-            this.but_delete_book.Location = new System.Drawing.Point(403, 116);
-            this.but_delete_book.Name = "but_delete_book";
-            this.but_delete_book.Size = new System.Drawing.Size(89, 23);
-            this.but_delete_book.TabIndex = 17;
-            this.but_delete_book.Text = "Удалить книгу";
-            this.but_delete_book.UseVisualStyleBackColor = false;
-            this.but_delete_book.Click += new System.EventHandler(this.but_delete_book_Click);
+            this.but_delete_reader.Location = new System.Drawing.Point(468, 180);
+            this.but_delete_reader.Name = "but_delete_reader";
+            this.but_delete_reader.Size = new System.Drawing.Size(100, 23);
+            this.but_delete_reader.TabIndex = 36;
+            this.but_delete_reader.Text = "Удалить читателя";
+            this.but_delete_reader.UseVisualStyleBackColor = true;
+            this.but_delete_reader.Click += new System.EventHandler(this.but_delete_reader_Click);
             // 
-            // but_change_reader
+            // обновитьДанныеToolStripMenuItem
             // 
-            this.but_change_reader.Location = new System.Drawing.Point(27, 180);
-            this.but_change_reader.Name = "but_change_reader";
-            this.but_change_reader.Size = new System.Drawing.Size(93, 25);
-            this.but_change_reader.TabIndex = 33;
-            this.but_change_reader.Text = "Редактировать";
-            this.but_change_reader.UseVisualStyleBackColor = true;
-            this.but_change_reader.Click += new System.EventHandler(this.but_change_reader_Click);
-            // 
-            // but_save_changes_reader
-            // 
-            this.but_save_changes_reader.Location = new System.Drawing.Point(126, 180);
-            this.but_save_changes_reader.Name = "but_save_changes_reader";
-            this.but_save_changes_reader.Size = new System.Drawing.Size(93, 25);
-            this.but_save_changes_reader.TabIndex = 34;
-            this.but_save_changes_reader.Text = "Сохранить";
-            this.but_save_changes_reader.UseVisualStyleBackColor = true;
-            this.but_save_changes_reader.Click += new System.EventHandler(this.but_save_changes_reader_Click);
-            // 
-            // but_back_changes_reader
-            // 
-            this.but_back_changes_reader.Location = new System.Drawing.Point(225, 180);
-            this.but_back_changes_reader.Name = "but_back_changes_reader";
-            this.but_back_changes_reader.Size = new System.Drawing.Size(93, 25);
-            this.but_back_changes_reader.TabIndex = 35;
-            this.but_back_changes_reader.Text = "Отменить";
-            this.but_back_changes_reader.UseVisualStyleBackColor = true;
-            this.but_back_changes_reader.Click += new System.EventHandler(this.but_back_changes_reader_Click);
-            // 
-            // but_add_new_reader
-            // 
-            this.but_add_new_reader.Location = new System.Drawing.Point(658, 12);
-            this.but_add_new_reader.Name = "but_add_new_reader";
-            this.but_add_new_reader.Size = new System.Drawing.Size(109, 23);
-            this.but_add_new_reader.TabIndex = 24;
-            this.but_add_new_reader.Text = "Добавить читателя";
-            this.but_add_new_reader.UseVisualStyleBackColor = true;
-            this.but_add_new_reader.Click += new System.EventHandler(this.but_add_new_reader_Click);
+            this.обновитьДанныеToolStripMenuItem.Name = "обновитьДанныеToolStripMenuItem";
+            this.обновитьДанныеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.обновитьДанныеToolStripMenuItem.Text = "Обновить данные";
+            this.обновитьДанныеToolStripMenuItem.Click += new System.EventHandler(this.обновитьДанныеToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -786,17 +807,17 @@ namespace WindowsFormsApp1
             this.tp_books.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataGridView)).EndInit();
             this.tp_readers.ResumeLayout(false);
             this.tp_readers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.readersDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.readersBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.reades_debtsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.readersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reades_debtsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -863,6 +884,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button but_back_changes_reader;
         private System.Windows.Forms.Button but_save_changes_reader;
         private System.Windows.Forms.Button but_change_reader;
+        private System.Windows.Forms.Button but_delete_reader;
+        private System.Windows.Forms.ToolStripMenuItem обновитьДанныеToolStripMenuItem;
     }
 }
 
