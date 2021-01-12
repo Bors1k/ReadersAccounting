@@ -57,6 +57,7 @@ namespace WindowsFormsApp1
             this.but_books_search_reset = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tp_books = new System.Windows.Forms.TabPage();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.but_vis_add_book = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.but_delete_book = new System.Windows.Forms.Button();
@@ -91,6 +92,13 @@ namespace WindowsFormsApp1
             this.but_readers_search_reset = new System.Windows.Forms.Button();
             this.tb_readers_search = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.butSearchDebts = new System.Windows.Forms.Button();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.tbDebtsSearch = new System.Windows.Forms.TextBox();
+            this.butBackChangesDebts = new System.Windows.Forms.Button();
+            this.butSaveDebts = new System.Windows.Forms.Button();
+            this.butCloseDebt = new System.Windows.Forms.Button();
+            this.butChangeDebt = new System.Windows.Forms.Button();
             this.butDeleteDebt = new System.Windows.Forms.Button();
             this.iDTextBox = new System.Windows.Forms.TextBox();
             this.reades_debtsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -113,11 +121,6 @@ namespace WindowsFormsApp1
             this.readersTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.ReadersTableAdapter();
             this.reades_debtsTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.reades_debtsTableAdapter();
             this.debtsTableAdapter1 = new WindowsFormsApp1.Library451DataSetTableAdapters.DebtsTableAdapter();
-            this.butChangeDebt = new System.Windows.Forms.Button();
-            this.butCloseDebt = new System.Windows.Forms.Button();
-            this.butSaveDebts = new System.Windows.Forms.Button();
-            this.butBackChangesDebts = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             reader_IDLabel = new System.Windows.Forms.Label();
             fIOLabel = new System.Windows.Forms.Label();
             pASSPORTLabel = new System.Windows.Forms.Label();
@@ -222,7 +225,7 @@ namespace WindowsFormsApp1
             // iDLabel
             // 
             iDLabel.AutoSize = true;
-            iDLabel.Location = new System.Drawing.Point(676, 59);
+            iDLabel.Location = new System.Drawing.Point(670, 80);
             iDLabel.Name = "iDLabel";
             iDLabel.Size = new System.Drawing.Size(22, 14);
             iDLabel.TabIndex = 24;
@@ -231,7 +234,7 @@ namespace WindowsFormsApp1
             // книгаLabel
             // 
             книгаLabel.AutoSize = true;
-            книгаLabel.Location = new System.Drawing.Point(676, 85);
+            книгаLabel.Location = new System.Drawing.Point(670, 106);
             книгаLabel.Name = "книгаLabel";
             книгаLabel.Size = new System.Drawing.Size(39, 14);
             книгаLabel.TabIndex = 26;
@@ -240,7 +243,7 @@ namespace WindowsFormsApp1
             // дата_выдачиLabel
             // 
             дата_выдачиLabel.AutoSize = true;
-            дата_выдачиLabel.Location = new System.Drawing.Point(676, 112);
+            дата_выдачиLabel.Location = new System.Drawing.Point(670, 133);
             дата_выдачиLabel.Name = "дата_выдачиLabel";
             дата_выдачиLabel.Size = new System.Drawing.Size(70, 14);
             дата_выдачиLabel.TabIndex = 28;
@@ -249,7 +252,7 @@ namespace WindowsFormsApp1
             // дата_возвратаLabel
             // 
             дата_возвратаLabel.AutoSize = true;
-            дата_возвратаLabel.Location = new System.Drawing.Point(676, 138);
+            дата_возвратаLabel.Location = new System.Drawing.Point(670, 159);
             дата_возвратаLabel.Name = "дата_возвратаLabel";
             дата_возвратаLabel.Size = new System.Drawing.Size(77, 14);
             дата_возвратаLabel.TabIndex = 30;
@@ -258,7 +261,7 @@ namespace WindowsFormsApp1
             // возвращеноLabel
             // 
             возвращеноLabel.AutoSize = true;
-            возвращеноLabel.Location = new System.Drawing.Point(676, 168);
+            возвращеноLabel.Location = new System.Drawing.Point(670, 189);
             возвращеноLabel.Name = "возвращеноLabel";
             возвращеноLabel.Size = new System.Drawing.Size(68, 14);
             возвращеноLabel.TabIndex = 34;
@@ -358,10 +361,10 @@ namespace WindowsFormsApp1
             // 
             // tb_book_search
             // 
-            this.tb_book_search.Location = new System.Drawing.Point(7, 25);
+            this.tb_book_search.Location = new System.Drawing.Point(8, 25);
             this.tb_book_search.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_book_search.Name = "tb_book_search";
-            this.tb_book_search.Size = new System.Drawing.Size(538, 20);
+            this.tb_book_search.Size = new System.Drawing.Size(537, 20);
             this.tb_book_search.TabIndex = 6;
             this.tb_book_search.TextChanged += new System.EventHandler(this.tb_book_search_TextChanged);
             // 
@@ -405,6 +408,17 @@ namespace WindowsFormsApp1
             this.tp_books.TabIndex = 0;
             this.tp_books.Text = "Книги";
             this.tp_books.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(628, 27);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(89, 18);
+            this.checkBox1.TabIndex = 17;
+            this.checkBox1.Text = "Доступность";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // but_vis_add_book
             // 
@@ -602,7 +616,7 @@ namespace WindowsFormsApp1
             this.readersDataGridView.Name = "readersDataGridView";
             this.readersDataGridView.ReadOnly = true;
             this.readersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.readersDataGridView.Size = new System.Drawing.Size(643, 351);
+            this.readersDataGridView.Size = new System.Drawing.Size(643, 313);
             this.readersDataGridView.TabIndex = 23;
             this.readersDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rEADERSDataGridView_CellClick);
             // 
@@ -645,7 +659,7 @@ namespace WindowsFormsApp1
             this.groupBox1.Controls.Add(this.tELEPHONETextBox);
             this.groupBox1.Location = new System.Drawing.Point(657, 40);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(577, 350);
+            this.groupBox1.Size = new System.Drawing.Size(591, 312);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Читатель";
@@ -749,14 +763,17 @@ namespace WindowsFormsApp1
             // 
             // tb_readers_search
             // 
-            this.tb_readers_search.Location = new System.Drawing.Point(5, 13);
+            this.tb_readers_search.Location = new System.Drawing.Point(8, 13);
             this.tb_readers_search.Name = "tb_readers_search";
-            this.tb_readers_search.Size = new System.Drawing.Size(565, 20);
+            this.tb_readers_search.Size = new System.Drawing.Size(562, 20);
             this.tb_readers_search.TabIndex = 12;
             this.tb_readers_search.TextChanged += new System.EventHandler(this.tb_readers_search_TextChanged);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.butSearchDebts);
+            this.groupBox2.Controls.Add(this.checkBox2);
+            this.groupBox2.Controls.Add(this.tbDebtsSearch);
             this.groupBox2.Controls.Add(this.butBackChangesDebts);
             this.groupBox2.Controls.Add(this.butSaveDebts);
             this.groupBox2.Controls.Add(this.butCloseDebt);
@@ -774,16 +791,87 @@ namespace WindowsFormsApp1
             this.groupBox2.Controls.Add(this.возвращеноCheckBox);
             this.groupBox2.Controls.Add(this.butAddDebt);
             this.groupBox2.Controls.Add(this.reades_debtsDataGridView);
-            this.groupBox2.Location = new System.Drawing.Point(5, 396);
+            this.groupBox2.Location = new System.Drawing.Point(5, 358);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1226, 224);
+            this.groupBox2.Size = new System.Drawing.Size(1243, 262);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Задолженности";
             // 
+            // butSearchDebts
+            // 
+            this.butSearchDebts.Location = new System.Drawing.Point(455, 26);
+            this.butSearchDebts.Name = "butSearchDebts";
+            this.butSearchDebts.Size = new System.Drawing.Size(75, 23);
+            this.butSearchDebts.TabIndex = 43;
+            this.butSearchDebts.Text = "Сбросить";
+            this.butSearchDebts.UseVisualStyleBackColor = true;
+            this.butSearchDebts.Click += new System.EventHandler(this.butSearchDebts_Click);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(552, 29);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(99, 18);
+            this.checkBox2.TabIndex = 42;
+            this.checkBox2.Text = "Открытый долг";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // tbDebtsSearch
+            // 
+            this.tbDebtsSearch.Location = new System.Drawing.Point(6, 27);
+            this.tbDebtsSearch.Name = "tbDebtsSearch";
+            this.tbDebtsSearch.Size = new System.Drawing.Size(433, 20);
+            this.tbDebtsSearch.TabIndex = 41;
+            this.tbDebtsSearch.TextChanged += new System.EventHandler(this.tbDebtsSearch_TextChanged);
+            // 
+            // butBackChangesDebts
+            // 
+            this.butBackChangesDebts.Enabled = false;
+            this.butBackChangesDebts.Location = new System.Drawing.Point(754, 233);
+            this.butBackChangesDebts.Name = "butBackChangesDebts";
+            this.butBackChangesDebts.Size = new System.Drawing.Size(75, 23);
+            this.butBackChangesDebts.TabIndex = 40;
+            this.butBackChangesDebts.Text = "Отмена";
+            this.butBackChangesDebts.UseVisualStyleBackColor = true;
+            this.butBackChangesDebts.Click += new System.EventHandler(this.butBackChangesDebts_Click);
+            // 
+            // butSaveDebts
+            // 
+            this.butSaveDebts.Enabled = false;
+            this.butSaveDebts.Location = new System.Drawing.Point(673, 233);
+            this.butSaveDebts.Name = "butSaveDebts";
+            this.butSaveDebts.Size = new System.Drawing.Size(75, 23);
+            this.butSaveDebts.TabIndex = 39;
+            this.butSaveDebts.Text = "Сохранить";
+            this.butSaveDebts.UseVisualStyleBackColor = true;
+            this.butSaveDebts.Click += new System.EventHandler(this.butSaveDebts_Click);
+            // 
+            // butCloseDebt
+            // 
+            this.butCloseDebt.Location = new System.Drawing.Point(852, 32);
+            this.butCloseDebt.Name = "butCloseDebt";
+            this.butCloseDebt.Size = new System.Drawing.Size(128, 23);
+            this.butCloseDebt.TabIndex = 38;
+            this.butCloseDebt.Text = "Закрыть задолженность";
+            this.butCloseDebt.UseVisualStyleBackColor = true;
+            this.butCloseDebt.Click += new System.EventHandler(this.butCloseDebt_Click);
+            // 
+            // butChangeDebt
+            // 
+            this.butChangeDebt.Location = new System.Drawing.Point(754, 32);
+            this.butChangeDebt.Name = "butChangeDebt";
+            this.butChangeDebt.Size = new System.Drawing.Size(92, 23);
+            this.butChangeDebt.TabIndex = 37;
+            this.butChangeDebt.Text = "Редактировать";
+            this.butChangeDebt.UseVisualStyleBackColor = true;
+            this.butChangeDebt.Click += new System.EventHandler(this.butChangeDebt_Click);
+            // 
             // butDeleteDebt
             // 
-            this.butDeleteDebt.Location = new System.Drawing.Point(1145, 19);
+            this.butDeleteDebt.Location = new System.Drawing.Point(1153, 32);
             this.butDeleteDebt.Name = "butDeleteDebt";
             this.butDeleteDebt.Size = new System.Drawing.Size(75, 23);
             this.butDeleteDebt.TabIndex = 36;
@@ -794,7 +882,7 @@ namespace WindowsFormsApp1
             // iDTextBox
             // 
             this.iDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.reades_debtsBindingSource, "ID", true));
-            this.iDTextBox.Location = new System.Drawing.Point(759, 56);
+            this.iDTextBox.Location = new System.Drawing.Point(753, 77);
             this.iDTextBox.Name = "iDTextBox";
             this.iDTextBox.ReadOnly = true;
             this.iDTextBox.Size = new System.Drawing.Size(461, 20);
@@ -808,7 +896,7 @@ namespace WindowsFormsApp1
             // книгаTextBox
             // 
             this.книгаTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.reades_debtsBindingSource, "Книга", true));
-            this.книгаTextBox.Location = new System.Drawing.Point(759, 82);
+            this.книгаTextBox.Location = new System.Drawing.Point(753, 103);
             this.книгаTextBox.Name = "книгаTextBox";
             this.книгаTextBox.ReadOnly = true;
             this.книгаTextBox.Size = new System.Drawing.Size(461, 20);
@@ -818,7 +906,7 @@ namespace WindowsFormsApp1
             // 
             this.дата_выдачиDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.reades_debtsBindingSource, "Дата выдачи", true));
             this.дата_выдачиDateTimePicker.Enabled = false;
-            this.дата_выдачиDateTimePicker.Location = new System.Drawing.Point(759, 108);
+            this.дата_выдачиDateTimePicker.Location = new System.Drawing.Point(753, 129);
             this.дата_выдачиDateTimePicker.Name = "дата_выдачиDateTimePicker";
             this.дата_выдачиDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.дата_выдачиDateTimePicker.TabIndex = 29;
@@ -827,7 +915,7 @@ namespace WindowsFormsApp1
             // 
             this.дата_возвратаDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.reades_debtsBindingSource, "Дата возврата", true));
             this.дата_возвратаDateTimePicker.Enabled = false;
-            this.дата_возвратаDateTimePicker.Location = new System.Drawing.Point(759, 134);
+            this.дата_возвратаDateTimePicker.Location = new System.Drawing.Point(753, 155);
             this.дата_возвратаDateTimePicker.Name = "дата_возвратаDateTimePicker";
             this.дата_возвратаDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.дата_возвратаDateTimePicker.TabIndex = 31;
@@ -836,7 +924,7 @@ namespace WindowsFormsApp1
             // 
             this.возвращеноCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.reades_debtsBindingSource, "Возвращено", true));
             this.возвращеноCheckBox.Enabled = false;
-            this.возвращеноCheckBox.Location = new System.Drawing.Point(759, 163);
+            this.возвращеноCheckBox.Location = new System.Drawing.Point(753, 184);
             this.возвращеноCheckBox.Name = "возвращеноCheckBox";
             this.возвращеноCheckBox.Size = new System.Drawing.Size(200, 24);
             this.возвращеноCheckBox.TabIndex = 35;
@@ -844,7 +932,7 @@ namespace WindowsFormsApp1
             // 
             // butAddDebt
             // 
-            this.butAddDebt.Location = new System.Drawing.Point(664, 19);
+            this.butAddDebt.Location = new System.Drawing.Point(673, 32);
             this.butAddDebt.Name = "butAddDebt";
             this.butAddDebt.Size = new System.Drawing.Size(75, 23);
             this.butAddDebt.TabIndex = 24;
@@ -868,7 +956,7 @@ namespace WindowsFormsApp1
             this.dataGridViewTextBoxColumn7,
             this.Book_ID});
             this.reades_debtsDataGridView.DataSource = this.reades_debtsBindingSource;
-            this.reades_debtsDataGridView.Location = new System.Drawing.Point(6, 19);
+            this.reades_debtsDataGridView.Location = new System.Drawing.Point(6, 65);
             this.reades_debtsDataGridView.Name = "reades_debtsDataGridView";
             this.reades_debtsDataGridView.ReadOnly = true;
             this.reades_debtsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -956,59 +1044,6 @@ namespace WindowsFormsApp1
             // debtsTableAdapter1
             // 
             this.debtsTableAdapter1.ClearBeforeFill = true;
-            // 
-            // butChangeDebt
-            // 
-            this.butChangeDebt.Location = new System.Drawing.Point(745, 19);
-            this.butChangeDebt.Name = "butChangeDebt";
-            this.butChangeDebt.Size = new System.Drawing.Size(92, 23);
-            this.butChangeDebt.TabIndex = 37;
-            this.butChangeDebt.Text = "Редактировать";
-            this.butChangeDebt.UseVisualStyleBackColor = true;
-            this.butChangeDebt.Click += new System.EventHandler(this.butChangeDebt_Click);
-            // 
-            // butCloseDebt
-            // 
-            this.butCloseDebt.Location = new System.Drawing.Point(843, 19);
-            this.butCloseDebt.Name = "butCloseDebt";
-            this.butCloseDebt.Size = new System.Drawing.Size(128, 23);
-            this.butCloseDebt.TabIndex = 38;
-            this.butCloseDebt.Text = "Закрыть задолженность";
-            this.butCloseDebt.UseVisualStyleBackColor = true;
-            this.butCloseDebt.Click += new System.EventHandler(this.butCloseDebt_Click);
-            // 
-            // butSaveDebts
-            // 
-            this.butSaveDebts.Enabled = false;
-            this.butSaveDebts.Location = new System.Drawing.Point(671, 195);
-            this.butSaveDebts.Name = "butSaveDebts";
-            this.butSaveDebts.Size = new System.Drawing.Size(75, 23);
-            this.butSaveDebts.TabIndex = 39;
-            this.butSaveDebts.Text = "Сохранить";
-            this.butSaveDebts.UseVisualStyleBackColor = true;
-            this.butSaveDebts.Click += new System.EventHandler(this.butSaveDebts_Click);
-            // 
-            // butBackChangesDebts
-            // 
-            this.butBackChangesDebts.Enabled = false;
-            this.butBackChangesDebts.Location = new System.Drawing.Point(752, 195);
-            this.butBackChangesDebts.Name = "butBackChangesDebts";
-            this.butBackChangesDebts.Size = new System.Drawing.Size(75, 23);
-            this.butBackChangesDebts.TabIndex = 40;
-            this.butBackChangesDebts.Text = "Отмена";
-            this.butBackChangesDebts.UseVisualStyleBackColor = true;
-            this.butBackChangesDebts.Click += new System.EventHandler(this.butBackChangesDebts_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(628, 27);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(89, 18);
-            this.checkBox1.TabIndex = 17;
-            this.checkBox1.Text = "Доступность";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // MainForm
             // 
@@ -1133,6 +1168,9 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button butBackChangesDebts;
         private System.Windows.Forms.Button butSaveDebts;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button butSearchDebts;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.TextBox tbDebtsSearch;
     }
 }
 

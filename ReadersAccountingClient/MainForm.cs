@@ -58,7 +58,7 @@ namespace WindowsFormsApp1
         {
             if (Properties.Settings.Default.Wireless == true)
             {
-                Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ", " + Properties.Settings.Default.Port + ";Initial Catalog=Library451;Integrated Security=True";
+                Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ", " + Properties.Settings.Default.Port + ";Initial Catalog=Library451; User Id = sa; Password = 1234";
             }
             else
             {
@@ -170,27 +170,16 @@ namespace WindowsFormsApp1
             tb_book_search.Clear();
         }
 
-        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //просто для теста на данный момент
-            MessageBox.Show("hello");
-        }
-
         private void разлогинитьсяToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.tabControl1.Visible = false;
             ResizeForm(this, 320, 240,false);
         }
 
-
-        //int row_id = this.rEADERSDataGridView.SelectedRows[0].Cells[0].RowIndex;
-        //Readers_profile profile_form = new Readers_profile(row_id);
-        //profile_form.Show();
-
         private void rEADERSDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //Фильтрация задолженностей для читателя
-            this.reades_debtsBindingSource.Filter = string.Format("[Reader_ID] = {0}", Convert.ToInt32(reader_IDTextBox.Text));
+            filterDebts();
         }
 
         private void but_readers_search_reset_Click(object sender, EventArgs e)
@@ -236,18 +225,13 @@ namespace WindowsFormsApp1
 
         private void but_book_chages_back_Click(object sender, EventArgs e)
         {
-            but_save_book_changes.Enabled = false;
-            but_book_chages_back.Enabled = false; 
             //отменяем изменения в книге
+            bookChangeState(false);
             this.booksBindingSource.CancelEdit();
-            book_NameTextBox.ReadOnly = true;
-            availabilityCheckBox.Enabled = false;
         }
 
         private void but_save_book_changes_Click(object sender, EventArgs e)
         {
-            but_save_book_changes.Enabled = false;
-            but_book_chages_back.Enabled = false;
             //сохраняем изменения по книге
             try
             {
@@ -260,8 +244,7 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show(ex.Message);
             }
-            book_NameTextBox.ReadOnly = true;
-            availabilityCheckBox.Enabled = false;
+            bookChangeState(false);
         }
 
         private void but_vis_add_book_Click(object sender, EventArgs e)
@@ -279,13 +262,18 @@ namespace WindowsFormsApp1
             LoadFromDB(TypeOfLoadDB.all);
         }
 
+        private void bookChangeState(bool state)
+        {
+            book_NameTextBox.ReadOnly = !state;
+            availabilityCheckBox.Enabled = state;
+            but_save_book_changes.Enabled = state;
+            but_book_chages_back.Enabled = state;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             //даем доступ на редактирование
-            book_NameTextBox.ReadOnly = false;
-            availabilityCheckBox.Enabled = true;
-            but_save_book_changes.Enabled = true;
-            but_book_chages_back.Enabled = true;
+            bookChangeState(true);
         }
 
         private void but_delete_book_Click(object sender, EventArgs e)
@@ -411,23 +399,30 @@ namespace WindowsFormsApp1
         private void butDeleteDebt_Click(object sender, EventArgs e)
         {
             //удаление задолженности из БД
-            DialogResult dr = MessageBox.Show("Точно хотите удалить?", "Удаление", MessageBoxButtons.YesNoCancel,
-            MessageBoxIcon.Information);
-            if (dr == DialogResult.Yes)
+            if (this.library451DataSet.Debts.FindByDebts_ID(Int32.Parse(iDTextBox.Text)).Closed == true)
             {
-                try
+                DialogResult dr = MessageBox.Show("Точно хотите удалить?", "Удаление", MessageBoxButtons.YesNoCancel,
+                MessageBoxIcon.Information);
+                if (dr == DialogResult.Yes)
                 {
-                    this.debtsTableAdapter1.Delete(Int32.Parse(iDTextBox.Text), Int32.Parse(reades_debtsDataGridView.CurrentRow.Cells["dataGridViewTextBoxColumn7"].Value.ToString()), 
-                        Int32.Parse(reades_debtsDataGridView.CurrentRow.Cells["Book_ID"].Value.ToString()), 
-                        дата_выдачиDateTimePicker.Value, дата_возвратаDateTimePicker.Value, возвращеноCheckBox.Checked);
-                    this.library451DataSet.AcceptChanges();
+                    try
+                    {
+                        this.debtsTableAdapter1.Delete(Int32.Parse(iDTextBox.Text), Int32.Parse(reades_debtsDataGridView.CurrentRow.Cells["dataGridViewTextBoxColumn7"].Value.ToString()),
+                            Int32.Parse(reades_debtsDataGridView.CurrentRow.Cells["Book_ID"].Value.ToString()),
+                            дата_выдачиDateTimePicker.Value, дата_возвратаDateTimePicker.Value, возвращеноCheckBox.Checked);
+                        this.library451DataSet.AcceptChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    LoadFromDB(TypeOfLoadDB.all);
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                LoadFromDB(TypeOfLoadDB.all);
-            } 
+            }
+            else
+            {
+                MessageBox.Show("Сначала закройте задолженность");
+            }
         }
 
         private void debtsStateChanger(bool state)
@@ -506,6 +501,30 @@ namespace WindowsFormsApp1
                 booksBindingSource.Filter = string.Format("[Book_Name] LIKE '%{0}%' AND [Availability] = true", tb_book_search.Text);
             }
             else booksBindingSource.Filter = string.Format("[Book_Name] LIKE '%{0}%'", tb_book_search.Text);
+        }
+
+        private void tbDebtsSearch_TextChanged(object sender, EventArgs e)
+        {
+            filterDebts();
+        }
+
+        private void butSearchDebts_Click(object sender, EventArgs e)
+        {
+            tbDebtsSearch.Clear();
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            filterDebts();        
+        }
+
+        private void filterDebts()
+        {
+            if (checkBox2.Checked)
+            {
+                reades_debtsBindingSource.Filter = string.Format("[Книга] LIKE '%{0}%' AND [Возвращено] = false AND [Reader_ID] = {1}", tbDebtsSearch.Text, Convert.ToInt32(reader_IDTextBox.Text));
+            }
+            else reades_debtsBindingSource.Filter = string.Format("[Книга] LIKE '%{0}%' AND [Возвращено] = true AND [Reader_ID] = {1}", tbDebtsSearch.Text, Convert.ToInt32(reader_IDTextBox.Text));
         }
     }
 }

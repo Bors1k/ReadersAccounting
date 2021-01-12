@@ -38,7 +38,7 @@ namespace WindowsFormsApp1
             //на основе настроек прописываем строку подключения к бд
             if (chbox_wireless.Checked == true)
             {
-                Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ", " + Properties.Settings.Default.Port + ";Initial Catalog=Library451;Integrated Security=True";
+                Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ", " + Properties.Settings.Default.Port + ";Initial Catalog=Library451; User Id = sa; Password = 1234";
             }
             else
             {
@@ -54,6 +54,10 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //закрытие формы настроек
+            //но когда закрываешь настройки, срабатывает обработчик в главной форме и он пытается подключиться к БД, что при неправильных настройках, 
+            //заставляет долго ждать.
+            //пришлось передавать в главную форму значение, чтобы отделять сохранение+закрытие и закрытие без применения настроек
             MainForm owner = this.Owner as MainForm; 
             owner.IsSettingUserClose = false;
             this.Close();
