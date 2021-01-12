@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsApp1
 {
-    partial class AddReaderDebt
+    partial class AddDebtForm
     {
         /// <summary>
         /// Required designer variable.
@@ -224,7 +224,7 @@ namespace WindowsFormsApp1
             // 
             this.readersTableAdapter1.ClearBeforeFill = true;
             // 
-            // AddReaderDebt
+            // AddDebt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -240,7 +240,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.book_NameTextBox);
             this.Controls.Add(availabilityLabel);
             this.Controls.Add(this.availabilityCheckBox);
-            this.Name = "AddReaderDebt";
+            this.Name = "AddDebt";
             this.Text = "Задолженность";
             this.Load += new System.EventHandler(this.AddReaderDebt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).EndInit();

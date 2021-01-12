@@ -78,7 +78,7 @@ namespace WindowsFormsApp1
                     this.readersTableAdapter.Fill(this.library451DataSet.Readers);
                     this.booksTableAdapter.Fill(this.library451DataSet.Books);
                     this.autTableAdapter.Fill(this.library451DataSet.aut);
-                    this.reades_debtsTableAdapter.Fill(this.library451DataSet.reades_debts);
+                    this.debtsTableAdapter1.Fill(this.library451DataSet.Debts);
                 }
                 if (type == TypeOfLoadDB.book)
                 {
@@ -201,8 +201,12 @@ namespace WindowsFormsApp1
 
         private void tb_book_search_TextChanged(object sender, EventArgs e)
         {
-           //поиск книги
-           booksBindingSource.Filter = string.Format("[Book_Name] LIKE '%{0}%'", tb_book_search.Text);
+            //поиск книги
+            if (checkBox1.Checked)
+            {
+                booksBindingSource.Filter = string.Format("[Book_Name] LIKE '%{0}%' AND [Availability] = true", tb_book_search.Text);
+            }
+            else booksBindingSource.Filter = string.Format("[Book_Name] LIKE '%{0}%'", tb_book_search.Text);
         }
 
         private void tb_readers_search_TextChanged(object sender, EventArgs e)
@@ -232,6 +236,8 @@ namespace WindowsFormsApp1
 
         private void but_book_chages_back_Click(object sender, EventArgs e)
         {
+            but_save_book_changes.Enabled = false;
+            but_book_chages_back.Enabled = false; 
             //отменяем изменения в книге
             this.booksBindingSource.CancelEdit();
             book_NameTextBox.ReadOnly = true;
@@ -240,6 +246,8 @@ namespace WindowsFormsApp1
 
         private void but_save_book_changes_Click(object sender, EventArgs e)
         {
+            but_save_book_changes.Enabled = false;
+            but_book_chages_back.Enabled = false;
             //сохраняем изменения по книге
             try
             {
@@ -276,6 +284,8 @@ namespace WindowsFormsApp1
             //даем доступ на редактирование
             book_NameTextBox.ReadOnly = false;
             availabilityCheckBox.Enabled = true;
+            but_save_book_changes.Enabled = true;
+            but_book_chages_back.Enabled = true;
         }
 
         private void but_delete_book_Click(object sender, EventArgs e)
@@ -306,6 +316,8 @@ namespace WindowsFormsApp1
             tELEPHONETextBox.ReadOnly = state;
             aDDRESSTextBox.ReadOnly = state;
             pASSPORTTextBox.ReadOnly = state;
+            but_save_changes_reader.Enabled = !state;
+            but_back_changes_reader.Enabled = !state;
         }
 
         private void but_change_reader_Click(object sender, EventArgs e)
@@ -384,7 +396,7 @@ namespace WindowsFormsApp1
         private void butAddDebt_Click(object sender, EventArgs e)
         {
             //открываем форму добавления новой записи о задолженности
-;           AddReaderDebt addReaderDebt = new AddReaderDebt(Int32.Parse(reader_IDTextBox.Text));
+;           AddDebtForm addReaderDebt = new AddDebtForm(Int32.Parse(reader_IDTextBox.Text));
             addReaderDebt.Show();
             addReaderDebt.FormClosing += AddReaderDebt_FormClosing;
         }
@@ -416,6 +428,84 @@ namespace WindowsFormsApp1
                 }
                 LoadFromDB(TypeOfLoadDB.all);
             } 
+        }
+
+        private void debtsStateChanger(bool state)
+        {
+            //изменение состояния работы элементов управления задолженностями
+            дата_выдачиDateTimePicker.Enabled = state;
+            дата_возвратаDateTimePicker.Enabled = state;
+            butSaveDebts.Enabled = state;
+            butBackChangesDebts.Enabled = state;
+        }
+
+        private void butChangeDebt_Click(object sender, EventArgs e)
+        {
+            //включаем возможность внести изменения в задолженности
+            debtsStateChanger(true);
+        }
+
+        private void butSaveDebts_Click(object sender, EventArgs e)
+        {
+            Functions func = new Functions();
+            //сохранение изменений в задолженностях
+            try
+            {
+                if (func.CheckDates(this.дата_выдачиDateTimePicker.Value, this.дата_возвратаDateTimePicker.Value) != null)
+                {
+                    throw func.CheckDates(this.дата_выдачиDateTimePicker.Value, this.дата_возвратаDateTimePicker.Value);
+                }
+                else
+                {
+                    this.reades_debtsBindingSource.EndEdit();
+                    this.library451DataSet.Debts.FindByDebts_ID(Int32.Parse(iDTextBox.Text)).Issue_Date = this.дата_выдачиDateTimePicker.Value;
+                    this.library451DataSet.Debts.FindByDebts_ID(Int32.Parse(iDTextBox.Text)).Return_Date = this.дата_возвратаDateTimePicker.Value;
+                    this.debtsTableAdapter1.Update(this.library451DataSet.Debts);
+                    this.library451DataSet.AcceptChanges();
+                    LoadFromDB(TypeOfLoadDB.debts);
+                    debtsStateChanger(false);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }        
+        }
+
+        private void butBackChangesDebts_Click(object sender, EventArgs e)
+        {
+            //отмена изменений в задолженностях
+            reades_debtsBindingSource.CancelEdit();
+            debtsStateChanger(false);
+        }
+
+        private void butCloseDebt_Click(object sender, EventArgs e)
+        {
+            //закрываем задолженность и освобождаем книгу
+            try
+            {
+                this.reades_debtsBindingSource.EndEdit();
+                возвращеноCheckBox.Checked = true;
+                this.library451DataSet.Debts.FindByDebts_ID(Int32.Parse(iDTextBox.Text)).Closed = true;
+                int book_id = this.library451DataSet.Debts.FindByDebts_ID(Int32.Parse(iDTextBox.Text)).Book_ID;
+                this.library451DataSet.Books.FindByBook_ID(book_id).Availability = true;
+                this.booksTableAdapter.Update(this.library451DataSet.Books);
+                this.debtsTableAdapter1.Update(this.library451DataSet.Debts);
+                this.library451DataSet.AcceptChanges();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            LoadFromDB(TypeOfLoadDB.all);
+        }
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                booksBindingSource.Filter = string.Format("[Book_Name] LIKE '%{0}%' AND [Availability] = true", tb_book_search.Text);
+            }
+            else booksBindingSource.Filter = string.Format("[Book_Name] LIKE '%{0}%'", tb_book_search.Text);
         }
     }
 }
