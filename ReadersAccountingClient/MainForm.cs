@@ -131,7 +131,7 @@ namespace WindowsFormsApp1
                 bool aut_flag = false;
                 foreach (DataRow row in this.library451DataSet.aut.Rows)
                 {
-                    DataRow newrow = row;
+                    if (aut_flag == true) break;
                     if (row["login"].ToString() == tb_login.Text)
                     {
                         if (row["password"].ToString() == tb_password.Text)
@@ -139,7 +139,20 @@ namespace WindowsFormsApp1
                             aut_flag = true;
                             tabControl1.Visible = true;
                             //делаем ресайз для дальнейшей работы
-                            ResizeForm(this, 1280, 720, true);
+
+                            if(row["is_admin"].ToString() == "True")
+                            {
+                                if(tabControl1.TabPages.Count != 3)
+                                {
+                                    tabControl1.TabPages.Add(tpAccounts);
+                                }
+                                ResizeForm(this, 1280, 720, true);
+                            }
+                            else
+                            {
+                                tabControl1.TabPages.Remove(tpAccounts);
+                                ResizeForm(this, 1280, 720, true);
+                            }
                         }
                     }
                 }
@@ -526,6 +539,74 @@ namespace WindowsFormsApp1
                 reades_debtsBindingSource.Filter = string.Format("[Книга] LIKE '%{0}%' AND [Возвращено] = false AND [Reader_ID] = {1}", tbDebtsSearch.Text, Convert.ToInt32(reader_IDTextBox.Text));
             }
             else reades_debtsBindingSource.Filter = string.Format("[Книга] LIKE '%{0}%' AND [Возвращено] = true AND [Reader_ID] = {1}", tbDebtsSearch.Text, Convert.ToInt32(reader_IDTextBox.Text));
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //включаем видимость формы добавления нового аккаунта
+            gbNewAcc.Visible = true;
+        }
+
+        private void butAddAccount_Click(object sender, EventArgs e)
+        {
+            gbNewAcc.Visible = false;
+        }
+
+        private void butCancelAdd_Click(object sender, EventArgs e)
+        {
+            gbNewAcc.Visible = false;
+        }
+
+        private void butResetAccSearch_Click(object sender, EventArgs e)
+        {
+            //очищаем строку поиска аккаунта по логину
+            tbAccSearch.Clear();
+        }
+
+        private void butChangeAccounts_Click(object sender, EventArgs e)
+        {
+            //включаем возможность редактирования аккаунтов
+            groupBox4.Enabled = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //сохраняем изменения у пользователя
+            passwordTextBox.UseSystemPasswordChar = true;
+            groupBox4.Enabled = false;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //отменяем изменения у пользователя
+            passwordTextBox.UseSystemPasswordChar = true;
+            groupBox4.Enabled = false;
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            //включаем видимость пароля при редактировании пользователя
+            if (checkBox4.Checked)
+            {
+                passwordTextBox.UseSystemPasswordChar = false;
+            }
+            else passwordTextBox.UseSystemPasswordChar = true;
+        }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            //включаем видимость пароля при создании нового пользователя
+            if (checkBox4.Checked)
+            {
+                tbPassword.UseSystemPasswordChar = false;
+            }
+            else tbPassword.UseSystemPasswordChar = true;
+        }
+
+        private void tbAccSearch_TextChanged(object sender, EventArgs e)
+        {
+            //поиск пользователя
+            autBindingSource.Filter = string.Format("[login] LIKE '%{0}%' OR [FIO] LIKE '%{0}%'", tbAccSearch.Text);
         }
     }
 }

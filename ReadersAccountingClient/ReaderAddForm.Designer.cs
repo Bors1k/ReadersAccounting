@@ -158,6 +158,8 @@ namespace WindowsFormsApp1
             this.Controls.Add(aDDRESSLabel);
             this.Controls.Add(this.aDDRESSTextBox);
             this.Controls.Add(tELEPHONELabel);
+            this.MaximumSize = new System.Drawing.Size(602, 234);
+            this.MinimumSize = new System.Drawing.Size(602, 234);
             this.Name = "ReaderAddForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление читателя";

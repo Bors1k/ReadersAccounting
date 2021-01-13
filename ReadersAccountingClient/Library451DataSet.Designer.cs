@@ -441,6 +441,8 @@ namespace WindowsFormsApp1 {
             
             private global::System.Data.DataColumn columnis_admin;
             
+            private global::System.Data.DataColumn columnFIO;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public autDataTable() {
@@ -508,6 +510,14 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FIOColumn {
+                get {
+                    return this.columnFIO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -543,13 +553,14 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public autRow AddautRow(string login, string password, bool is_admin) {
+            public autRow AddautRow(string login, string password, bool is_admin, string FIO) {
                 autRow rowautRow = ((autRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         login,
                         password,
-                        is_admin};
+                        is_admin,
+                        FIO};
                 rowautRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowautRow);
                 return rowautRow;
@@ -583,6 +594,7 @@ namespace WindowsFormsApp1 {
                 this.columnlogin = base.Columns["login"];
                 this.columnpassword = base.Columns["password"];
                 this.columnis_admin = base.Columns["is_admin"];
+                this.columnFIO = base.Columns["FIO"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -596,6 +608,8 @@ namespace WindowsFormsApp1 {
                 base.Columns.Add(this.columnpassword);
                 this.columnis_admin = new global::System.Data.DataColumn("is_admin", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnis_admin);
+                this.columnFIO = new global::System.Data.DataColumn("FIO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFIO);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -609,6 +623,8 @@ namespace WindowsFormsApp1 {
                 this.columnpassword.AllowDBNull = false;
                 this.columnpassword.MaxLength = 2147483647;
                 this.columnis_admin.AllowDBNull = false;
+                this.columnFIO.AllowDBNull = false;
+                this.columnFIO.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2097,6 +2113,17 @@ namespace WindowsFormsApp1 {
                     this[this.tableaut.is_adminColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string FIO {
+                get {
+                    return ((string)(this[this.tableaut.FIOColumn]));
+                }
+                set {
+                    this[this.tableaut.FIOColumn] = value;
+                }
+            }
         }
         
         /// <summary>
@@ -2835,33 +2862,39 @@ namespace WindowsFormsApp1.Library451DataSetTableAdapters {
             tableMapping.ColumnMappings.Add("login", "login");
             tableMapping.ColumnMappings.Add("password", "password");
             tableMapping.ColumnMappings.Add("is_admin", "is_admin");
+            tableMapping.ColumnMappings.Add("FIO", "FIO");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[aut] WHERE (([ID] = @Original_ID) AND ([is_admin] = @Original_" +
-                "is_admin))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [aut] WHERE (([ID] = @Original_ID) AND ([login] = @Original_login) AN" +
+                "D ([password] = @Original_password) AND ([is_admin] = @Original_is_admin))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_login", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "login", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_password", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_is_admin", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "is_admin", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[aut] ([login], [password], [is_admin]) VALUES (@login, @passwo" +
-                "rd, @is_admin);\r\nSELECT ID, login, password, is_admin FROM aut WHERE (ID = SCOPE" +
-                "_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [aut] ([login], [password], [is_admin], [FIO]) VALUES (@login, @passw" +
+                "ord, @is_admin, @FIO);\r\nSELECT ID, login, password, is_admin, FIO FROM aut WHERE" +
+                " (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@login", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@password", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@login", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@password", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@is_admin", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "is_admin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FIO", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[aut] SET [login] = @login, [password] = @password, [is_admin] = @is" +
-                "_admin WHERE (([ID] = @Original_ID) AND ([is_admin] = @Original_is_admin));\r\nSEL" +
-                "ECT ID, login, password, is_admin FROM aut WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [aut] SET [login] = @login, [password] = @password, [is_admin] = @is_admin, [FIO] = @FIO WHERE (([ID] = @Original_ID) AND ([login] = @Original_login) AND ([password] = @Original_password) AND ([is_admin] = @Original_is_admin));
+SELECT ID, login, password, is_admin, FIO FROM aut WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@login", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@password", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@login", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@password", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@is_admin", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "is_admin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FIO", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FIO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_login", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "login", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_password", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_is_admin", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "is_admin", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -2870,7 +2903,7 @@ namespace WindowsFormsApp1.Library451DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.Library451ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2879,7 +2912,7 @@ namespace WindowsFormsApp1.Library451DataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, login, password, is_admin FROM dbo.aut";
+            this._commandCollection[0].CommandText = "SELECT ID, login, password, is_admin, FIO FROM aut";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2940,9 +2973,21 @@ namespace WindowsFormsApp1.Library451DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, bool Original_is_admin) {
+        public virtual int Delete(int Original_ID, string Original_login, string Original_password, bool Original_is_admin) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((bool)(Original_is_admin));
+            if ((Original_login == null)) {
+                throw new global::System.ArgumentNullException("Original_login");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_login));
+            }
+            if ((Original_password == null)) {
+                throw new global::System.ArgumentNullException("Original_password");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_password));
+            }
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((bool)(Original_is_admin));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2963,7 +3008,7 @@ namespace WindowsFormsApp1.Library451DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string login, string password, bool is_admin) {
+        public virtual int Insert(string login, string password, bool is_admin, string FIO) {
             if ((login == null)) {
                 throw new global::System.ArgumentNullException("login");
             }
@@ -2977,6 +3022,12 @@ namespace WindowsFormsApp1.Library451DataSetTableAdapters {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(password));
             }
             this.Adapter.InsertCommand.Parameters[2].Value = ((bool)(is_admin));
+            if ((FIO == null)) {
+                throw new global::System.ArgumentNullException("FIO");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(FIO));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2997,7 +3048,7 @@ namespace WindowsFormsApp1.Library451DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string login, string password, bool is_admin, int Original_ID, bool Original_is_admin, int ID) {
+        public virtual int Update(string login, string password, bool is_admin, string FIO, int Original_ID, string Original_login, string Original_password, bool Original_is_admin, int ID) {
             if ((login == null)) {
                 throw new global::System.ArgumentNullException("login");
             }
@@ -3011,9 +3062,27 @@ namespace WindowsFormsApp1.Library451DataSetTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(password));
             }
             this.Adapter.UpdateCommand.Parameters[2].Value = ((bool)(is_admin));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_ID));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((bool)(Original_is_admin));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(ID));
+            if ((FIO == null)) {
+                throw new global::System.ArgumentNullException("FIO");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(FIO));
+            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_ID));
+            if ((Original_login == null)) {
+                throw new global::System.ArgumentNullException("Original_login");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_login));
+            }
+            if ((Original_password == null)) {
+                throw new global::System.ArgumentNullException("Original_password");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_password));
+            }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(Original_is_admin));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3034,8 +3103,8 @@ namespace WindowsFormsApp1.Library451DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string login, string password, bool is_admin, int Original_ID, bool Original_is_admin) {
-            return this.Update(login, password, is_admin, Original_ID, Original_is_admin, Original_ID);
+        public virtual int Update(string login, string password, bool is_admin, string FIO, int Original_ID, string Original_login, string Original_password, bool Original_is_admin) {
+            return this.Update(login, password, is_admin, FIO, Original_ID, Original_login, Original_password, Original_is_admin, Original_ID);
         }
     }
     
@@ -3198,7 +3267,7 @@ SELECT Book_ID, Book_Name, Availability FROM Books WHERE (Book_ID = @Book_ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.Library451ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3552,7 +3621,7 @@ SELECT Debts_ID, Reader_ID, Book_ID, Issue_Date, Return_Date, Closed FROM Debts 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.Library451ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3898,7 +3967,7 @@ SELECT Debts_ID, Reader_ID, Book_ID, Issue_Date, Return_Date, Closed FROM Debts 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.Library451ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4222,7 +4291,7 @@ SELECT Debts_ID, Reader_ID, Book_ID, Issue_Date, Return_Date, Closed FROM Debts 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.ConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.Library451ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

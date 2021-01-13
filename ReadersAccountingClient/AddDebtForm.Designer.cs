@@ -262,6 +262,8 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.book_NameTextBox);
             this.Controls.Add(availabilityLabel);
             this.Controls.Add(this.availabilityCheckBox);
+            this.MaximumSize = new System.Drawing.Size(824, 445);
+            this.MinimumSize = new System.Drawing.Size(824, 445);
             this.Name = "AddDebtForm";
             this.Text = "Задолженность";
             this.Load += new System.EventHandler(this.AddReaderDebt_Load);

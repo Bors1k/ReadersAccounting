@@ -21,5 +21,13 @@ namespace WindowsFormsApp1
             }
             return null;
         }
+        public bool ValidatePassword(string password)
+        {
+            return false;
+        }
+        public bool ValidateLogin(string login)
+        {
+            return false;
+        }
     }
 }

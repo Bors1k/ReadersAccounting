@@ -43,6 +43,13 @@ namespace WindowsFormsApp1
             System.Windows.Forms.Label дата_выдачиLabel;
             System.Windows.Forms.Label дата_возвратаLabel;
             System.Windows.Forms.Label возвращеноLabel;
+            System.Windows.Forms.Label loginLabel;
+            System.Windows.Forms.Label passwordLabel;
+            System.Windows.Forms.Label is_adminLabel;
+            System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label label4;
+            System.Windows.Forms.Label label5;
+            System.Windows.Forms.Label iDLabel1;
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.подключениеКБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,21 +72,15 @@ namespace WindowsFormsApp1
             this.but_book_chages_back = new System.Windows.Forms.Button();
             this.but_save_book_changes = new System.Windows.Forms.Button();
             this.availabilityCheckBox = new System.Windows.Forms.CheckBox();
-            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.library451DataSet = new WindowsFormsApp1.Library451DataSet();
             this.book_IDTextBox = new System.Windows.Forms.TextBox();
             this.book_NameTextBox = new System.Windows.Forms.TextBox();
             this.booksDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tp_readers = new System.Windows.Forms.TabPage();
             this.but_add_new_reader = new System.Windows.Forms.Button();
             this.readersDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.readersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pASSPORTTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.tELEPHONETextBox = new System.Windows.Forms.MaskedTextBox();
             this.but_delete_reader = new System.Windows.Forms.Button();
             this.but_back_changes_reader = new System.Windows.Forms.Button();
             this.but_save_changes_reader = new System.Windows.Forms.Button();
@@ -99,28 +100,62 @@ namespace WindowsFormsApp1
             this.butChangeDebt = new System.Windows.Forms.Button();
             this.butDeleteDebt = new System.Windows.Forms.Button();
             this.iDTextBox = new System.Windows.Forms.TextBox();
-            this.reades_debtsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.книгаTextBox = new System.Windows.Forms.TextBox();
             this.дата_выдачиDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.дата_возвратаDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.возвращеноCheckBox = new System.Windows.Forms.CheckBox();
             this.butAddDebt = new System.Windows.Forms.Button();
             this.reades_debtsDataGridView = new System.Windows.Forms.DataGridView();
+            this.Возвращено = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Book_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tpAccounts = new System.Windows.Forms.TabPage();
+            this.gbNewAcc = new System.Windows.Forms.GroupBox();
+            this.chkbIsAdmin = new System.Windows.Forms.CheckBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.tbLogin = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.butResetAccSearch = new System.Windows.Forms.Button();
+            this.tbAccSearch = new System.Windows.Forms.TextBox();
+            this.butCancelNewAcc = new System.Windows.Forms.Button();
+            this.butSaveNewAcc = new System.Windows.Forms.Button();
+            this.butChangeAccounts = new System.Windows.Forms.Button();
+            this.loginTextBox = new System.Windows.Forms.TextBox();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.is_adminCheckBox = new System.Windows.Forms.CheckBox();
+            this.autDataGridView = new System.Windows.Forms.DataGridView();
+            this.butAddAccount = new System.Windows.Forms.Button();
+            this.butCancelAdd = new System.Windows.Forms.Button();
+            this.butDeletAcc = new System.Windows.Forms.Button();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.library451DataSet = new WindowsFormsApp1.Library451DataSet();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.readersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reades_debtsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Возвращено = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Book_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.autBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.booksTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.BooksTableAdapter();
             this.tableAdapterManager = new WindowsFormsApp1.Library451DataSetTableAdapters.TableAdapterManager();
             this.autTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.autTableAdapter();
             this.readersTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.ReadersTableAdapter();
             this.reades_debtsTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.reades_debtsTableAdapter();
             this.debtsTableAdapter1 = new WindowsFormsApp1.Library451DataSetTableAdapters.DebtsTableAdapter();
-            this.tELEPHONETextBox = new System.Windows.Forms.MaskedTextBox();
-            this.pASSPORTTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.iDTextBox1 = new System.Windows.Forms.TextBox();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             reader_IDLabel = new System.Windows.Forms.Label();
             fIOLabel = new System.Windows.Forms.Label();
             pASSPORTLabel = new System.Windows.Forms.Label();
@@ -134,20 +169,32 @@ namespace WindowsFormsApp1
             дата_выдачиLabel = new System.Windows.Forms.Label();
             дата_возвратаLabel = new System.Windows.Forms.Label();
             возвращеноLabel = new System.Windows.Forms.Label();
+            loginLabel = new System.Windows.Forms.Label();
+            passwordLabel = new System.Windows.Forms.Label();
+            is_adminLabel = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            iDLabel1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tp_books.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataGridView)).BeginInit();
             this.tp_readers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.readersDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.readersBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.reades_debtsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reades_debtsDataGridView)).BeginInit();
+            this.tpAccounts.SuspendLayout();
+            this.gbNewAcc.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.autDataGridView)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.readersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reades_debtsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.autBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reader_IDLabel
@@ -267,6 +314,33 @@ namespace WindowsFormsApp1
             возвращеноLabel.TabIndex = 34;
             возвращеноLabel.Text = "Возвращено:";
             // 
+            // loginLabel
+            // 
+            loginLabel.AutoSize = true;
+            loginLabel.Location = new System.Drawing.Point(7, 51);
+            loginLabel.Name = "loginLabel";
+            loginLabel.Size = new System.Drawing.Size(40, 14);
+            loginLabel.TabIndex = 3;
+            loginLabel.Text = "Логин:";
+            // 
+            // passwordLabel
+            // 
+            passwordLabel.AutoSize = true;
+            passwordLabel.Location = new System.Drawing.Point(7, 77);
+            passwordLabel.Name = "passwordLabel";
+            passwordLabel.Size = new System.Drawing.Size(45, 14);
+            passwordLabel.TabIndex = 5;
+            passwordLabel.Text = "Пароль:";
+            // 
+            // is_adminLabel
+            // 
+            is_adminLabel.AutoSize = true;
+            is_adminLabel.Location = new System.Drawing.Point(7, 105);
+            is_adminLabel.Name = "is_adminLabel";
+            is_adminLabel.Size = new System.Drawing.Size(47, 14);
+            is_adminLabel.TabIndex = 7;
+            is_adminLabel.Text = "Админ?:";
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -290,14 +364,14 @@ namespace WindowsFormsApp1
             // подключениеКБДToolStripMenuItem
             // 
             this.подключениеКБДToolStripMenuItem.Name = "подключениеКБДToolStripMenuItem";
-            this.подключениеКБДToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.подключениеКБДToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.подключениеКБДToolStripMenuItem.Text = "Подключение к БД";
             this.подключениеКБДToolStripMenuItem.Click += new System.EventHandler(this.подключениеКБДToolStripMenuItem_Click);
             // 
             // обновитьДанныеToolStripMenuItem
             // 
             this.обновитьДанныеToolStripMenuItem.Name = "обновитьДанныеToolStripMenuItem";
-            this.обновитьДанныеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.обновитьДанныеToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.обновитьДанныеToolStripMenuItem.Text = "Обновить данные";
             this.обновитьДанныеToolStripMenuItem.Click += new System.EventHandler(this.обновитьДанныеToolStripMenuItem_Click);
             // 
@@ -305,7 +379,7 @@ namespace WindowsFormsApp1
             // 
             this.разлогинитьсяToolStripMenuItem.Enabled = false;
             this.разлогинитьсяToolStripMenuItem.Name = "разлогинитьсяToolStripMenuItem";
-            this.разлогинитьсяToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.разлогинитьсяToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.разлогинитьсяToolStripMenuItem.Text = "Разлогиниться";
             this.разлогинитьсяToolStripMenuItem.Click += new System.EventHandler(this.разлогинитьсяToolStripMenuItem_Click);
             // 
@@ -343,10 +417,10 @@ namespace WindowsFormsApp1
             this.tb_password.Location = new System.Drawing.Point(110, 110);
             this.tb_password.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tb_password.Name = "tb_password";
-            this.tb_password.PasswordChar = '*';
             this.tb_password.Size = new System.Drawing.Size(100, 20);
             this.tb_password.TabIndex = 5;
             this.tb_password.Text = "admin";
+            this.tb_password.UseSystemPasswordChar = true;
             // 
             // butt_authorized
             // 
@@ -383,7 +457,8 @@ namespace WindowsFormsApp1
             // 
             this.tabControl1.Controls.Add(this.tp_books);
             this.tabControl1.Controls.Add(this.tp_readers);
-            this.tabControl1.Location = new System.Drawing.Point(0, 27);
+            this.tabControl1.Controls.Add(this.tpAccounts);
+            this.tabControl1.Location = new System.Drawing.Point(0, 18);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -502,16 +577,6 @@ namespace WindowsFormsApp1
             this.availabilityCheckBox.TabIndex = 12;
             this.availabilityCheckBox.UseVisualStyleBackColor = true;
             // 
-            // booksBindingSource
-            // 
-            this.booksBindingSource.DataMember = "Books";
-            this.booksBindingSource.DataSource = this.library451DataSet;
-            // 
-            // library451DataSet
-            // 
-            this.library451DataSet.DataSetName = "Library451DataSet";
-            this.library451DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // book_IDTextBox
             // 
             this.book_IDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.booksBindingSource, "Book_ID", true));
@@ -548,30 +613,6 @@ namespace WindowsFormsApp1
             this.booksDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.booksDataGridView.Size = new System.Drawing.Size(707, 565);
             this.booksDataGridView.TabIndex = 7;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Book_ID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Book_Name";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Книга";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Availability";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Доступность";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.Width = 80;
             // 
             // tp_readers
             // 
@@ -620,27 +661,6 @@ namespace WindowsFormsApp1
             this.readersDataGridView.TabIndex = 23;
             this.readersDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rEADERSDataGridView_CellClick);
             // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Reader_ID";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Учетный номер";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Width = 110;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "FIO";
-            this.dataGridViewTextBoxColumn9.HeaderText = "ФИО";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // readersBindingSource
-            // 
-            this.readersBindingSource.DataMember = "Readers";
-            this.readersBindingSource.DataSource = this.library451DataSet;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.pASSPORTTextBox);
@@ -663,6 +683,26 @@ namespace WindowsFormsApp1
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Читатель";
+            // 
+            // pASSPORTTextBox
+            // 
+            this.pASSPORTTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.readersBindingSource, "PASSPORT", true));
+            this.pASSPORTTextBox.Location = new System.Drawing.Point(115, 88);
+            this.pASSPORTTextBox.Mask = "0000 000000";
+            this.pASSPORTTextBox.Name = "pASSPORTTextBox";
+            this.pASSPORTTextBox.ReadOnly = true;
+            this.pASSPORTTextBox.Size = new System.Drawing.Size(456, 20);
+            this.pASSPORTTextBox.TabIndex = 38;
+            // 
+            // tELEPHONETextBox
+            // 
+            this.tELEPHONETextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.readersBindingSource, "TELEPHONE", true));
+            this.tELEPHONETextBox.Location = new System.Drawing.Point(115, 143);
+            this.tELEPHONETextBox.Mask = "+7 (999) 000-0000";
+            this.tELEPHONETextBox.Name = "tELEPHONETextBox";
+            this.tELEPHONETextBox.ReadOnly = true;
+            this.tELEPHONETextBox.Size = new System.Drawing.Size(456, 20);
+            this.tELEPHONETextBox.TabIndex = 37;
             // 
             // but_delete_reader
             // 
@@ -870,11 +910,6 @@ namespace WindowsFormsApp1
             this.iDTextBox.Size = new System.Drawing.Size(461, 20);
             this.iDTextBox.TabIndex = 25;
             // 
-            // reades_debtsBindingSource
-            // 
-            this.reades_debtsBindingSource.DataMember = "reades_debts";
-            this.reades_debtsBindingSource.DataSource = this.library451DataSet;
-            // 
             // книгаTextBox
             // 
             this.книгаTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.reades_debtsBindingSource, "Книга", true));
@@ -945,6 +980,345 @@ namespace WindowsFormsApp1
             this.reades_debtsDataGridView.Size = new System.Drawing.Size(640, 191);
             this.reades_debtsDataGridView.TabIndex = 23;
             // 
+            // Возвращено
+            // 
+            this.Возвращено.DataPropertyName = "Возвращено";
+            this.Возвращено.HeaderText = "Возвращено";
+            this.Возвращено.Name = "Возвращено";
+            this.Возвращено.ReadOnly = true;
+            // 
+            // Book_ID
+            // 
+            this.Book_ID.DataPropertyName = "Book_ID";
+            this.Book_ID.HeaderText = "Book_ID";
+            this.Book_ID.Name = "Book_ID";
+            this.Book_ID.ReadOnly = true;
+            this.Book_ID.Visible = false;
+            // 
+            // tpAccounts
+            // 
+            this.tpAccounts.Controls.Add(this.groupBox4);
+            this.tpAccounts.Controls.Add(this.butDeletAcc);
+            this.tpAccounts.Controls.Add(this.gbNewAcc);
+            this.tpAccounts.Controls.Add(this.button4);
+            this.tpAccounts.Controls.Add(this.butResetAccSearch);
+            this.tpAccounts.Controls.Add(this.tbAccSearch);
+            this.tpAccounts.Controls.Add(this.butChangeAccounts);
+            this.tpAccounts.Controls.Add(this.autDataGridView);
+            this.tpAccounts.Location = new System.Drawing.Point(4, 23);
+            this.tpAccounts.Name = "tpAccounts";
+            this.tpAccounts.Padding = new System.Windows.Forms.Padding(3);
+            this.tpAccounts.Size = new System.Drawing.Size(1256, 624);
+            this.tpAccounts.TabIndex = 2;
+            this.tpAccounts.Text = "Аккаунты";
+            this.tpAccounts.UseVisualStyleBackColor = true;
+            // 
+            // gbNewAcc
+            // 
+            this.gbNewAcc.Controls.Add(label5);
+            this.gbNewAcc.Controls.Add(this.checkBox5);
+            this.gbNewAcc.Controls.Add(this.butCancelAdd);
+            this.gbNewAcc.Controls.Add(this.butAddAccount);
+            this.gbNewAcc.Controls.Add(label3);
+            this.gbNewAcc.Controls.Add(label4);
+            this.gbNewAcc.Controls.Add(this.chkbIsAdmin);
+            this.gbNewAcc.Controls.Add(this.tbPassword);
+            this.gbNewAcc.Controls.Add(this.tbLogin);
+            this.gbNewAcc.Location = new System.Drawing.Point(567, 250);
+            this.gbNewAcc.Name = "gbNewAcc";
+            this.gbNewAcc.Size = new System.Drawing.Size(327, 145);
+            this.gbNewAcc.TabIndex = 15;
+            this.gbNewAcc.TabStop = false;
+            this.gbNewAcc.Text = "Новый пользователь";
+            this.gbNewAcc.Visible = false;
+            // 
+            // chkbIsAdmin
+            // 
+            this.chkbIsAdmin.AutoSize = true;
+            this.chkbIsAdmin.Location = new System.Drawing.Point(57, 82);
+            this.chkbIsAdmin.Name = "chkbIsAdmin";
+            this.chkbIsAdmin.Size = new System.Drawing.Size(15, 14);
+            this.chkbIsAdmin.TabIndex = 2;
+            this.chkbIsAdmin.UseVisualStyleBackColor = true;
+            // 
+            // tbPassword
+            // 
+            this.tbPassword.Location = new System.Drawing.Point(57, 55);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(158, 20);
+            this.tbPassword.TabIndex = 1;
+            this.tbPassword.UseSystemPasswordChar = true;
+            // 
+            // tbLogin
+            // 
+            this.tbLogin.Location = new System.Drawing.Point(57, 29);
+            this.tbLogin.Name = "tbLogin";
+            this.tbLogin.Size = new System.Drawing.Size(158, 20);
+            this.tbLogin.TabIndex = 0;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(664, 31);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(90, 23);
+            this.button4.TabIndex = 14;
+            this.button4.Text = "Создать нового";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // butResetAccSearch
+            // 
+            this.butResetAccSearch.Location = new System.Drawing.Point(473, 30);
+            this.butResetAccSearch.Name = "butResetAccSearch";
+            this.butResetAccSearch.Size = new System.Drawing.Size(75, 23);
+            this.butResetAccSearch.TabIndex = 13;
+            this.butResetAccSearch.Text = "Сбросить";
+            this.butResetAccSearch.UseVisualStyleBackColor = true;
+            this.butResetAccSearch.Click += new System.EventHandler(this.butResetAccSearch_Click);
+            // 
+            // tbAccSearch
+            // 
+            this.tbAccSearch.Location = new System.Drawing.Point(8, 31);
+            this.tbAccSearch.Name = "tbAccSearch";
+            this.tbAccSearch.Size = new System.Drawing.Size(456, 20);
+            this.tbAccSearch.TabIndex = 12;
+            this.tbAccSearch.TextChanged += new System.EventHandler(this.tbAccSearch_TextChanged);
+            // 
+            // butCancelNewAcc
+            // 
+            this.butCancelNewAcc.Location = new System.Drawing.Point(246, 152);
+            this.butCancelNewAcc.Name = "butCancelNewAcc";
+            this.butCancelNewAcc.Size = new System.Drawing.Size(75, 23);
+            this.butCancelNewAcc.TabIndex = 11;
+            this.butCancelNewAcc.Text = "Отменить";
+            this.butCancelNewAcc.UseVisualStyleBackColor = true;
+            this.butCancelNewAcc.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // butSaveNewAcc
+            // 
+            this.butSaveNewAcc.Location = new System.Drawing.Point(6, 152);
+            this.butSaveNewAcc.Name = "butSaveNewAcc";
+            this.butSaveNewAcc.Size = new System.Drawing.Size(75, 23);
+            this.butSaveNewAcc.TabIndex = 10;
+            this.butSaveNewAcc.Text = "Сохранить";
+            this.butSaveNewAcc.UseVisualStyleBackColor = true;
+            this.butSaveNewAcc.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // butChangeAccounts
+            // 
+            this.butChangeAccounts.Location = new System.Drawing.Point(567, 31);
+            this.butChangeAccounts.Name = "butChangeAccounts";
+            this.butChangeAccounts.Size = new System.Drawing.Size(91, 23);
+            this.butChangeAccounts.TabIndex = 9;
+            this.butChangeAccounts.Text = "Редактировать";
+            this.butChangeAccounts.UseVisualStyleBackColor = true;
+            this.butChangeAccounts.Click += new System.EventHandler(this.butChangeAccounts_Click);
+            // 
+            // loginTextBox
+            // 
+            this.loginTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.autBindingSource, "login", true));
+            this.loginTextBox.Location = new System.Drawing.Point(64, 48);
+            this.loginTextBox.Name = "loginTextBox";
+            this.loginTextBox.Size = new System.Drawing.Size(175, 20);
+            this.loginTextBox.TabIndex = 4;
+            // 
+            // passwordTextBox
+            // 
+            this.passwordTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.autBindingSource, "password", true));
+            this.passwordTextBox.Location = new System.Drawing.Point(64, 74);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(175, 20);
+            this.passwordTextBox.TabIndex = 6;
+            this.passwordTextBox.UseSystemPasswordChar = true;
+            // 
+            // is_adminCheckBox
+            // 
+            this.is_adminCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.autBindingSource, "is_admin", true));
+            this.is_adminCheckBox.Location = new System.Drawing.Point(64, 100);
+            this.is_adminCheckBox.Name = "is_adminCheckBox";
+            this.is_adminCheckBox.Size = new System.Drawing.Size(104, 24);
+            this.is_adminCheckBox.TabIndex = 8;
+            this.is_adminCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // autDataGridView
+            // 
+            this.autDataGridView.AllowUserToAddRows = false;
+            this.autDataGridView.AllowUserToDeleteRows = false;
+            this.autDataGridView.AutoGenerateColumns = false;
+            this.autDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.autDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn10,
+            this.FIO,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewCheckBoxColumn2});
+            this.autDataGridView.DataSource = this.autBindingSource;
+            this.autDataGridView.Location = new System.Drawing.Point(6, 66);
+            this.autDataGridView.Name = "autDataGridView";
+            this.autDataGridView.ReadOnly = true;
+            this.autDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.autDataGridView.Size = new System.Drawing.Size(539, 356);
+            this.autDataGridView.TabIndex = 0;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(6, 32);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(40, 14);
+            label3.TabIndex = 6;
+            label3.Text = "Логин:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(6, 58);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(45, 14);
+            label4.TabIndex = 7;
+            label4.Text = "Пароль:";
+            // 
+            // butAddAccount
+            // 
+            this.butAddAccount.Location = new System.Drawing.Point(6, 114);
+            this.butAddAccount.Name = "butAddAccount";
+            this.butAddAccount.Size = new System.Drawing.Size(75, 23);
+            this.butAddAccount.TabIndex = 8;
+            this.butAddAccount.Text = "Добавить";
+            this.butAddAccount.UseVisualStyleBackColor = true;
+            this.butAddAccount.Click += new System.EventHandler(this.butAddAccount_Click);
+            // 
+            // butCancelAdd
+            // 
+            this.butCancelAdd.Location = new System.Drawing.Point(246, 116);
+            this.butCancelAdd.Name = "butCancelAdd";
+            this.butCancelAdd.Size = new System.Drawing.Size(75, 23);
+            this.butCancelAdd.TabIndex = 9;
+            this.butCancelAdd.Text = "Отмена";
+            this.butCancelAdd.UseVisualStyleBackColor = true;
+            this.butCancelAdd.Click += new System.EventHandler(this.butCancelAdd_Click);
+            // 
+            // butDeletAcc
+            // 
+            this.butDeletAcc.Location = new System.Drawing.Point(760, 31);
+            this.butDeletAcc.Name = "butDeletAcc";
+            this.butDeletAcc.Size = new System.Drawing.Size(75, 23);
+            this.butDeletAcc.TabIndex = 16;
+            this.butDeletAcc.Text = "Удалить";
+            this.butDeletAcc.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(245, 76);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(78, 18);
+            this.checkBox4.TabIndex = 17;
+            this.checkBox4.Text = "Видимость";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(221, 57);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(78, 18);
+            this.checkBox5.TabIndex = 18;
+            this.checkBox5.Text = "Видимость";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(6, 83);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(47, 14);
+            label5.TabIndex = 19;
+            label5.Text = "Админ?:";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.iDTextBox1);
+            this.groupBox4.Controls.Add(this.is_adminCheckBox);
+            this.groupBox4.Controls.Add(is_adminLabel);
+            this.groupBox4.Controls.Add(this.passwordTextBox);
+            this.groupBox4.Controls.Add(passwordLabel);
+            this.groupBox4.Controls.Add(this.loginTextBox);
+            this.groupBox4.Controls.Add(loginLabel);
+            this.groupBox4.Controls.Add(this.butCancelNewAcc);
+            this.groupBox4.Controls.Add(iDLabel1);
+            this.groupBox4.Controls.Add(this.butSaveNewAcc);
+            this.groupBox4.Controls.Add(this.checkBox4);
+            this.groupBox4.Enabled = false;
+            this.groupBox4.Location = new System.Drawing.Point(567, 60);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(327, 184);
+            this.groupBox4.TabIndex = 18;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Пользователь";
+            // 
+            // booksBindingSource
+            // 
+            this.booksBindingSource.DataMember = "Books";
+            this.booksBindingSource.DataSource = this.library451DataSet;
+            // 
+            // library451DataSet
+            // 
+            this.library451DataSet.DataSetName = "Library451DataSet";
+            this.library451DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Book_ID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Book_Name";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Книга";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Availability";
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Доступность";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Reader_ID";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Учетный номер";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "FIO";
+            this.dataGridViewTextBoxColumn9.HeaderText = "ФИО";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // readersBindingSource
+            // 
+            this.readersBindingSource.DataMember = "Readers";
+            this.readersBindingSource.DataSource = this.library451DataSet;
+            // 
+            // reades_debtsBindingSource
+            // 
+            this.reades_debtsBindingSource.DataMember = "reades_debts";
+            this.reades_debtsBindingSource.DataSource = this.library451DataSet;
+            // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "ID";
@@ -974,13 +1348,6 @@ namespace WindowsFormsApp1
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
-            // Возвращено
-            // 
-            this.Возвращено.DataPropertyName = "Возвращено";
-            this.Возвращено.HeaderText = "Возвращено";
-            this.Возвращено.Name = "Возвращено";
-            this.Возвращено.ReadOnly = true;
-            // 
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.DataPropertyName = "Reader_ID";
@@ -990,13 +1357,10 @@ namespace WindowsFormsApp1
             this.dataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTextBoxColumn7.Visible = false;
             // 
-            // Book_ID
+            // autBindingSource
             // 
-            this.Book_ID.DataPropertyName = "Book_ID";
-            this.Book_ID.HeaderText = "Book_ID";
-            this.Book_ID.Name = "Book_ID";
-            this.Book_ID.ReadOnly = true;
-            this.Book_ID.Visible = false;
+            this.autBindingSource.DataMember = "aut";
+            this.autBindingSource.DataSource = this.library451DataSet;
             // 
             // booksTableAdapter
             // 
@@ -1027,25 +1391,64 @@ namespace WindowsFormsApp1
             // 
             this.debtsTableAdapter1.ClearBeforeFill = true;
             // 
-            // tELEPHONETextBox
+            // iDLabel1
             // 
-            this.tELEPHONETextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.readersBindingSource, "TELEPHONE", true));
-            this.tELEPHONETextBox.Location = new System.Drawing.Point(115, 143);
-            this.tELEPHONETextBox.Mask = "+7 (999) 000-0000";
-            this.tELEPHONETextBox.Name = "tELEPHONETextBox";
-            this.tELEPHONETextBox.ReadOnly = true;
-            this.tELEPHONETextBox.Size = new System.Drawing.Size(456, 20);
-            this.tELEPHONETextBox.TabIndex = 37;
+            iDLabel1.AutoSize = true;
+            iDLabel1.Location = new System.Drawing.Point(7, 25);
+            iDLabel1.Name = "iDLabel1";
+            iDLabel1.Size = new System.Drawing.Size(22, 14);
+            iDLabel1.TabIndex = 1;
+            iDLabel1.Text = "ID:";
             // 
-            // pASSPORTTextBox
+            // iDTextBox1
             // 
-            this.pASSPORTTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.readersBindingSource, "PASSPORT", true));
-            this.pASSPORTTextBox.Location = new System.Drawing.Point(115, 88);
-            this.pASSPORTTextBox.Mask = "0000 000000";
-            this.pASSPORTTextBox.Name = "pASSPORTTextBox";
-            this.pASSPORTTextBox.ReadOnly = true;
-            this.pASSPORTTextBox.Size = new System.Drawing.Size(456, 20);
-            this.pASSPORTTextBox.TabIndex = 38;
+            this.iDTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.autBindingSource, "ID", true));
+            this.iDTextBox1.Enabled = false;
+            this.iDTextBox1.Location = new System.Drawing.Point(64, 22);
+            this.iDTextBox1.Name = "iDTextBox1";
+            this.iDTextBox1.ReadOnly = true;
+            this.iDTextBox1.Size = new System.Drawing.Size(175, 20);
+            this.iDTextBox1.TabIndex = 2;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "ID";
+            this.dataGridViewTextBoxColumn10.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Width = 50;
+            // 
+            // FIO
+            // 
+            this.FIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FIO.DataPropertyName = "FIO";
+            this.FIO.HeaderText = "ФИО";
+            this.FIO.Name = "FIO";
+            this.FIO.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "login";
+            this.dataGridViewTextBoxColumn11.HeaderText = "login";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "password";
+            this.dataGridViewTextBoxColumn12.HeaderText = "password";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            this.dataGridViewTextBoxColumn12.Visible = false;
+            // 
+            // dataGridViewCheckBoxColumn2
+            // 
+            this.dataGridViewCheckBoxColumn2.DataPropertyName = "is_admin";
+            this.dataGridViewCheckBoxColumn2.HeaderText = "Админ?";
+            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
+            this.dataGridViewCheckBoxColumn2.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn2.Width = 80;
             // 
             // MainForm
             // 
@@ -1075,19 +1478,27 @@ namespace WindowsFormsApp1
             this.tp_books.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataGridView)).EndInit();
             this.tp_readers.ResumeLayout(false);
             this.tp_readers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.readersDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.readersBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.reades_debtsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reades_debtsDataGridView)).EndInit();
+            this.tpAccounts.ResumeLayout(false);
+            this.tpAccounts.PerformLayout();
+            this.gbNewAcc.ResumeLayout(false);
+            this.gbNewAcc.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.autDataGridView)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.readersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reades_debtsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.autBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1173,6 +1584,34 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox tbDebtsSearch;
         private System.Windows.Forms.MaskedTextBox tELEPHONETextBox;
         private System.Windows.Forms.MaskedTextBox pASSPORTTextBox;
+        private System.Windows.Forms.TabPage tpAccounts;
+        private System.Windows.Forms.DataGridView autDataGridView;
+        private System.Windows.Forms.BindingSource autBindingSource;
+        private System.Windows.Forms.TextBox loginTextBox;
+        private System.Windows.Forms.TextBox passwordTextBox;
+        private System.Windows.Forms.CheckBox is_adminCheckBox;
+        private System.Windows.Forms.Button butChangeAccounts;
+        private System.Windows.Forms.GroupBox gbNewAcc;
+        private System.Windows.Forms.CheckBox chkbIsAdmin;
+        private System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.TextBox tbLogin;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button butResetAccSearch;
+        private System.Windows.Forms.TextBox tbAccSearch;
+        private System.Windows.Forms.Button butCancelNewAcc;
+        private System.Windows.Forms.Button butSaveNewAcc;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.Button butDeletAcc;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.Button butCancelAdd;
+        private System.Windows.Forms.Button butAddAccount;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox iDTextBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FIO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
     }
 }
 
