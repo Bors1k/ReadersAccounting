@@ -394,6 +394,7 @@ namespace WindowsFormsApp1
             //после закрытия формы закрытия записи о задолженности обновляем данные из бд
             LoadFromDB(TypeOfLoadDB.debts);
             LoadFromDB(TypeOfLoadDB.readers);
+            LoadFromDB(TypeOfLoadDB.book);
         }
 
         private void butDeleteDebt_Click(object sender, EventArgs e)

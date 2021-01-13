@@ -63,5 +63,15 @@ namespace WindowsFormsApp1
         {
             Close();
         }
+
+        private void tbSearchBook_TextChanged(object sender, EventArgs e)
+        {
+            booksBindingSource.Filter = string.Format("[Book_Name] LIKE '%{0}%' AND [Availability] = true", tbSearchBook.Text);
+        }
+
+        private void butResetSearch_Click(object sender, EventArgs e)
+        {
+            tbSearchBook.Clear();
+        }
     }
 }

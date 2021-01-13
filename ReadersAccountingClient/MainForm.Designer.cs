@@ -86,9 +86,7 @@ namespace WindowsFormsApp1
             this.but_change_reader = new System.Windows.Forms.Button();
             this.reader_IDTextBox = new System.Windows.Forms.TextBox();
             this.fIOTextBox = new System.Windows.Forms.TextBox();
-            this.pASSPORTTextBox = new System.Windows.Forms.TextBox();
             this.aDDRESSTextBox = new System.Windows.Forms.TextBox();
-            this.tELEPHONETextBox = new System.Windows.Forms.TextBox();
             this.but_readers_search_reset = new System.Windows.Forms.Button();
             this.tb_readers_search = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -121,6 +119,8 @@ namespace WindowsFormsApp1
             this.readersTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.ReadersTableAdapter();
             this.reades_debtsTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.reades_debtsTableAdapter();
             this.debtsTableAdapter1 = new WindowsFormsApp1.Library451DataSetTableAdapters.DebtsTableAdapter();
+            this.tELEPHONETextBox = new System.Windows.Forms.MaskedTextBox();
+            this.pASSPORTTextBox = new System.Windows.Forms.MaskedTextBox();
             reader_IDLabel = new System.Windows.Forms.Label();
             fIOLabel = new System.Windows.Forms.Label();
             pASSPORTLabel = new System.Windows.Forms.Label();
@@ -290,14 +290,14 @@ namespace WindowsFormsApp1
             // подключениеКБДToolStripMenuItem
             // 
             this.подключениеКБДToolStripMenuItem.Name = "подключениеКБДToolStripMenuItem";
-            this.подключениеКБДToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.подключениеКБДToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.подключениеКБДToolStripMenuItem.Text = "Подключение к БД";
             this.подключениеКБДToolStripMenuItem.Click += new System.EventHandler(this.подключениеКБДToolStripMenuItem_Click);
             // 
             // обновитьДанныеToolStripMenuItem
             // 
             this.обновитьДанныеToolStripMenuItem.Name = "обновитьДанныеToolStripMenuItem";
-            this.обновитьДанныеToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.обновитьДанныеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.обновитьДанныеToolStripMenuItem.Text = "Обновить данные";
             this.обновитьДанныеToolStripMenuItem.Click += new System.EventHandler(this.обновитьДанныеToolStripMenuItem_Click);
             // 
@@ -305,7 +305,7 @@ namespace WindowsFormsApp1
             // 
             this.разлогинитьсяToolStripMenuItem.Enabled = false;
             this.разлогинитьсяToolStripMenuItem.Name = "разлогинитьсяToolStripMenuItem";
-            this.разлогинитьсяToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.разлогинитьсяToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.разлогинитьсяToolStripMenuItem.Text = "Разлогиниться";
             this.разлогинитьсяToolStripMenuItem.Click += new System.EventHandler(this.разлогинитьсяToolStripMenuItem_Click);
             // 
@@ -643,6 +643,8 @@ namespace WindowsFormsApp1
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.pASSPORTTextBox);
+            this.groupBox1.Controls.Add(this.tELEPHONETextBox);
             this.groupBox1.Controls.Add(this.but_delete_reader);
             this.groupBox1.Controls.Add(this.but_back_changes_reader);
             this.groupBox1.Controls.Add(this.but_save_changes_reader);
@@ -652,11 +654,9 @@ namespace WindowsFormsApp1
             this.groupBox1.Controls.Add(fIOLabel);
             this.groupBox1.Controls.Add(this.fIOTextBox);
             this.groupBox1.Controls.Add(pASSPORTLabel);
-            this.groupBox1.Controls.Add(this.pASSPORTTextBox);
             this.groupBox1.Controls.Add(aDDRESSLabel);
             this.groupBox1.Controls.Add(this.aDDRESSTextBox);
             this.groupBox1.Controls.Add(tELEPHONELabel);
-            this.groupBox1.Controls.Add(this.tELEPHONETextBox);
             this.groupBox1.Location = new System.Drawing.Point(657, 40);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(591, 312);
@@ -724,15 +724,6 @@ namespace WindowsFormsApp1
             this.fIOTextBox.Size = new System.Drawing.Size(456, 20);
             this.fIOTextBox.TabIndex = 26;
             // 
-            // pASSPORTTextBox
-            // 
-            this.pASSPORTTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.readersBindingSource, "PASSPORT", true));
-            this.pASSPORTTextBox.Location = new System.Drawing.Point(115, 88);
-            this.pASSPORTTextBox.Name = "pASSPORTTextBox";
-            this.pASSPORTTextBox.ReadOnly = true;
-            this.pASSPORTTextBox.Size = new System.Drawing.Size(456, 20);
-            this.pASSPORTTextBox.TabIndex = 28;
-            // 
             // aDDRESSTextBox
             // 
             this.aDDRESSTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.readersBindingSource, "ADDRESS", true));
@@ -741,15 +732,6 @@ namespace WindowsFormsApp1
             this.aDDRESSTextBox.ReadOnly = true;
             this.aDDRESSTextBox.Size = new System.Drawing.Size(456, 20);
             this.aDDRESSTextBox.TabIndex = 30;
-            // 
-            // tELEPHONETextBox
-            // 
-            this.tELEPHONETextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.readersBindingSource, "TELEPHONE", true));
-            this.tELEPHONETextBox.Location = new System.Drawing.Point(115, 140);
-            this.tELEPHONETextBox.Name = "tELEPHONETextBox";
-            this.tELEPHONETextBox.ReadOnly = true;
-            this.tELEPHONETextBox.Size = new System.Drawing.Size(456, 20);
-            this.tELEPHONETextBox.TabIndex = 32;
             // 
             // but_readers_search_reset
             // 
@@ -1045,6 +1027,26 @@ namespace WindowsFormsApp1
             // 
             this.debtsTableAdapter1.ClearBeforeFill = true;
             // 
+            // tELEPHONETextBox
+            // 
+            this.tELEPHONETextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.readersBindingSource, "TELEPHONE", true));
+            this.tELEPHONETextBox.Location = new System.Drawing.Point(115, 143);
+            this.tELEPHONETextBox.Mask = "+7 (999) 000-0000";
+            this.tELEPHONETextBox.Name = "tELEPHONETextBox";
+            this.tELEPHONETextBox.ReadOnly = true;
+            this.tELEPHONETextBox.Size = new System.Drawing.Size(456, 20);
+            this.tELEPHONETextBox.TabIndex = 37;
+            // 
+            // pASSPORTTextBox
+            // 
+            this.pASSPORTTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.readersBindingSource, "PASSPORT", true));
+            this.pASSPORTTextBox.Location = new System.Drawing.Point(115, 88);
+            this.pASSPORTTextBox.Mask = "0000 000000";
+            this.pASSPORTTextBox.Name = "pASSPORTTextBox";
+            this.pASSPORTTextBox.ReadOnly = true;
+            this.pASSPORTTextBox.Size = new System.Drawing.Size(456, 20);
+            this.pASSPORTTextBox.TabIndex = 38;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -1128,9 +1130,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.DataGridView readersDataGridView;
         private System.Windows.Forms.TextBox reader_IDTextBox;
         private System.Windows.Forms.TextBox fIOTextBox;
-        private System.Windows.Forms.TextBox pASSPORTTextBox;
         private System.Windows.Forms.TextBox aDDRESSTextBox;
-        private System.Windows.Forms.TextBox tELEPHONETextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.TextBox book_IDTextBox;
@@ -1171,6 +1171,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button butSearchDebts;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.TextBox tbDebtsSearch;
+        private System.Windows.Forms.MaskedTextBox tELEPHONETextBox;
+        private System.Windows.Forms.MaskedTextBox pASSPORTTextBox;
     }
 }
 

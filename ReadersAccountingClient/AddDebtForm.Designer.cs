@@ -50,6 +50,8 @@ namespace WindowsFormsApp1
             this.butClose = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.readersTableAdapter1 = new WindowsFormsApp1.Library451DataSetTableAdapters.ReadersTableAdapter();
+            this.tbSearchBook = new System.Windows.Forms.TextBox();
+            this.butResetSearch = new System.Windows.Forms.Button();
             book_IDLabel = new System.Windows.Forms.Label();
             book_NameLabel = new System.Windows.Forms.Label();
             availabilityLabel = new System.Windows.Forms.Label();
@@ -224,11 +226,31 @@ namespace WindowsFormsApp1
             // 
             this.readersTableAdapter1.ClearBeforeFill = true;
             // 
-            // AddDebt
+            // tbSearchBook
+            // 
+            this.tbSearchBook.Location = new System.Drawing.Point(15, 13);
+            this.tbSearchBook.Name = "tbSearchBook";
+            this.tbSearchBook.Size = new System.Drawing.Size(688, 20);
+            this.tbSearchBook.TabIndex = 11;
+            this.tbSearchBook.TextChanged += new System.EventHandler(this.tbSearchBook_TextChanged);
+            // 
+            // butResetSearch
+            // 
+            this.butResetSearch.Location = new System.Drawing.Point(709, 11);
+            this.butResetSearch.Name = "butResetSearch";
+            this.butResetSearch.Size = new System.Drawing.Size(75, 23);
+            this.butResetSearch.TabIndex = 12;
+            this.butResetSearch.Text = "Cбросить";
+            this.butResetSearch.UseVisualStyleBackColor = true;
+            this.butResetSearch.Click += new System.EventHandler(this.butResetSearch_Click);
+            // 
+            // AddDebtForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(808, 406);
+            this.Controls.Add(this.butResetSearch);
+            this.Controls.Add(this.tbSearchBook);
             this.Controls.Add(this.booksDataGridView);
             this.Controls.Add(label1);
             this.Controls.Add(this.dateTimePicker1);
@@ -240,7 +262,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.book_NameTextBox);
             this.Controls.Add(availabilityLabel);
             this.Controls.Add(this.availabilityCheckBox);
-            this.Name = "AddDebt";
+            this.Name = "AddDebtForm";
             this.Text = "Задолженность";
             this.Load += new System.EventHandler(this.AddReaderDebt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).EndInit();
@@ -269,5 +291,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button butClose;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private Library451DataSetTableAdapters.ReadersTableAdapter readersTableAdapter1;
+        private System.Windows.Forms.TextBox tbSearchBook;
+        private System.Windows.Forms.Button butResetSearch;
     }
 }
