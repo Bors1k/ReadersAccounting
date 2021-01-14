@@ -23,6 +23,8 @@ namespace WindowsFormsApp1
             tb_ip.Text = Properties.Settings.Default.IP;
             tb_port.Text = Properties.Settings.Default.Port;
             chbox_wireless.Checked = Properties.Settings.Default.Wireless;
+            tblogin.Text = Properties.Settings.Default.login;
+            tbpassword.Text = Properties.Settings.Default.password;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -31,6 +33,8 @@ namespace WindowsFormsApp1
             Properties.Settings.Default.IP = tb_ip.Text;
             Properties.Settings.Default.Port = tb_port.Text;
             Properties.Settings.Default.Wireless = chbox_wireless.Checked;
+            Properties.Settings.Default.login = tblogin.Text;
+            Properties.Settings.Default.password = tbpassword.Text;
             //сохраняем настройки
             Properties.Settings.Default.Save();
             Properties.Settings.Default.Upgrade();
@@ -38,7 +42,7 @@ namespace WindowsFormsApp1
             //на основе настроек прописываем строку подключения к бд
             if (chbox_wireless.Checked == true)
             {
-                Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ", " + Properties.Settings.Default.Port + ";Initial Catalog=Library451; User Id = sa; Password = 1234";
+                Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ", " + Properties.Settings.Default.Port + ";Initial Catalog=Library451; User Id ="+ Properties.Settings.Default.login + "; Password ="+Properties.Settings.Default.password;
             }
             else
             {
@@ -63,5 +67,22 @@ namespace WindowsFormsApp1
             this.Close();
         }
 
+        private void chbox_wireless_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbox_wireless.Checked)
+            {
+                gb.Enabled = true;
+            }
+            else gb.Enabled = false;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                tbpassword.UseSystemPasswordChar = false;
+            }
+            else tbpassword.UseSystemPasswordChar = true;
+        }
     }
 }
