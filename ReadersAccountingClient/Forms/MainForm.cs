@@ -22,14 +22,14 @@ namespace WindowsFormsApp1
             debts,
             aut
         }
+        private Functions func;
         public bool IsSettingUserClose = true;
         public MainForm()
         {
+            func = new Functions();
             InitializeComponent();
             //стартовый ресайз, чтобы было удобно работать с конструктором и 
             ResizeForm(this, 320, 240,false);
-
-
         }
 
         private void подключениеКБДToolStripMenuItem_Click(object sender, EventArgs e)
@@ -458,7 +458,6 @@ namespace WindowsFormsApp1
 
         private void butSaveDebts_Click(object sender, EventArgs e)
         {
-            Functions func = new Functions();
             //сохранение изменений в задолженностях
             try
             {
@@ -512,6 +511,7 @@ namespace WindowsFormsApp1
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            //изменение фильтра в зависимости от того включена фильтрация по доступным или нет
             if (checkBox1.Checked)
             {
                 booksBindingSource.Filter = string.Format("[Book_Name] LIKE '%{0}%' AND [Availability] = true", tb_book_search.Text);
@@ -521,6 +521,7 @@ namespace WindowsFormsApp1
 
         private void tbDebtsSearch_TextChanged(object sender, EventArgs e)
         {
+            //фильтрация в зависимости от того включена фильтрация по открытым долгам или нет
             filterDebts();
         }
 
@@ -531,11 +532,13 @@ namespace WindowsFormsApp1
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
+            //изменение фильтра в зависимости от того включена фильтрация по открытым долгам или нет
             filterDebts();        
         }
 
         private void filterDebts()
         {
+            //функция фильтрации в зависимости от того включена фильтрация по открытым долгам или нет
             if (checkBox2.Checked)
             {
                 reades_debtsBindingSource.Filter = string.Format("[Книга] LIKE '%{0}%' AND [Возвращено] = false AND [Reader_ID] = {1}", tbDebtsSearch.Text, Convert.ToInt32(reader_IDTextBox.Text));
@@ -551,21 +554,42 @@ namespace WindowsFormsApp1
 
         private void butAddAccount_Click(object sender, EventArgs e)
         {
+            //добавление нового пользователя
             try
             {
+                if (!func.ValidateLogin(tbLogin.Text)){
+                    throw new Exception("Логин введен неверно, он должен содержать минимум 8 симоволов.");
+                }
+                if (!func.ValidatePassword(tbPassword.Text))
+                {
+                    throw new Exception("Пароль введен неверно, он должен содержать минимум 8 симоволов, и минимум по 1 символу: верхнего регистра, нижнего регистра, цифры");
+                }
                 this.library451DataSet.aut.AddautRow(this.tbLogin.Text, this.tbPassword.Text, this.chkbIsAdmin.Checked, tbNewAccFIO.Text);
                 this.autTableAdapter.Update(this.library451DataSet.aut);
+
+                //очищаем инпуты и скрываем форму
+                ClrAddAccForm();
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void ClrAddAccForm()
+        {
+            //очистка и сокрытие
+            tbLogin.Clear();
+            tbPassword.Clear();
+            checkBox5.Checked = false;
+            tbNewAccFIO.Clear();
             gbNewAcc.Visible = false;
         }
 
         private void butCancelAdd_Click(object sender, EventArgs e)
         {
-            gbNewAcc.Visible = false;
+            //отменяем добавление нового аккаунта
+            ClrAddAccForm();
         }
 
         private void butResetAccSearch_Click(object sender, EventArgs e)
@@ -609,21 +633,13 @@ namespace WindowsFormsApp1
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
             //включаем видимость пароля при редактировании пользователя
-            if (checkBox4.Checked)
-            {
-                passwordTextBox.UseSystemPasswordChar = false;
-            }
-            else passwordTextBox.UseSystemPasswordChar = true;
+            PasswordVisible(checkBox4, passwordTextBox);
         }
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
             //включаем видимость пароля при создании нового пользователя
-            if (checkBox5.Checked)
-            {
-                tbPassword.UseSystemPasswordChar = false;
-            }
-            else tbPassword.UseSystemPasswordChar = true;
+            PasswordVisible(checkBox5, tbPassword);
         }
 
         private void tbAccSearch_TextChanged(object sender, EventArgs e)
@@ -641,6 +657,14 @@ namespace WindowsFormsApp1
             {
                 try
                 {
+                    if (!func.ValidateLogin(loginTextBox1.Text))
+                    {
+                        throw new Exception("Логин введен неверно, он должен содержать минимум 8 симоволов.");
+                    }
+                    if (!func.ValidatePassword(passwordTextBox.Text))
+                    {
+                        throw new Exception("Пароль введен неверно, он должен содержать минимум 8 симоволов, и минимум по 1 символу: верхнего регистра, нижнего регистра, цифры");
+                    }
                     this.autBindingSource.EndEdit();
                     this.autTableAdapter.Delete(Int32.Parse(iDAccTextBox.Text), loginTextBox1.Text, passwordTextBox.Text, is_adminCheckBox.Checked);
                     this.library451DataSet.AcceptChanges();
@@ -655,11 +679,17 @@ namespace WindowsFormsApp1
 
         private void chkbxVisiblePassLogin_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkbxVisiblePassLogin.Checked)
+            //изменение видимости 
+            PasswordVisible(chkbxVisiblePassLogin, tb_password);
+        }
+
+        private void PasswordVisible(CheckBox checkBox,TextBox textBox)
+        {
+            if (checkBox.Checked)
             {
-                tb_password.UseSystemPasswordChar = false;
+                textBox.UseSystemPasswordChar = false;
             }
-            else tb_password.UseSystemPasswordChar = true;
+            else textBox.UseSystemPasswordChar = true;
         }
     }
 }

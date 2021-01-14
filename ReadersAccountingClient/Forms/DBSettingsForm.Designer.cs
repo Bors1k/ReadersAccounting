@@ -190,6 +190,8 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tb_ip);
             this.Controls.Add(this.button1);
+            this.MaximumSize = new System.Drawing.Size(308, 287);
+            this.MinimumSize = new System.Drawing.Size(308, 287);
             this.Name = "DBSettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Настройки подключения к БД";
