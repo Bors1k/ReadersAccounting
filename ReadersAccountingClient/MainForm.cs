@@ -282,6 +282,7 @@ namespace WindowsFormsApp1
             availabilityCheckBox.Enabled = state;
             but_save_book_changes.Enabled = state;
             but_book_chages_back.Enabled = state;
+            //checkBox4.Checked = !state;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -293,7 +294,7 @@ namespace WindowsFormsApp1
         private void but_delete_book_Click(object sender, EventArgs e)
         {
             //удаление книги из БД
-            DialogResult dr = MessageBox.Show("Точно хотите удалить?", "Удаление", MessageBoxButtons.YesNoCancel,
+            DialogResult dr = MessageBox.Show("Точно хотите удалить?", "Удаление", MessageBoxButtons.YesNo,
             MessageBoxIcon.Information);
             if (dr == DialogResult.Yes)
             {
@@ -371,7 +372,7 @@ namespace WindowsFormsApp1
         private void but_delete_reader_Click(object sender, EventArgs e)
         {
             //удаление книги из БД
-            DialogResult dr = MessageBox.Show("Точно хотите удалить?", "Удаление", MessageBoxButtons.YesNoCancel,
+            DialogResult dr = MessageBox.Show("Точно хотите удалить?", "Удаление", MessageBoxButtons.YesNo,
             MessageBoxIcon.Information);
             if (dr == DialogResult.Yes)
             {
@@ -416,7 +417,7 @@ namespace WindowsFormsApp1
             //удаление задолженности из БД
             if (this.library451DataSet.Debts.FindByDebts_ID(Int32.Parse(iDTextBox.Text)).Closed == true)
             {
-                DialogResult dr = MessageBox.Show("Точно хотите удалить?", "Удаление", MessageBoxButtons.YesNoCancel,
+                DialogResult dr = MessageBox.Show("Точно хотите удалить?", "Удаление", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Information);
                 if (dr == DialogResult.Yes)
                 {
@@ -582,14 +583,26 @@ namespace WindowsFormsApp1
         private void button2_Click(object sender, EventArgs e)
         {
             //сохраняем изменения у пользователя
-            passwordTextBox.UseSystemPasswordChar = true;
+            try
+            {
+                this.autBindingSource.EndEdit();
+                this.autTableAdapter.Update(this.library451DataSet.aut);
+                this.library451DataSet.AcceptChanges();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            LoadFromDB(TypeOfLoadDB.aut);
+            checkBox4.Checked = false;
             groupBox4.Enabled = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             //отменяем изменения у пользователя
-            passwordTextBox.UseSystemPasswordChar = true;
+            this.autBindingSource.CancelEdit();
+            checkBox4.Checked = false;
             groupBox4.Enabled = false;
         }
 
@@ -621,7 +634,8 @@ namespace WindowsFormsApp1
 
         private void butDeletAcc_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Точно хотите удалить?", "Удаление", MessageBoxButtons.YesNoCancel,
+            //удаляем аккаунт для авторизации
+            DialogResult dr = MessageBox.Show("Точно хотите удалить?", "Удаление", MessageBoxButtons.YesNo,
             MessageBoxIcon.Information);
             if (dr == DialogResult.Yes)
             {
