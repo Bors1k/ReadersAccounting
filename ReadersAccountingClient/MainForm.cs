@@ -160,6 +160,7 @@ namespace WindowsFormsApp1
                 {
                     MessageBox.Show("Логин/Пароль введены неверно");
                 }
+                chkbxVisiblePassLogin.Checked = false;
             }
             catch (Exception ex)
             {
@@ -549,6 +550,15 @@ namespace WindowsFormsApp1
 
         private void butAddAccount_Click(object sender, EventArgs e)
         {
+            try
+            {
+                this.library451DataSet.aut.AddautRow(this.tbLogin.Text, this.tbPassword.Text, this.chkbIsAdmin.Checked, tbNewAccFIO.Text);
+                this.autTableAdapter.Update(this.library451DataSet.aut);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             gbNewAcc.Visible = false;
         }
 
@@ -596,7 +606,7 @@ namespace WindowsFormsApp1
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
             //включаем видимость пароля при создании нового пользователя
-            if (checkBox4.Checked)
+            if (checkBox5.Checked)
             {
                 tbPassword.UseSystemPasswordChar = false;
             }
@@ -607,6 +617,35 @@ namespace WindowsFormsApp1
         {
             //поиск пользователя
             autBindingSource.Filter = string.Format("[login] LIKE '%{0}%' OR [FIO] LIKE '%{0}%'", tbAccSearch.Text);
+        }
+
+        private void butDeletAcc_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Точно хотите удалить?", "Удаление", MessageBoxButtons.YesNoCancel,
+            MessageBoxIcon.Information);
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+                    this.autBindingSource.EndEdit();
+                    this.autTableAdapter.Delete(Int32.Parse(iDAccTextBox.Text), loginTextBox1.Text, passwordTextBox.Text, is_adminCheckBox.Checked);
+                    this.library451DataSet.AcceptChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                LoadFromDB(TypeOfLoadDB.aut);
+            }
+        }
+
+        private void chkbxVisiblePassLogin_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkbxVisiblePassLogin.Checked)
+            {
+                tb_password.UseSystemPasswordChar = false;
+            }
+            else tb_password.UseSystemPasswordChar = true;
         }
     }
 }
