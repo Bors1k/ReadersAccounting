@@ -37,9 +37,12 @@ namespace WindowsFormsApp1
             this.tb_book = new System.Windows.Forms.TextBox();
             this.booksTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.BooksTableAdapter();
             this.library451DataSet = new WindowsFormsApp1.Library451DataSet();
+            this.library451DWHDataSet = new WindowsFormsApp1.Library451DWHDataSet();
+            this.dimBookTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimBookTableAdapter();
             label3 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.library451DWHDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -104,6 +107,15 @@ namespace WindowsFormsApp1
             this.library451DataSet.DataSetName = "Library451DataSet";
             this.library451DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // library451DWHDataSet
+            // 
+            this.library451DWHDataSet.DataSetName = "Library451DWHDataSet";
+            this.library451DWHDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dimBookTableAdapter
+            // 
+            this.dimBookTableAdapter.ClearBeforeFill = true;
+            // 
             // AddBookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -121,6 +133,7 @@ namespace WindowsFormsApp1
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить книгу";
             ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.library451DWHDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,5 +147,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox tb_book;
         private Library451DataSetTableAdapters.BooksTableAdapter booksTableAdapter;
         private Library451DataSet library451DataSet;
+        private Library451DWHDataSet library451DWHDataSet;
+        private Library451DWHDataSetTableAdapters.DimBookTableAdapter dimBookTableAdapter;
     }
 }

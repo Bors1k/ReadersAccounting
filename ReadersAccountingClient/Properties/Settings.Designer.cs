@@ -104,5 +104,16 @@ namespace WindowsFormsApp1.Properties {
                 this["password"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-TALDCKN;Initial Catalog=Library451DWH;Integrated Security=Tru" +
+            "e")]
+        public string Library451DWHConnectionString {
+            get {
+                return ((string)(this["Library451DWHConnectionString"]));
+            }
+        }
     }
 }

@@ -56,6 +56,7 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             if (Properties.Settings.Default.Wireless == true)
             {
                 Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ", " + Properties.Settings.Default.Port + ";Initial Catalog=Library451; User Id = sa; Password = 1234";
@@ -79,6 +80,7 @@ namespace WindowsFormsApp1
                     this.booksTableAdapter.Fill(this.library451DataSet.Books);
                     this.autTableAdapter.Fill(this.library451DataSet.aut);
                     this.debtsTableAdapter1.Fill(this.library451DataSet.Debts);
+                    this.задолженностиTableAdapter.Fill(this.library451DWHDataSet.Задолженности);
                 }
                 if (type == TypeOfLoadDB.book)
                 {
@@ -142,7 +144,7 @@ namespace WindowsFormsApp1
 
                             if(row["is_admin"].ToString() == "True")
                             {
-                                if(tabControl1.TabPages.Count != 3)
+                                if(tabControl1.TabPages.Count != 4)
                                 {
                                     tabControl1.TabPages.Add(tpAccounts);
                                 }
@@ -494,6 +496,11 @@ namespace WindowsFormsApp1
             //закрываем задолженность и освобождаем книгу
             try
             {
+                dimActionTypeTableAdapter.Fill(this.library451DWHDataSet.DimActionType);
+                dimBookTableAdapter.Fill(this.library451DWHDataSet.DimBook);
+                dimDateTableAdapter.Fill(this.library451DWHDataSet.DimDate);
+                dimReaderTableAdapter.Fill(this.library451DWHDataSet.DimReader);
+
                 this.reades_debtsBindingSource.EndEdit();
                 возвращеноCheckBox.Checked = true;
                 this.library451DataSet.Debts.FindByDebts_ID(Int32.Parse(iDTextBox.Text)).Closed = true;
@@ -502,6 +509,17 @@ namespace WindowsFormsApp1
                 this.booksTableAdapter.Update(this.library451DataSet.Books);
                 this.debtsTableAdapter1.Update(this.library451DataSet.Debts);
                 this.library451DataSet.AcceptChanges();
+
+
+                if (library451DWHDataSet.DimDate.Last().action_date != DateTime.Today)
+                {
+                    int week = (int)DateTime.Today.DayOfWeek / 7 + 1;
+                    library451DWHDataSet.DimDate.AddDimDateRow(DateTime.Today, week, DateTime.Today.Month, DateTime.Today.Year);
+                    dimDateTableAdapter.Update(library451DWHDataSet.DimDate);
+                    this.library451DWHDataSet.FactDebts.AddFactDebtsRow(library451DWHDataSet.DimReader.FindByReader_ID(Int32.Parse(reader_IDTextBox.Text)), library451DWHDataSet.DimBook.FindBybook_id(Int32.Parse(book_IDTextBox.Text)), library451DWHDataSet.DimDate.Last(), library451DWHDataSet.DimActionType.FindByID(2));
+                }
+                else this.library451DWHDataSet.FactDebts.AddFactDebtsRow(library451DWHDataSet.DimReader.FindByReader_ID(Int32.Parse(reader_IDTextBox.Text)), library451DWHDataSet.DimBook.FindBybook_id(Int32.Parse(book_IDTextBox.Text)), library451DWHDataSet.DimDate.Last(), library451DWHDataSet.DimActionType.FindByID(2));
+                this.factDebtsTableAdapter.Update(this.library451DWHDataSet.FactDebts);
             }
             catch(Exception ex)
             {

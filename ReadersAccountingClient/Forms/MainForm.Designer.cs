@@ -74,9 +74,9 @@ namespace WindowsFormsApp1
             this.but_book_chages_back = new System.Windows.Forms.Button();
             this.but_save_book_changes = new System.Windows.Forms.Button();
             this.availabilityCheckBox = new System.Windows.Forms.CheckBox();
-            this.book_IDTextBox = new System.Windows.Forms.TextBox();
             this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.library451DataSet = new WindowsFormsApp1.Library451DataSet();
+            this.book_IDTextBox = new System.Windows.Forms.TextBox();
             this.book_NameTextBox = new System.Windows.Forms.TextBox();
             this.booksDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -154,6 +154,17 @@ namespace WindowsFormsApp1
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tpOtchet = new System.Windows.Forms.TabPage();
+            this.задолженностиDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.задолженностиBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.library451DWHDataSet = new WindowsFormsApp1.Library451DWHDataSet();
             this.booksTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.BooksTableAdapter();
             this.tableAdapterManager = new WindowsFormsApp1.Library451DataSetTableAdapters.TableAdapterManager();
             this.autTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.autTableAdapter();
@@ -161,6 +172,13 @@ namespace WindowsFormsApp1
             this.reades_debtsTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.reades_debtsTableAdapter();
             this.debtsTableAdapter1 = new WindowsFormsApp1.Library451DataSetTableAdapters.DebtsTableAdapter();
             this.chkbxVisiblePassLogin = new System.Windows.Forms.CheckBox();
+            this.dimActionTypeTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimActionTypeTableAdapter();
+            this.dimBookTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimBookTableAdapter();
+            this.dimDateTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimDateTableAdapter();
+            this.dimReaderTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimReaderTableAdapter();
+            this.factDebtsTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.FactDebtsTableAdapter();
+            this.задолженностиTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.ЗадолженностиTableAdapter();
+            this.tableAdapterManager1 = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.TableAdapterManager();
             reader_IDLabel = new System.Windows.Forms.Label();
             fIOLabel = new System.Windows.Forms.Label();
             pASSPORTLabel = new System.Windows.Forms.Label();
@@ -202,6 +220,10 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.autBindingSource)).BeginInit();
             this.gbNewAcc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.autDataGridView)).BeginInit();
+            this.tpOtchet.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.задолженностиDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.задолженностиBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.library451DWHDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // reader_IDLabel
@@ -518,6 +540,7 @@ namespace WindowsFormsApp1
             // 
             this.tabControl1.Controls.Add(this.tp_books);
             this.tabControl1.Controls.Add(this.tp_readers);
+            this.tabControl1.Controls.Add(this.tpOtchet);
             this.tabControl1.Controls.Add(this.tpAccounts);
             this.tabControl1.Location = new System.Drawing.Point(0, 27);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -630,21 +653,13 @@ namespace WindowsFormsApp1
             // 
             // availabilityCheckBox
             // 
+            this.availabilityCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", this.booksBindingSource, "Availability", true));
             this.availabilityCheckBox.Enabled = false;
             this.availabilityCheckBox.Location = new System.Drawing.Point(89, 76);
             this.availabilityCheckBox.Name = "availabilityCheckBox";
             this.availabilityCheckBox.Size = new System.Drawing.Size(104, 24);
             this.availabilityCheckBox.TabIndex = 12;
             this.availabilityCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // book_IDTextBox
-            // 
-            this.book_IDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.booksBindingSource, "Book_ID", true));
-            this.book_IDTextBox.Location = new System.Drawing.Point(89, 24);
-            this.book_IDTextBox.Name = "book_IDTextBox";
-            this.book_IDTextBox.ReadOnly = true;
-            this.book_IDTextBox.Size = new System.Drawing.Size(403, 20);
-            this.book_IDTextBox.TabIndex = 8;
             // 
             // booksBindingSource
             // 
@@ -655,6 +670,15 @@ namespace WindowsFormsApp1
             // 
             this.library451DataSet.DataSetName = "Library451DataSet";
             this.library451DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // book_IDTextBox
+            // 
+            this.book_IDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.booksBindingSource, "Book_ID", true));
+            this.book_IDTextBox.Location = new System.Drawing.Point(89, 24);
+            this.book_IDTextBox.Name = "book_IDTextBox";
+            this.book_IDTextBox.ReadOnly = true;
+            this.book_IDTextBox.Size = new System.Drawing.Size(403, 20);
+            this.book_IDTextBox.TabIndex = 8;
             // 
             // book_NameTextBox
             // 
@@ -1464,6 +1488,97 @@ namespace WindowsFormsApp1
             this.dataGridViewCheckBoxColumn2.ReadOnly = true;
             this.dataGridViewCheckBoxColumn2.Width = 80;
             // 
+            // tpOtchet
+            // 
+            this.tpOtchet.Controls.Add(this.задолженностиDataGridView);
+            this.tpOtchet.Location = new System.Drawing.Point(4, 23);
+            this.tpOtchet.Name = "tpOtchet";
+            this.tpOtchet.Padding = new System.Windows.Forms.Padding(3);
+            this.tpOtchet.Size = new System.Drawing.Size(1256, 624);
+            this.tpOtchet.TabIndex = 3;
+            this.tpOtchet.Text = "Отчет";
+            this.tpOtchet.UseVisualStyleBackColor = true;
+            // 
+            // задолженностиDataGridView
+            // 
+            this.задолженностиDataGridView.AllowUserToAddRows = false;
+            this.задолженностиDataGridView.AllowUserToDeleteRows = false;
+            this.задолженностиDataGridView.AutoGenerateColumns = false;
+            this.задолженностиDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.задолженностиDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18,
+            this.dataGridViewTextBoxColumn19});
+            this.задолженностиDataGridView.DataSource = this.задолженностиBindingSource;
+            this.задолженностиDataGridView.Location = new System.Drawing.Point(8, 90);
+            this.задолженностиDataGridView.Name = "задолженностиDataGridView";
+            this.задолженностиDataGridView.ReadOnly = true;
+            this.задолженностиDataGridView.Size = new System.Drawing.Size(743, 305);
+            this.задолженностиDataGridView.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "ID";
+            this.dataGridViewTextBoxColumn13.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "Читательский номер";
+            this.dataGridViewTextBoxColumn14.HeaderText = "Читательский номер";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "ФИО Читателя";
+            this.dataGridViewTextBoxColumn15.HeaderText = "ФИО Читателя";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "Учетый номер книги";
+            this.dataGridViewTextBoxColumn16.HeaderText = "Учетый номер книги";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "Книга";
+            this.dataGridViewTextBoxColumn17.HeaderText = "Книга";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "Дата";
+            this.dataGridViewTextBoxColumn18.HeaderText = "Дата";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "Действие";
+            this.dataGridViewTextBoxColumn19.HeaderText = "Действие";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            // 
+            // задолженностиBindingSource
+            // 
+            this.задолженностиBindingSource.DataMember = "Задолженности";
+            this.задолженностиBindingSource.DataSource = this.library451DWHDataSet;
+            // 
+            // library451DWHDataSet
+            // 
+            this.library451DWHDataSet.DataSetName = "Library451DWHDataSet";
+            this.library451DWHDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // booksTableAdapter
             // 
             this.booksTableAdapter.ClearBeforeFill = true;
@@ -1503,6 +1618,40 @@ namespace WindowsFormsApp1
             this.chkbxVisiblePassLogin.Text = "Видимость";
             this.chkbxVisiblePassLogin.UseVisualStyleBackColor = true;
             this.chkbxVisiblePassLogin.CheckedChanged += new System.EventHandler(this.chkbxVisiblePassLogin_CheckedChanged);
+            // 
+            // dimActionTypeTableAdapter
+            // 
+            this.dimActionTypeTableAdapter.ClearBeforeFill = true;
+            // 
+            // dimBookTableAdapter
+            // 
+            this.dimBookTableAdapter.ClearBeforeFill = true;
+            // 
+            // dimDateTableAdapter
+            // 
+            this.dimDateTableAdapter.ClearBeforeFill = true;
+            // 
+            // dimReaderTableAdapter
+            // 
+            this.dimReaderTableAdapter.ClearBeforeFill = true;
+            // 
+            // factDebtsTableAdapter
+            // 
+            this.factDebtsTableAdapter.ClearBeforeFill = true;
+            // 
+            // задолженностиTableAdapter
+            // 
+            this.задолженностиTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.DimActionTypeTableAdapter = this.dimActionTypeTableAdapter;
+            this.tableAdapterManager1.DimBookTableAdapter = this.dimBookTableAdapter;
+            this.tableAdapterManager1.DimDateTableAdapter = this.dimDateTableAdapter;
+            this.tableAdapterManager1.DimReaderTableAdapter = this.dimReaderTableAdapter;
+            this.tableAdapterManager1.FactDebtsTableAdapter = this.factDebtsTableAdapter;
+            this.tableAdapterManager1.UpdateOrder = WindowsFormsApp1.Library451DWHDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // MainForm
             // 
@@ -1554,6 +1703,10 @@ namespace WindowsFormsApp1
             this.gbNewAcc.ResumeLayout(false);
             this.gbNewAcc.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.autDataGridView)).EndInit();
+            this.tpOtchet.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.задолженностиDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.задолженностиBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.library451DWHDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1670,6 +1823,24 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.CheckBox is_adminCheckBox;
         private System.Windows.Forms.TextBox tbNewAccFIO;
         private System.Windows.Forms.CheckBox chkbxVisiblePassLogin;
+        private Library451DWHDataSet library451DWHDataSet;
+        private Library451DWHDataSetTableAdapters.DimActionTypeTableAdapter dimActionTypeTableAdapter;
+        private Library451DWHDataSetTableAdapters.DimBookTableAdapter dimBookTableAdapter;
+        private Library451DWHDataSetTableAdapters.DimDateTableAdapter dimDateTableAdapter;
+        private Library451DWHDataSetTableAdapters.DimReaderTableAdapter dimReaderTableAdapter;
+        private Library451DWHDataSetTableAdapters.FactDebtsTableAdapter factDebtsTableAdapter;
+        private System.Windows.Forms.TabPage tpOtchet;
+        private System.Windows.Forms.BindingSource задолженностиBindingSource;
+        private Library451DWHDataSetTableAdapters.ЗадолженностиTableAdapter задолженностиTableAdapter;
+        private Library451DWHDataSetTableAdapters.TableAdapterManager tableAdapterManager1;
+        private System.Windows.Forms.DataGridView задолженностиDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
     }
 }
 

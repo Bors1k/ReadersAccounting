@@ -41,11 +41,14 @@ namespace WindowsFormsApp1
             this.butCancelAdd = new System.Windows.Forms.Button();
             this.tELEPHONETextBox = new System.Windows.Forms.MaskedTextBox();
             this.pASSPORTTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.library451DWHDataSet = new WindowsFormsApp1.Library451DWHDataSet();
+            this.dimReaderTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimReaderTableAdapter();
             fIOLabel = new System.Windows.Forms.Label();
             pASSPORTLabel = new System.Windows.Forms.Label();
             aDDRESSLabel = new System.Windows.Forms.Label();
             tELEPHONELabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.library451DWHDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // fIOLabel
@@ -143,6 +146,15 @@ namespace WindowsFormsApp1
             this.pASSPORTTextBox.Size = new System.Drawing.Size(456, 20);
             this.pASSPORTTextBox.TabIndex = 46;
             // 
+            // library451DWHDataSet
+            // 
+            this.library451DWHDataSet.DataSetName = "Library451DWHDataSet";
+            this.library451DWHDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dimReaderTableAdapter
+            // 
+            this.dimReaderTableAdapter.ClearBeforeFill = true;
+            // 
             // ReaderAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,6 +176,7 @@ namespace WindowsFormsApp1
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление читателя";
             ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.library451DWHDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,5 +191,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button butCancelAdd;
         private System.Windows.Forms.MaskedTextBox tELEPHONETextBox;
         private System.Windows.Forms.MaskedTextBox pASSPORTTextBox;
+        private Library451DWHDataSet library451DWHDataSet;
+        private Library451DWHDataSetTableAdapters.DimReaderTableAdapter dimReaderTableAdapter;
     }
 }

@@ -52,6 +52,12 @@ namespace WindowsFormsApp1
             this.readersTableAdapter1 = new WindowsFormsApp1.Library451DataSetTableAdapters.ReadersTableAdapter();
             this.tbSearchBook = new System.Windows.Forms.TextBox();
             this.butResetSearch = new System.Windows.Forms.Button();
+            this.library451DWHDataSet = new WindowsFormsApp1.Library451DWHDataSet();
+            this.factDebtsTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.FactDebtsTableAdapter();
+            this.dimReaderTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimReaderTableAdapter();
+            this.dimDateTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimDateTableAdapter();
+            this.dimBookTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimBookTableAdapter();
+            this.dimActionTypeTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimActionTypeTableAdapter();
             book_IDLabel = new System.Windows.Forms.Label();
             book_NameLabel = new System.Windows.Forms.Label();
             availabilityLabel = new System.Windows.Forms.Label();
@@ -59,6 +65,7 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.library451DWHDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // book_IDLabel
@@ -244,6 +251,31 @@ namespace WindowsFormsApp1
             this.butResetSearch.UseVisualStyleBackColor = true;
             this.butResetSearch.Click += new System.EventHandler(this.butResetSearch_Click);
             // 
+            // library451DWHDataSet
+            // 
+            this.library451DWHDataSet.DataSetName = "Library451DWHDataSet";
+            this.library451DWHDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // factDebtsTableAdapter
+            // 
+            this.factDebtsTableAdapter.ClearBeforeFill = true;
+            // 
+            // dimReaderTableAdapter
+            // 
+            this.dimReaderTableAdapter.ClearBeforeFill = true;
+            // 
+            // dimDateTableAdapter
+            // 
+            this.dimDateTableAdapter.ClearBeforeFill = true;
+            // 
+            // dimBookTableAdapter
+            // 
+            this.dimBookTableAdapter.ClearBeforeFill = true;
+            // 
+            // dimActionTypeTableAdapter
+            // 
+            this.dimActionTypeTableAdapter.ClearBeforeFill = true;
+            // 
             // AddDebtForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -270,6 +302,7 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.library451DWHDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,5 +328,11 @@ namespace WindowsFormsApp1
         private Library451DataSetTableAdapters.ReadersTableAdapter readersTableAdapter1;
         private System.Windows.Forms.TextBox tbSearchBook;
         private System.Windows.Forms.Button butResetSearch;
+        private Library451DWHDataSet library451DWHDataSet;
+        private Library451DWHDataSetTableAdapters.FactDebtsTableAdapter factDebtsTableAdapter;
+        private Library451DWHDataSetTableAdapters.DimReaderTableAdapter dimReaderTableAdapter;
+        private Library451DWHDataSetTableAdapters.DimDateTableAdapter dimDateTableAdapter;
+        private Library451DWHDataSetTableAdapters.DimBookTableAdapter dimBookTableAdapter;
+        private Library451DWHDataSetTableAdapters.DimActionTypeTableAdapter dimActionTypeTableAdapter;
     }
 }

@@ -22,6 +22,8 @@ namespace WindowsFormsApp1
             //this.booksTableAdapter.Fill(this.library451DataSet.Books);
             this.library451DataSet.Books.AddBooksRow(tb_book.Text, chb_avl.Checked);
             this.booksTableAdapter.Update(this.library451DataSet.Books);
+            this.library451DWHDataSet.DimBook.AddDimBookRow(this.library451DataSet.Books.Last().Book_ID, tb_book.Text);
+            this.dimBookTableAdapter.Update(this.library451DWHDataSet.DimBook);
             Close();
         }
 

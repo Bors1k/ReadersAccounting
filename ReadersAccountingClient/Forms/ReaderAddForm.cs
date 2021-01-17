@@ -19,9 +19,19 @@ namespace WindowsFormsApp1
 
         private void butAddNewReader_Click(object sender, EventArgs e)
         {
-            //this.readersTableAdapter.Fill(this.library451DataSet.Readers);
-            this.library451DataSet.Readers.AddReadersRow(fIOTextBox.Text, pASSPORTTextBox.Text, aDDRESSTextBox.Text, tELEPHONETextBox.Text);
-            this.readersTableAdapter.Update(this.library451DataSet.Readers);
+            try
+            {
+                //this.readersTableAdapter.Fill(this.library451DataSet.Readers);
+                this.library451DataSet.Readers.AddReadersRow(fIOTextBox.Text, pASSPORTTextBox.Text, aDDRESSTextBox.Text, tELEPHONETextBox.Text);
+                this.readersTableAdapter.Update(this.library451DataSet.Readers);
+
+                this.library451DWHDataSet.DimReader.AddDimReaderRow(this.library451DataSet.Readers.Last().Reader_ID, fIOTextBox.Text, pASSPORTTextBox.Text, aDDRESSTextBox.Text, tELEPHONETextBox.Text);
+                this.dimReaderTableAdapter.Update(this.library451DWHDataSet.DimReader);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             Close();
         }
 
