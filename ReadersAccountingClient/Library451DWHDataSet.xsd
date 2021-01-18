@@ -284,7 +284,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
               <DbSource ConnectionRef="Library451DWHConnectionString (Settings)" DbObjectName="Library451DWH.dbo.Задолженности" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT ID, [Читательский номер], [ФИО Читателя], [Учетый номер книги], Книга, Дата, Действие FROM dbo.Задолженности</CommandText>
+                    <CommandText>SELECT ID, [Читательский номер], [ФИО Читателя], [Учетый номер книги], Книга, Действие, action_date FROM Задолженности</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -296,8 +296,8 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
               <Mapping SourceColumn="ФИО Читателя" DataSetColumn="ФИО Читателя" />
               <Mapping SourceColumn="Учетый номер книги" DataSetColumn="Учетый номер книги" />
               <Mapping SourceColumn="Книга" DataSetColumn="Книга" />
-              <Mapping SourceColumn="Дата" DataSetColumn="Дата" />
               <Mapping SourceColumn="Действие" DataSetColumn="Действие" />
+              <Mapping SourceColumn="action_date" DataSetColumn="action_date" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -309,7 +309,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
   <xs:element name="Library451DWHDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="Library451DWHDataSet" msprop:Generator_UserDSName="Library451DWHDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DimActionType" msprop:Generator_TableClassName="DimActionTypeDataTable" msprop:Generator_TableVarName="tableDimActionType" msprop:Generator_RowChangedName="DimActionTypeRowChanged" msprop:Generator_TablePropName="DimActionType" msprop:Generator_RowDeletingName="DimActionTypeRowDeleting" msprop:Generator_RowChangingName="DimActionTypeRowChanging" msprop:Generator_RowEvHandlerName="DimActionTypeRowChangeEventHandler" msprop:Generator_RowDeletedName="DimActionTypeRowDeleted" msprop:Generator_RowClassName="DimActionTypeRow" msprop:Generator_UserTableName="DimActionType" msprop:Generator_RowEvArgName="DimActionTypeRowChangeEvent">
+        <xs:element name="DimActionType" msprop:Generator_TableClassName="DimActionTypeDataTable" msprop:Generator_TableVarName="tableDimActionType" msprop:Generator_TablePropName="DimActionType" msprop:Generator_RowDeletingName="DimActionTypeRowDeleting" msprop:Generator_RowChangingName="DimActionTypeRowChanging" msprop:Generator_RowEvHandlerName="DimActionTypeRowChangeEventHandler" msprop:Generator_RowDeletedName="DimActionTypeRowDeleted" msprop:Generator_UserTableName="DimActionType" msprop:Generator_RowChangedName="DimActionTypeRowChanged" msprop:Generator_RowEvArgName="DimActionTypeRowChangeEvent" msprop:Generator_RowClassName="DimActionTypeRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -323,7 +323,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DimBook" msprop:Generator_TableClassName="DimBookDataTable" msprop:Generator_TableVarName="tableDimBook" msprop:Generator_RowChangedName="DimBookRowChanged" msprop:Generator_TablePropName="DimBook" msprop:Generator_RowDeletingName="DimBookRowDeleting" msprop:Generator_RowChangingName="DimBookRowChanging" msprop:Generator_RowEvHandlerName="DimBookRowChangeEventHandler" msprop:Generator_RowDeletedName="DimBookRowDeleted" msprop:Generator_RowClassName="DimBookRow" msprop:Generator_UserTableName="DimBook" msprop:Generator_RowEvArgName="DimBookRowChangeEvent">
+        <xs:element name="DimBook" msprop:Generator_TableClassName="DimBookDataTable" msprop:Generator_TableVarName="tableDimBook" msprop:Generator_TablePropName="DimBook" msprop:Generator_RowDeletingName="DimBookRowDeleting" msprop:Generator_RowChangingName="DimBookRowChanging" msprop:Generator_RowEvHandlerName="DimBookRowChangeEventHandler" msprop:Generator_RowDeletedName="DimBookRowDeleted" msprop:Generator_UserTableName="DimBook" msprop:Generator_RowChangedName="DimBookRowChanged" msprop:Generator_RowEvArgName="DimBookRowChangeEvent" msprop:Generator_RowClassName="DimBookRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="book_id" msprop:Generator_ColumnVarNameInTable="columnbook_id" msprop:Generator_ColumnPropNameInRow="book_id" msprop:Generator_ColumnPropNameInTable="book_idColumn" msprop:Generator_UserColumnName="book_id" type="xs:int" />
@@ -337,7 +337,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DimDate" msprop:Generator_TableClassName="DimDateDataTable" msprop:Generator_TableVarName="tableDimDate" msprop:Generator_RowChangedName="DimDateRowChanged" msprop:Generator_TablePropName="DimDate" msprop:Generator_RowDeletingName="DimDateRowDeleting" msprop:Generator_RowChangingName="DimDateRowChanging" msprop:Generator_RowEvHandlerName="DimDateRowChangeEventHandler" msprop:Generator_RowDeletedName="DimDateRowDeleted" msprop:Generator_RowClassName="DimDateRow" msprop:Generator_UserTableName="DimDate" msprop:Generator_RowEvArgName="DimDateRowChangeEvent">
+        <xs:element name="DimDate" msprop:Generator_TableClassName="DimDateDataTable" msprop:Generator_TableVarName="tableDimDate" msprop:Generator_TablePropName="DimDate" msprop:Generator_RowDeletingName="DimDateRowDeleting" msprop:Generator_RowChangingName="DimDateRowChanging" msprop:Generator_RowEvHandlerName="DimDateRowChangeEventHandler" msprop:Generator_RowDeletedName="DimDateRowDeleted" msprop:Generator_UserTableName="DimDate" msprop:Generator_RowChangedName="DimDateRowChanged" msprop:Generator_RowEvArgName="DimDateRowChangeEvent" msprop:Generator_RowClassName="DimDateRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="time_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columntime_id" msprop:Generator_ColumnPropNameInRow="time_id" msprop:Generator_ColumnPropNameInTable="time_idColumn" msprop:Generator_UserColumnName="time_id" type="xs:int" />
@@ -348,7 +348,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DimReader" msprop:Generator_TableClassName="DimReaderDataTable" msprop:Generator_TableVarName="tableDimReader" msprop:Generator_RowChangedName="DimReaderRowChanged" msprop:Generator_TablePropName="DimReader" msprop:Generator_RowDeletingName="DimReaderRowDeleting" msprop:Generator_RowChangingName="DimReaderRowChanging" msprop:Generator_RowEvHandlerName="DimReaderRowChangeEventHandler" msprop:Generator_RowDeletedName="DimReaderRowDeleted" msprop:Generator_RowClassName="DimReaderRow" msprop:Generator_UserTableName="DimReader" msprop:Generator_RowEvArgName="DimReaderRowChangeEvent">
+        <xs:element name="DimReader" msprop:Generator_TableClassName="DimReaderDataTable" msprop:Generator_TableVarName="tableDimReader" msprop:Generator_TablePropName="DimReader" msprop:Generator_RowDeletingName="DimReaderRowDeleting" msprop:Generator_RowChangingName="DimReaderRowChanging" msprop:Generator_RowEvHandlerName="DimReaderRowChangeEventHandler" msprop:Generator_RowDeletedName="DimReaderRowDeleted" msprop:Generator_UserTableName="DimReader" msprop:Generator_RowChangedName="DimReaderRowChanged" msprop:Generator_RowEvArgName="DimReaderRowChangeEvent" msprop:Generator_RowClassName="DimReaderRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Reader_ID" msprop:Generator_ColumnVarNameInTable="columnReader_ID" msprop:Generator_ColumnPropNameInRow="Reader_ID" msprop:Generator_ColumnPropNameInTable="Reader_IDColumn" msprop:Generator_UserColumnName="Reader_ID" type="xs:int" />
@@ -383,7 +383,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="FactDebts" msprop:Generator_TableClassName="FactDebtsDataTable" msprop:Generator_TableVarName="tableFactDebts" msprop:Generator_RowChangedName="FactDebtsRowChanged" msprop:Generator_TablePropName="FactDebts" msprop:Generator_RowDeletingName="FactDebtsRowDeleting" msprop:Generator_RowChangingName="FactDebtsRowChanging" msprop:Generator_RowEvHandlerName="FactDebtsRowChangeEventHandler" msprop:Generator_RowDeletedName="FactDebtsRowDeleted" msprop:Generator_RowClassName="FactDebtsRow" msprop:Generator_UserTableName="FactDebts" msprop:Generator_RowEvArgName="FactDebtsRowChangeEvent">
+        <xs:element name="FactDebts" msprop:Generator_TableClassName="FactDebtsDataTable" msprop:Generator_TableVarName="tableFactDebts" msprop:Generator_TablePropName="FactDebts" msprop:Generator_RowDeletingName="FactDebtsRowDeleting" msprop:Generator_RowChangingName="FactDebtsRowChanging" msprop:Generator_RowEvHandlerName="FactDebtsRowChangeEventHandler" msprop:Generator_RowDeletedName="FactDebtsRowDeleted" msprop:Generator_UserTableName="FactDebts" msprop:Generator_RowChangedName="FactDebtsRowChanged" msprop:Generator_RowEvArgName="FactDebtsRowChangeEvent" msprop:Generator_RowClassName="FactDebtsRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -394,7 +394,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Задолженности" msprop:Generator_TableClassName="ЗадолженностиDataTable" msprop:Generator_TableVarName="tableЗадолженности" msprop:Generator_TablePropName="Задолженности" msprop:Generator_RowDeletingName="ЗадолженностиRowDeleting" msprop:Generator_RowChangingName="ЗадолженностиRowChanging" msprop:Generator_RowEvHandlerName="ЗадолженностиRowChangeEventHandler" msprop:Generator_RowDeletedName="ЗадолженностиRowDeleted" msprop:Generator_UserTableName="Задолженности" msprop:Generator_RowChangedName="ЗадолженностиRowChanged" msprop:Generator_RowEvArgName="ЗадолженностиRowChangeEvent" msprop:Generator_RowClassName="ЗадолженностиRow">
+        <xs:element name="Задолженности" msprop:Generator_TableClassName="ЗадолженностиDataTable" msprop:Generator_TableVarName="tableЗадолженности" msprop:Generator_RowChangedName="ЗадолженностиRowChanged" msprop:Generator_TablePropName="Задолженности" msprop:Generator_RowDeletingName="ЗадолженностиRowDeleting" msprop:Generator_RowChangingName="ЗадолженностиRowChanging" msprop:Generator_RowEvHandlerName="ЗадолженностиRowChangeEventHandler" msprop:Generator_RowDeletedName="ЗадолженностиRowDeleted" msprop:Generator_RowClassName="ЗадолженностиRow" msprop:Generator_UserTableName="Задолженности" msprop:Generator_RowEvArgName="ЗадолженностиRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" />
@@ -414,7 +414,6 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Дата" msprop:Generator_ColumnVarNameInTable="columnДата" msprop:Generator_ColumnPropNameInRow="Дата" msprop:Generator_ColumnPropNameInTable="ДатаColumn" msprop:Generator_UserColumnName="Дата" type="xs:dateTime" />
               <xs:element name="Действие" msprop:Generator_ColumnVarNameInTable="columnДействие" msprop:Generator_ColumnPropNameInRow="Действие" msprop:Generator_ColumnPropNameInTable="ДействиеColumn" msprop:Generator_UserColumnName="Действие">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -422,6 +421,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="action_date" msprop:Generator_ColumnVarNameInTable="columnaction_date" msprop:Generator_ColumnPropNameInRow="action_date" msprop:Generator_ColumnPropNameInTable="action_dateColumn" msprop:Generator_UserColumnName="action_date" type="xs:dateTime" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -450,10 +450,10 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="FK_FactDebts_DimActionType" msdata:parent="DimActionType" msdata:child="FactDebts" msdata:parentkey="ID" msdata:childkey="ActionType_ID" msprop:Generator_UserChildTable="FactDebts" msprop:Generator_ChildPropName="GetFactDebtsRows" msprop:Generator_UserRelationName="FK_FactDebts_DimActionType" msprop:Generator_RelationVarName="relationFK_FactDebts_DimActionType" msprop:Generator_UserParentTable="DimActionType" msprop:Generator_ParentPropName="DimActionTypeRow" />
-      <msdata:Relationship name="FK_FactDebts_DimBook" msdata:parent="DimBook" msdata:child="FactDebts" msdata:parentkey="book_id" msdata:childkey="Book_ID" msprop:Generator_UserChildTable="FactDebts" msprop:Generator_ChildPropName="GetFactDebtsRows" msprop:Generator_UserRelationName="FK_FactDebts_DimBook" msprop:Generator_RelationVarName="relationFK_FactDebts_DimBook" msprop:Generator_UserParentTable="DimBook" msprop:Generator_ParentPropName="DimBookRow" />
-      <msdata:Relationship name="FK_FactDebts_DimDate" msdata:parent="DimDate" msdata:child="FactDebts" msdata:parentkey="time_id" msdata:childkey="Date_ID" msprop:Generator_UserChildTable="FactDebts" msprop:Generator_ChildPropName="GetFactDebtsRows" msprop:Generator_UserRelationName="FK_FactDebts_DimDate" msprop:Generator_RelationVarName="relationFK_FactDebts_DimDate" msprop:Generator_UserParentTable="DimDate" msprop:Generator_ParentPropName="DimDateRow" />
-      <msdata:Relationship name="FK_FactDebts_DimReader" msdata:parent="DimReader" msdata:child="FactDebts" msdata:parentkey="Reader_ID" msdata:childkey="Reader_ID" msprop:Generator_UserChildTable="FactDebts" msprop:Generator_ChildPropName="GetFactDebtsRows" msprop:Generator_UserRelationName="FK_FactDebts_DimReader" msprop:Generator_RelationVarName="relationFK_FactDebts_DimReader" msprop:Generator_UserParentTable="DimReader" msprop:Generator_ParentPropName="DimReaderRow" />
+      <msdata:Relationship name="FK_FactDebts_DimActionType" msdata:parent="DimActionType" msdata:child="FactDebts" msdata:parentkey="ID" msdata:childkey="ActionType_ID" msprop:Generator_UserChildTable="FactDebts" msprop:Generator_ChildPropName="GetFactDebtsRows" msprop:Generator_UserRelationName="FK_FactDebts_DimActionType" msprop:Generator_ParentPropName="DimActionTypeRow" msprop:Generator_RelationVarName="relationFK_FactDebts_DimActionType" msprop:Generator_UserParentTable="DimActionType" />
+      <msdata:Relationship name="FK_FactDebts_DimBook" msdata:parent="DimBook" msdata:child="FactDebts" msdata:parentkey="book_id" msdata:childkey="Book_ID" msprop:Generator_UserChildTable="FactDebts" msprop:Generator_ChildPropName="GetFactDebtsRows" msprop:Generator_UserRelationName="FK_FactDebts_DimBook" msprop:Generator_ParentPropName="DimBookRow" msprop:Generator_RelationVarName="relationFK_FactDebts_DimBook" msprop:Generator_UserParentTable="DimBook" />
+      <msdata:Relationship name="FK_FactDebts_DimDate" msdata:parent="DimDate" msdata:child="FactDebts" msdata:parentkey="time_id" msdata:childkey="Date_ID" msprop:Generator_UserChildTable="FactDebts" msprop:Generator_ChildPropName="GetFactDebtsRows" msprop:Generator_UserRelationName="FK_FactDebts_DimDate" msprop:Generator_ParentPropName="DimDateRow" msprop:Generator_RelationVarName="relationFK_FactDebts_DimDate" msprop:Generator_UserParentTable="DimDate" />
+      <msdata:Relationship name="FK_FactDebts_DimReader" msdata:parent="DimReader" msdata:child="FactDebts" msdata:parentkey="Reader_ID" msdata:childkey="Reader_ID" msprop:Generator_UserChildTable="FactDebts" msprop:Generator_ChildPropName="GetFactDebtsRows" msprop:Generator_UserRelationName="FK_FactDebts_DimReader" msprop:Generator_ParentPropName="DimReaderRow" msprop:Generator_RelationVarName="relationFK_FactDebts_DimReader" msprop:Generator_UserParentTable="DimReader" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

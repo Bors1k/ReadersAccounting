@@ -2022,9 +2022,9 @@ namespace WindowsFormsApp1 {
             
             private global::System.Data.DataColumn columnКнига;
             
-            private global::System.Data.DataColumn columnДата;
-            
             private global::System.Data.DataColumn columnДействие;
+            
+            private global::System.Data.DataColumn columnaction_date;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -2101,17 +2101,17 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ДатаColumn {
+            public global::System.Data.DataColumn ДействиеColumn {
                 get {
-                    return this.columnДата;
+                    return this.columnДействие;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ДействиеColumn {
+            public global::System.Data.DataColumn action_dateColumn {
                 get {
-                    return this.columnДействие;
+                    return this.columnaction_date;
                 }
             }
             
@@ -2152,7 +2152,7 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ЗадолженностиRow AddЗадолженностиRow(int ID, int Читательский_номер, string ФИО_Читателя, int Учетый_номер_книги, string Книга, System.DateTime Дата, string Действие) {
+            public ЗадолженностиRow AddЗадолженностиRow(int ID, int Читательский_номер, string ФИО_Читателя, int Учетый_номер_книги, string Книга, string Действие, System.DateTime action_date) {
                 ЗадолженностиRow rowЗадолженностиRow = ((ЗадолженностиRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -2160,8 +2160,8 @@ namespace WindowsFormsApp1 {
                         ФИО_Читателя,
                         Учетый_номер_книги,
                         Книга,
-                        Дата,
-                        Действие};
+                        Действие,
+                        action_date};
                 rowЗадолженностиRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowЗадолженностиRow);
                 return rowЗадолженностиRow;
@@ -2189,8 +2189,8 @@ namespace WindowsFormsApp1 {
                 this.columnФИО_Читателя = base.Columns["ФИО Читателя"];
                 this.columnУчетый_номер_книги = base.Columns["Учетый номер книги"];
                 this.columnКнига = base.Columns["Книга"];
-                this.columnДата = base.Columns["Дата"];
                 this.columnДействие = base.Columns["Действие"];
+                this.columnaction_date = base.Columns["action_date"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2206,10 +2206,10 @@ namespace WindowsFormsApp1 {
                 base.Columns.Add(this.columnУчетый_номер_книги);
                 this.columnКнига = new global::System.Data.DataColumn("Книга", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnКнига);
-                this.columnДата = new global::System.Data.DataColumn("Дата", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnДата);
                 this.columnДействие = new global::System.Data.DataColumn("Действие", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnДействие);
+                this.columnaction_date = new global::System.Data.DataColumn("action_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaction_date);
                 this.columnID.AllowDBNull = false;
                 this.columnЧитательский_номер.AllowDBNull = false;
                 this.columnФИО_Читателя.AllowDBNull = false;
@@ -2217,9 +2217,9 @@ namespace WindowsFormsApp1 {
                 this.columnУчетый_номер_книги.AllowDBNull = false;
                 this.columnКнига.AllowDBNull = false;
                 this.columnКнига.MaxLength = 2147483647;
-                this.columnДата.AllowDBNull = false;
                 this.columnДействие.AllowDBNull = false;
                 this.columnДействие.MaxLength = 15;
+                this.columnaction_date.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2840,23 +2840,23 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime Дата {
-                get {
-                    return ((global::System.DateTime)(this[this.tableЗадолженности.ДатаColumn]));
-                }
-                set {
-                    this[this.tableЗадолженности.ДатаColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Действие {
                 get {
                     return ((string)(this[this.tableЗадолженности.ДействиеColumn]));
                 }
                 set {
                     this[this.tableЗадолженности.ДействиеColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime action_date {
+                get {
+                    return ((global::System.DateTime)(this[this.tableЗадолженности.action_dateColumn]));
+                }
+                set {
+                    this[this.tableЗадолженности.action_dateColumn] = value;
                 }
             }
         }
@@ -4856,8 +4856,8 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
             tableMapping.ColumnMappings.Add("ФИО Читателя", "ФИО Читателя");
             tableMapping.ColumnMappings.Add("Учетый номер книги", "Учетый номер книги");
             tableMapping.ColumnMappings.Add("Книга", "Книга");
-            tableMapping.ColumnMappings.Add("Дата", "Дата");
             tableMapping.ColumnMappings.Add("Действие", "Действие");
+            tableMapping.ColumnMappings.Add("action_date", "action_date");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -4874,8 +4874,8 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, [Читательский номер], [ФИО Читателя], [Учетый номер книги], Книга, Дат" +
-                "а, Действие FROM dbo.Задолженности";
+            this._commandCollection[0].CommandText = "SELECT ID, [Читательский номер], [ФИО Читателя], [Учетый номер книги], Книга, Дей" +
+                "ствие, action_date FROM Задолженности";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

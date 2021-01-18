@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iTextSharp.text.pdf;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,7 @@ namespace WindowsFormsApp1
         {
             this.readerID = readerID;
             InitializeComponent();
+
         }
         private void AddReaderDebt_Load(object sender, EventArgs e)
         {
