@@ -119,6 +119,8 @@ namespace WindowsFormsApp1
             //обновление строк подключения
             try
             {
+                this.задолженностиTableAdapter.Connection.ConnectionString = Properties.Settings.Default.DWH_ConnectionString;
+
                 this.booksTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
                 this.autTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
                 this.readersTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;

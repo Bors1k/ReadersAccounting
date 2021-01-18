@@ -36,5 +36,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=DESKTOP-TALDCKN;Initial Catalog=Library451DWH;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="DWH_ConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=DESKTOP-TALDCKN;Initial Catalog=Library451DWH;Integrated Security=True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -43,10 +43,12 @@ namespace WindowsFormsApp1
             if (chbox_wireless.Checked == true)
             {
                 Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ", " + Properties.Settings.Default.Port + ";Initial Catalog=Library451; User Id ="+ Properties.Settings.Default.login + "; Password ="+Properties.Settings.Default.password;
+                Properties.Settings.Default.DWH_ConnectionString = "Data Source ="+ Properties.Settings.Default.IP + ", " + Properties.Settings.Default.Port + "; Initial Catalog = Library451DWH; User Id =" + Properties.Settings.Default.login + "; Password =" + Properties.Settings.Default.password;
             }
             else
             {
                 Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ";Initial Catalog=Library451;Integrated Security=True";
+                Properties.Settings.Default.DWH_ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ";Initial Catalog=Library451DWH;Integrated Security=True";
             }
 
             Properties.Settings.Default.Save();

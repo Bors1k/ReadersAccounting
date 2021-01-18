@@ -115,5 +115,18 @@ namespace WindowsFormsApp1.Properties {
                 return ((string)(this["Library451DWHConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-TALDCKN;Initial Catalog=Library451DWH;Integrated Security=Tru" +
+            "e")]
+        public string DWH_ConnectionString {
+            get {
+                return ((string)(this["DWH_ConnectionString"]));
+            }
+            set {
+                this["DWH_ConnectionString"] = value;
+            }
+        }
     }
 }
