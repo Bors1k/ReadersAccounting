@@ -29,6 +29,7 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DBSettingsForm));
             this.button1 = new System.Windows.Forms.Button();
             this.tb_ip = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,7 +49,7 @@ namespace WindowsFormsApp1
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(22, 206);
+            this.button1.Location = new System.Drawing.Point(12, 197);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -90,7 +91,7 @@ namespace WindowsFormsApp1
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(180, 206);
+            this.button2.Location = new System.Drawing.Point(203, 197);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 5;
@@ -181,7 +182,7 @@ namespace WindowsFormsApp1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 248);
+            this.ClientSize = new System.Drawing.Size(292, 231);
             this.ControlBox = false;
             this.Controls.Add(this.gb);
             this.Controls.Add(this.label3);
@@ -190,8 +191,9 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tb_ip);
             this.Controls.Add(this.button1);
-            this.MaximumSize = new System.Drawing.Size(308, 287);
-            this.MinimumSize = new System.Drawing.Size(308, 287);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(308, 270);
+            this.MinimumSize = new System.Drawing.Size(308, 270);
             this.Name = "DBSettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Настройки подключения к БД";

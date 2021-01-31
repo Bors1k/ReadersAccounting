@@ -52,16 +52,12 @@ namespace WindowsFormsApp1
             System.Windows.Forms.Label is_adminLabel1;
             System.Windows.Forms.Label fIOLabel1;
             System.Windows.Forms.Label label6;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.подключениеКБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обновитьДанныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.разлогинитьсяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tb_login = new System.Windows.Forms.TextBox();
-            this.tb_password = new System.Windows.Forms.TextBox();
-            this.butt_authorized = new System.Windows.Forms.Button();
             this.tb_book_search = new System.Windows.Forms.TextBox();
             this.but_books_search_reset = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -176,7 +172,6 @@ namespace WindowsFormsApp1
             this.readersTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.ReadersTableAdapter();
             this.reades_debtsTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.reades_debtsTableAdapter();
             this.debtsTableAdapter1 = new WindowsFormsApp1.Library451DataSetTableAdapters.DebtsTableAdapter();
-            this.chkbxVisiblePassLogin = new System.Windows.Forms.CheckBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.dimActionTypeTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimActionTypeTableAdapter();
             this.dimBookTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimBookTableAdapter();
@@ -453,74 +448,23 @@ namespace WindowsFormsApp1
             // подключениеКБДToolStripMenuItem
             // 
             this.подключениеКБДToolStripMenuItem.Name = "подключениеКБДToolStripMenuItem";
-            this.подключениеКБДToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.подключениеКБДToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.подключениеКБДToolStripMenuItem.Text = "Подключение к БД";
             this.подключениеКБДToolStripMenuItem.Click += new System.EventHandler(this.подключениеКБДToolStripMenuItem_Click);
             // 
             // обновитьДанныеToolStripMenuItem
             // 
             this.обновитьДанныеToolStripMenuItem.Name = "обновитьДанныеToolStripMenuItem";
-            this.обновитьДанныеToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.обновитьДанныеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.обновитьДанныеToolStripMenuItem.Text = "Обновить данные";
             this.обновитьДанныеToolStripMenuItem.Click += new System.EventHandler(this.обновитьДанныеToolStripMenuItem_Click);
             // 
             // разлогинитьсяToolStripMenuItem
             // 
-            this.разлогинитьсяToolStripMenuItem.Enabled = false;
             this.разлогинитьсяToolStripMenuItem.Name = "разлогинитьсяToolStripMenuItem";
-            this.разлогинитьсяToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.разлогинитьсяToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.разлогинитьсяToolStripMenuItem.Text = "Разлогиниться";
             this.разлогинитьсяToolStripMenuItem.Click += new System.EventHandler(this.разлогинитьсяToolStripMenuItem_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(142, 40);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 14);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Логин";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(139, 90);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 14);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Пароль";
-            // 
-            // tb_login
-            // 
-            this.tb_login.Location = new System.Drawing.Point(109, 60);
-            this.tb_login.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tb_login.Name = "tb_login";
-            this.tb_login.Size = new System.Drawing.Size(102, 20);
-            this.tb_login.TabIndex = 4;
-            this.tb_login.Text = "admin";
-            // 
-            // tb_password
-            // 
-            this.tb_password.Location = new System.Drawing.Point(110, 110);
-            this.tb_password.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.tb_password.Name = "tb_password";
-            this.tb_password.Size = new System.Drawing.Size(100, 20);
-            this.tb_password.TabIndex = 5;
-            this.tb_password.Text = "admin";
-            this.tb_password.UseSystemPasswordChar = true;
-            // 
-            // butt_authorized
-            // 
-            this.butt_authorized.Location = new System.Drawing.Point(123, 140);
-            this.butt_authorized.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.butt_authorized.Name = "butt_authorized";
-            this.butt_authorized.Size = new System.Drawing.Size(74, 25);
-            this.butt_authorized.TabIndex = 6;
-            this.butt_authorized.Text = "Войти";
-            this.butt_authorized.UseVisualStyleBackColor = true;
-            this.butt_authorized.Click += new System.EventHandler(this.butt_authorized_Click);
             // 
             // tb_book_search
             // 
@@ -554,7 +498,6 @@ namespace WindowsFormsApp1
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1264, 651);
             this.tabControl1.TabIndex = 8;
-            this.tabControl1.Visible = false;
             // 
             // tp_books
             // 
@@ -1670,17 +1613,6 @@ namespace WindowsFormsApp1
             // 
             this.debtsTableAdapter1.ClearBeforeFill = true;
             // 
-            // chkbxVisiblePassLogin
-            // 
-            this.chkbxVisiblePassLogin.AutoSize = true;
-            this.chkbxVisiblePassLogin.Location = new System.Drawing.Point(215, 112);
-            this.chkbxVisiblePassLogin.Name = "chkbxVisiblePassLogin";
-            this.chkbxVisiblePassLogin.Size = new System.Drawing.Size(78, 18);
-            this.chkbxVisiblePassLogin.TabIndex = 9;
-            this.chkbxVisiblePassLogin.Text = "Видимость";
-            this.chkbxVisiblePassLogin.UseVisualStyleBackColor = true;
-            this.chkbxVisiblePassLogin.CheckedChanged += new System.EventHandler(this.chkbxVisiblePassLogin_CheckedChanged);
-            // 
             // saveFileDialog1
             // 
             this.saveFileDialog1.FileName = "Report";
@@ -1726,14 +1658,9 @@ namespace WindowsFormsApp1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.butt_authorized);
-            this.Controls.Add(this.tb_password);
-            this.Controls.Add(this.tb_login);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.chkbxVisiblePassLogin);
             this.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MaximumSize = new System.Drawing.Size(1280, 720);
@@ -1741,7 +1668,7 @@ namespace WindowsFormsApp1
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Учет читателей";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -1785,11 +1712,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem подключениеКБДToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tb_login;
-        private System.Windows.Forms.TextBox tb_password;
-        private System.Windows.Forms.Button butt_authorized;
         private System.Windows.Forms.TextBox tb_book_search;
         private System.Windows.Forms.Button but_books_search_reset;
         private System.Windows.Forms.TabControl tabControl1;
@@ -1890,7 +1812,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.CheckBox is_adminCheckBox;
         private System.Windows.Forms.TextBox tbNewAccFIO;
-        private System.Windows.Forms.CheckBox chkbxVisiblePassLogin;
         private Library451DWHDataSet library451DWHDataSet;
         private Library451DWHDataSetTableAdapters.DimActionTypeTableAdapter dimActionTypeTableAdapter;
         private Library451DWHDataSetTableAdapters.DimBookTableAdapter dimBookTableAdapter;

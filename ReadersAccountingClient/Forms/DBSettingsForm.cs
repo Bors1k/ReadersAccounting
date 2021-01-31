@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Forms;
 
 namespace WindowsFormsApp1
 {
@@ -64,8 +65,9 @@ namespace WindowsFormsApp1
             //но когда закрываешь настройки, срабатывает обработчик в главной форме и он пытается подключиться к БД, что при неправильных настройках, 
             //заставляет долго ждать.
             //пришлось передавать в главную форму значение, чтобы отделять сохранение+закрытие и закрытие без применения настроек
-            MainForm owner = this.Owner as MainForm; 
-            owner.IsSettingUserClose = false;
+            //MainForm owner = this.Owner as MainForm; 
+            if(this.Owner.Name == "MainForm") (this.Owner as MainForm).IsSettingUserClose = false;
+            else if (this.Owner.Name == "AutForm") (this.Owner as AutForm).IsSettingUserClose = false;
             this.Close();
         }
 

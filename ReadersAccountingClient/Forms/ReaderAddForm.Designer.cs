@@ -33,6 +33,7 @@ namespace WindowsFormsApp1
             System.Windows.Forms.Label pASSPORTLabel;
             System.Windows.Forms.Label aDDRESSLabel;
             System.Windows.Forms.Label tELEPHONELabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReaderAddForm));
             this.fIOTextBox = new System.Windows.Forms.TextBox();
             this.aDDRESSTextBox = new System.Windows.Forms.TextBox();
             this.library451DataSet = new WindowsFormsApp1.Library451DataSet();
@@ -170,6 +171,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(aDDRESSLabel);
             this.Controls.Add(this.aDDRESSTextBox);
             this.Controls.Add(tELEPHONELabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(602, 234);
             this.MinimumSize = new System.Drawing.Size(602, 234);
             this.Name = "ReaderAddForm";

@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using Font = iTextSharp.text.Font;
+using WindowsFormsApp1.Forms;
 
 namespace WindowsFormsApp1
 {
@@ -29,12 +30,30 @@ namespace WindowsFormsApp1
         }
         private Functions func;
         public bool IsSettingUserClose = true;
-        public MainForm()
+        private string UserFIO;
+        private bool adminState;
+        private AutForm autForm;
+        public MainForm(AutForm autForm, string userfio, bool admin_state)
         {
+            this.autForm = autForm;
+            UserFIO = userfio;
+            adminState = admin_state;
             func = new Functions();
             InitializeComponent();
-            //стартовый ресайз, чтобы было удобно работать с конструктором и 
-            ResizeForm(this, 320, 240,false);
+            LoadFromDB(TypeOfLoadDB.all);
+            UpdateConnectionString();
+
+            if (adminState == true)
+            {
+                if (tabControl1.TabPages.Count != 4)
+                {
+                    tabControl1.TabPages.Add(tpAccounts);
+                }
+            }
+            else
+            {
+                tabControl1.TabPages.Remove(tpAccounts);
+            }
         }
 
         private void подключениеКБДToolStripMenuItem_Click(object sender, EventArgs e)
@@ -57,20 +76,6 @@ namespace WindowsFormsApp1
             }
             IsSettingUserClose = true;
 
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-            if (Properties.Settings.Default.Wireless == true)
-            {
-                Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ", " + Properties.Settings.Default.Port + ";Initial Catalog=Library451; User Id = sa; Password = 1234";
-            }
-            else
-            {
-                Properties.Settings.Default.ConnectionString = @"Data Source=" + Properties.Settings.Default.IP + ";Initial Catalog=Library451;Integrated Security=True";
-            }
-            //this.LoadFromDB(TypeOfLoadDB.all);
         }
 
         private void LoadFromDB(TypeOfLoadDB type)
@@ -133,64 +138,6 @@ namespace WindowsFormsApp1
             }
         }
 
-
-
-        private void butt_authorized_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.LoadFromDB(TypeOfLoadDB.all);
-                //авторизация
-                bool aut_flag = false;
-                foreach (DataRow row in this.library451DataSet.aut.Rows)
-                {
-                    if (aut_flag == true) break;
-                    if (row["login"].ToString() == tb_login.Text)
-                    {
-                        if (row["password"].ToString() == tb_password.Text)
-                        {
-                            aut_flag = true;
-                            tabControl1.Visible = true;
-                            //делаем ресайз для дальнейшей работы
-
-                            if(row["is_admin"].ToString() == "True")
-                            {
-                                if(tabControl1.TabPages.Count != 4)
-                                {
-                                    tabControl1.TabPages.Add(tpAccounts);
-                                }
-                                ResizeForm(this, 1280, 720, true);
-                            }
-                            else
-                            {
-                                tabControl1.TabPages.Remove(tpAccounts);
-                                ResizeForm(this, 1280, 720, true);
-                            }
-                        }
-                    }
-                }
-                if (aut_flag == false)
-                {
-                    MessageBox.Show("Логин/Пароль введены неверно");
-                }
-                chkbxVisiblePassLogin.Checked = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void ResizeForm(Form form,int width, int height, bool stateOfUnlogin)
-        {
-            //ресайз формы для авторизации
-            form.MaximumSize = new Size(width, height);
-            form.MinimumSize = new Size(width, height);
-            form.Size = new Size(width, height);
-            form.Location = new Point(Screen.PrimaryScreen.Bounds.Size.Width/2 - width/2, Screen.PrimaryScreen.Bounds.Size.Height/2-height/2);
-            this.разлогинитьсяToolStripMenuItem.Enabled = stateOfUnlogin;
-        }
-
         private void but_books_search_Click(object sender, EventArgs e)
         {
             //сброс поиска книг
@@ -199,8 +146,7 @@ namespace WindowsFormsApp1
 
         private void разлогинитьсяToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.tabControl1.Visible = false;
-            ResizeForm(this, 320, 240,false);
+            this.Close();
         }
 
         private void rEADERSDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -295,7 +241,6 @@ namespace WindowsFormsApp1
             availabilityCheckBox.Enabled = state;
             but_save_book_changes.Enabled = state;
             but_book_chages_back.Enabled = state;
-            //checkBox4.Checked = !state;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -513,7 +458,7 @@ namespace WindowsFormsApp1
                 dimDateTableAdapter.Fill(this.library451DWHDataSet.DimDate);
                 dimReaderTableAdapter.Fill(this.library451DWHDataSet.DimReader);
 
-                this.reades_debtsBindingSource.EndEdit();
+                //this.reades_debtsBindingSource.EndEdit();
                 возвращеноCheckBox.Checked = true;
                 this.library451DataSet.Debts.FindByDebts_ID(Int32.Parse(iDTextBox.Text)).Closed = true;
                 int book_id = this.library451DataSet.Debts.FindByDebts_ID(Int32.Parse(iDTextBox.Text)).Book_ID;
@@ -707,12 +652,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void chkbxVisiblePassLogin_CheckedChanged(object sender, EventArgs e)
-        {
-            //изменение видимости 
-            PasswordVisible(chkbxVisiblePassLogin, tb_password);
-        }
-
         private void PasswordVisible(CheckBox checkBox,TextBox textBox)
         {
             if (checkBox.Checked)
@@ -725,71 +664,90 @@ namespace WindowsFormsApp1
         private void butCreateReport_Click(object sender, EventArgs e)
         {
             Stream fs;
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            try
             {
-                if((fs = saveFileDialog1.OpenFile()) != null)
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    Document doc = new Document();
-                    doc.SetPageSize(PageSize.A4);
-                    PdfWriter writer = PdfWriter.GetInstance(doc, fs);
-                    doc.Open();
-                    BaseFont bfnt = BaseFont.CreateFont(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "TIMES.TTF"), BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
-                    
-                    //Report Header
-                    Font fntHead = new Font(bfnt, 16, 1, BaseColor.BLACK);
-                    Paragraph prgHead = new Paragraph();
-                    prgHead.Alignment = Element.ALIGN_CENTER;
-                    prgHead.Add(new Chunk("ОТЧЕТ", fntHead));
-                    doc.Add(prgHead);
-
-                    //dates
-                    Paragraph prgDates = new Paragraph();
-                    Font fntDates = new Font(bfnt, 14, 1, BaseColor.BLACK);
-                    prgDates.Alignment = Element.ALIGN_CENTER;
-                    prgDates.Add(new Chunk("В период с "+dtPickerFrom.Value.ToShortDateString() + " по " + dtPickerTo.Value.ToShortDateString(), fntDates));
-                    doc.Add(prgDates);
-                    
-                    //line   
-                    Paragraph prgLine = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.BLACK,Element.ALIGN_CENTER,0F)));
-                    doc.Add(prgLine);
-
-                    //line break
-                    doc.Add(new Chunk("\n", fntHead));
-
-                    Font fntTable = new Font(bfnt, 5, 1, BaseColor.BLACK);
-                    PdfPTable table = new PdfPTable(задолженностиDataGridView.Columns.Count);
-                    for(int i = 0;i< задолженностиDataGridView.Columns.Count; i++)
+                    if ((fs = saveFileDialog1.OpenFile()) != null)
                     {
-                        PdfPCell cell = new PdfPCell();
-                        cell.BackgroundColor = BaseColor.WHITE;
-                        cell.AddElement(new Chunk(задолженностиDataGridView.Columns[i].HeaderText, fntTable));
-                        table.AddCell(cell);
-                    }
-                    for (int i = 0; i < задолженностиDataGridView.Rows.Count; i++)
-                    {
-                        for (int j = 0; j < задолженностиDataGridView.Columns.Count; j++)
+                        Document doc = new Document();
+                        doc.SetPageSize(PageSize.A4);
+                        PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+                        doc.Open();
+
+                        //base font
+                        BaseFont bfnt = BaseFont.CreateFont(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "TIMES.TTF"), BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+
+                        //Report Header
+                        Font fntHead = new Font(bfnt, 16, 1, BaseColor.BLACK);
+                        Paragraph prgHead = new Paragraph();
+                        prgHead.Alignment = Element.ALIGN_CENTER;
+                        prgHead.Add(new Chunk("ОТЧЕТ", fntHead));
+                        doc.Add(prgHead);
+
+                        //dates
+                        Paragraph prgDates = new Paragraph();
+                        Font fntDates = new Font(bfnt, 14, 1, BaseColor.BLACK);
+                        prgDates.Alignment = Element.ALIGN_CENTER;
+                        prgDates.Add(new Chunk("В период с " + dtPickerFrom.Value.ToShortDateString() + " по " + dtPickerTo.Value.ToShortDateString(), fntDates));
+                        doc.Add(prgDates);
+
+                        //line   
+                        Paragraph prgLine = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.BLACK, Element.ALIGN_CENTER, 0F)));
+                        doc.Add(prgLine);
+
+                        //line break
+                        doc.Add(new Chunk("\n", fntHead));
+
+                        Font fntTable = new Font(bfnt, 5, 1, BaseColor.BLACK);
+                        PdfPTable table = new PdfPTable(задолженностиDataGridView.Columns.Count);
+                        for (int i = 0; i < задолженностиDataGridView.Columns.Count; i++)
                         {
-                            PdfPCell content_cell = new PdfPCell();
-                            if (задолженностиDataGridView.Rows[i].Cells[j].Value.GetType() == DateTime.Today.GetType())
+                            PdfPCell cell = new PdfPCell();
+                            cell.BackgroundColor = BaseColor.WHITE;
+                            cell.AddElement(new Chunk(задолженностиDataGridView.Columns[i].HeaderText, fntTable));
+                            table.AddCell(cell);
+                        }
+                        for (int i = 0; i < задолженностиDataGridView.Rows.Count; i++)
+                        {
+                            for (int j = 0; j < задолженностиDataGridView.Columns.Count; j++)
                             {
-                                content_cell.AddElement(new Chunk(((DateTime)задолженностиDataGridView.Rows[i].Cells[j].Value).ToShortDateString(), fntTable));
-                                table.AddCell(content_cell);
+                                PdfPCell content_cell = new PdfPCell();
+                                if (задолженностиDataGridView.Rows[i].Cells[j].Value.GetType() == DateTime.Today.GetType())
+                                {
+                                    content_cell.AddElement(new Chunk(((DateTime)задолженностиDataGridView.Rows[i].Cells[j].Value).ToShortDateString(), fntTable));
+                                    table.AddCell(content_cell);
+                                }
+                                else
+                                {
+                                    content_cell.AddElement(new Chunk(задолженностиDataGridView.Rows[i].Cells[j].Value.ToString(), fntTable));
+                                    table.AddCell(content_cell);
+                                }
                             }
-                            else
-                            {
-                                content_cell.AddElement(new Chunk(задолженностиDataGridView.Rows[i].Cells[j].Value.ToString(), fntTable));
-                                table.AddCell(content_cell);
-                            }
+
                         }
 
+                        doc.Add(table);
+
+                        doc.Add(new Chunk("\n", fntHead));
+                        doc.Add(prgLine);
+                        doc.Add(new Chunk("\n", fntHead));
+
+                        //footer
+                        Paragraph prgFooter = new Paragraph();
+                        prgFooter.Alignment = Element.ALIGN_RIGHT;
+                        prgFooter.Add(new Chunk(UserFIO + "    " + DateTime.Today.ToShortDateString(), fntDates));
+                        doc.Add(prgFooter);
+
+                        doc.Close();
+                        writer.Close();
+                        fs.Close();
                     }
-
-                    doc.Add(table);
-
-                    doc.Close();
-                    writer.Close();
-                    fs.Close();                    
                 }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
             
@@ -798,6 +756,11 @@ namespace WindowsFormsApp1
         private void dtPickerFrom_ValueChanged(object sender, EventArgs e)
         {
             задолженностиBindingSource.Filter = string.Format("[action_date] >=  '{0}' AND [action_date] <= '{1}'", dtPickerFrom.Value.ToShortDateString(), dtPickerTo.Value.ToShortDateString());
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            autForm.Show();
         }
     }
 }

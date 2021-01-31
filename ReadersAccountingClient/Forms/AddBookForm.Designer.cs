@@ -31,6 +31,7 @@ namespace WindowsFormsApp1
         {
             System.Windows.Forms.Label label3;
             System.Windows.Forms.Label label5;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddBookForm));
             this.but_close_add_new_book = new System.Windows.Forms.Button();
             this.but_add_new_book = new System.Windows.Forms.Button();
             this.chb_avl = new System.Windows.Forms.CheckBox();
@@ -127,6 +128,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.chb_avl);
             this.Controls.Add(this.tb_book);
             this.Controls.Add(label5);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(530, 160);
             this.MinimumSize = new System.Drawing.Size(530, 160);
             this.Name = "AddBookForm";

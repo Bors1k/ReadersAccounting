@@ -34,6 +34,7 @@ namespace WindowsFormsApp1
             System.Windows.Forms.Label book_NameLabel;
             System.Windows.Forms.Label availabilityLabel;
             System.Windows.Forms.Label label1;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddDebtForm));
             this.library451DataSet = new WindowsFormsApp1.Library451DataSet();
             this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.booksTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.BooksTableAdapter();
@@ -294,6 +295,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.book_NameTextBox);
             this.Controls.Add(availabilityLabel);
             this.Controls.Add(this.availabilityCheckBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(824, 445);
             this.MinimumSize = new System.Drawing.Size(824, 445);
             this.Name = "AddDebtForm";
