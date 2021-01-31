@@ -80,15 +80,29 @@ namespace WindowsFormsApp1.Forms
         {
             if (IsSettingUserClose == true)
             {
-                this.autTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
-                this.autTableAdapter.Fill(this.library451DataSet.aut);
+                try
+                {
+                    this.autTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
+                    this.autTableAdapter.Fill(this.library451DataSet.aut);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             IsSettingUserClose = true;
         }
 
         private void обновитьДанныеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.autTableAdapter.Fill(this.library451DataSet.aut);
+            try
+            {
+               this.autTableAdapter.Fill(this.library451DataSet.aut);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
