@@ -64,7 +64,6 @@ namespace WindowsFormsApp1.Forms
             this.tb_password.Name = "tb_password";
             this.tb_password.Size = new System.Drawing.Size(100, 20);
             this.tb_password.TabIndex = 13;
-            this.tb_password.Text = "admin";
             this.tb_password.UseSystemPasswordChar = true;
             // 
             // tb_login
@@ -74,7 +73,6 @@ namespace WindowsFormsApp1.Forms
             this.tb_login.Name = "tb_login";
             this.tb_login.Size = new System.Drawing.Size(102, 20);
             this.tb_login.TabIndex = 12;
-            this.tb_login.Text = "admin";
             // 
             // label2
             // 
@@ -129,14 +127,14 @@ namespace WindowsFormsApp1.Forms
             // подключениеКБДToolStripMenuItem
             // 
             this.подключениеКБДToolStripMenuItem.Name = "подключениеКБДToolStripMenuItem";
-            this.подключениеКБДToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.подключениеКБДToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.подключениеКБДToolStripMenuItem.Text = "Подключение к БД";
             this.подключениеКБДToolStripMenuItem.Click += new System.EventHandler(this.подключениеКБДToolStripMenuItem_Click);
             // 
             // обновитьДанныеToolStripMenuItem
             // 
             this.обновитьДанныеToolStripMenuItem.Name = "обновитьДанныеToolStripMenuItem";
-            this.обновитьДанныеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.обновитьДанныеToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.обновитьДанныеToolStripMenuItem.Text = "Обновить данные";
             this.обновитьДанныеToolStripMenuItem.Click += new System.EventHandler(this.обновитьДанныеToolStripMenuItem_Click);
             // 

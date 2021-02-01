@@ -15,7 +15,6 @@ namespace WindowsFormsApp1.Forms
         public AutForm()
         {
             InitializeComponent();
-            this.autTableAdapter.Fill(this.library451DataSet.aut);
         }
 
         private string UserFIO;
@@ -25,6 +24,8 @@ namespace WindowsFormsApp1.Forms
         {
             try
             {
+                //подгружаем данные
+                this.autTableAdapter.Fill(this.library451DataSet.aut);
                 //авторизация
                 bool aut_flag = false;
                 foreach (DataRow row in this.library451DataSet.aut.Rows)

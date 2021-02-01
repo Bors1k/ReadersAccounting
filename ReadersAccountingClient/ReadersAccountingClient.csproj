@@ -197,7 +197,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="paomedia-small-n-flat-book-bookmark.ico" />
-    <Content Include="png-transparent-bookmark-content-book-cover-book-material-chapter-accroche.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
