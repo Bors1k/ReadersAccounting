@@ -112,6 +112,9 @@
     <Compile Include="Forms\DBSettingsForm.Designer.cs">
       <DependentUpon>DBSettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Library451DWHDataSet.cs">
+      <DependentUpon>Library451DWHDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Library451DWHDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

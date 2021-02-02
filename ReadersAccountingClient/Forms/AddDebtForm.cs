@@ -25,14 +25,13 @@ namespace WindowsFormsApp1
             this.dateTimePicker1.Value = DateTime.Today + TimeSpan.FromDays(7);
             try
             {
-                dimActionTypeTableAdapter.Fill(this.library451DWHDataSet.DimActionType);
                 dimBookTableAdapter.Fill(this.library451DWHDataSet.DimBook);
                 dimDateTableAdapter.Fill(this.library451DWHDataSet.DimDate);
                 dimReaderTableAdapter.Fill(this.library451DWHDataSet.DimReader);
 
                 this.booksTableAdapter.Fill(this.library451DataSet.Books);
-                this.readersTableAdapter1.Fill(this.library451DataSet.Readers);
-                this.debtsTableAdapter1.Fill(this.library451DataSet.Debts);
+                this.readersTableAdapter.Fill(this.library451DataSet.Readers);
+                this.debtsTableAdapter.Fill(this.library451DataSet.Debts);
                 this.booksBindingSource.Filter = "[Availability] = true";
             }
             catch(Exception ex)
@@ -43,7 +42,6 @@ namespace WindowsFormsApp1
 
         private void butAddNewDebt_Click(object sender, EventArgs e)
         {
-            //DateTime today = dateTimePicker2.Value;
             Functions func = new Functions();
             try
             {
@@ -54,26 +52,26 @@ namespace WindowsFormsApp1
                         int week = (int)DateTime.Today.DayOfWeek / 7 + 1;
                         library451DWHDataSet.DimDate.AddDimDateRow(DateTime.Today, week, DateTime.Today.Month, DateTime.Today.Year);
                         dimDateTableAdapter.Update(library451DWHDataSet.DimDate);
-                        this.library451DWHDataSet.FactDebts.AddFactDebtsRow(library451DWHDataSet.DimReader.FindByReader_ID(readerID), library451DWHDataSet.DimBook.FindBybook_id(Int32.Parse(book_IDTextBox.Text)), library451DWHDataSet.DimDate.Last(), library451DWHDataSet.DimActionType.FindByID(1));
+                        this.library451DWHDataSet.FactsBookHistory.AddFactsBookHistoryRow(library451DWHDataSet.DimReader.FindByReader_ID(readerID), library451DWHDataSet.DimBook.FindBybook_id(Int32.Parse(book_IDTextBox.Text)), library451DWHDataSet.DimDate.Last());
                     }
                     else
                     {
-                        if (library451DWHDataSet.DimDate.Last().action_date != DateTime.Today)
+                        if (library451DWHDataSet.DimDate.Last().Date != DateTime.Today)
                         {
                             int week = (int)DateTime.Today.DayOfWeek / 7 + 1;
                             library451DWHDataSet.DimDate.AddDimDateRow(DateTime.Today, week, DateTime.Today.Month, DateTime.Today.Year);
                             dimDateTableAdapter.Update(library451DWHDataSet.DimDate);
-                            this.library451DWHDataSet.FactDebts.AddFactDebtsRow(library451DWHDataSet.DimReader.FindByReader_ID(readerID), library451DWHDataSet.DimBook.FindBybook_id(Int32.Parse(book_IDTextBox.Text)), library451DWHDataSet.DimDate.Last(), library451DWHDataSet.DimActionType.FindByID(1));
+                            this.library451DWHDataSet.FactsBookHistory.AddFactsBookHistoryRow(library451DWHDataSet.DimReader.FindByReader_ID(readerID), library451DWHDataSet.DimBook.FindBybook_id(Int32.Parse(book_IDTextBox.Text)), library451DWHDataSet.DimDate.Last());
                         }
-                        else this.library451DWHDataSet.FactDebts.AddFactDebtsRow(library451DWHDataSet.DimReader.FindByReader_ID(readerID), library451DWHDataSet.DimBook.FindBybook_id(Int32.Parse(book_IDTextBox.Text)), library451DWHDataSet.DimDate.Last(), library451DWHDataSet.DimActionType.FindByID(1));
+                        else this.library451DWHDataSet.FactsBookHistory.AddFactsBookHistoryRow(library451DWHDataSet.DimReader.FindByReader_ID(readerID), library451DWHDataSet.DimBook.FindBybook_id(Int32.Parse(book_IDTextBox.Text)), library451DWHDataSet.DimDate.Last());
                     }
-                    this.factDebtsTableAdapter.Update(this.library451DWHDataSet.FactDebts);
+                    this.factsBookHistoryTableAdapter.Update(this.library451DWHDataSet.FactsBookHistory);
 
                     this.library451DataSet.Debts.AddDebtsRow(this.library451DataSet.Readers.FindByReader_ID(readerID), this.library451DataSet.Books.FindByBook_ID(Int32.Parse(book_IDTextBox.Text)), DateTime.Today, dateTimePicker1.Value, false);
                     this.availabilityCheckBox.Checked = false;
                     this.booksBindingSource.EndEdit();
                     this.booksTableAdapter.Update(library451DataSet.Books);
-                    this.debtsTableAdapter1.Update(library451DataSet.Debts);
+                    this.debtsTableAdapter.Update(library451DataSet.Debts);
                     Close();
                 }
                 else

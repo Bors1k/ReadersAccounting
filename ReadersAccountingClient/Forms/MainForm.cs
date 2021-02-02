@@ -54,7 +54,7 @@ namespace WindowsFormsApp1
             {
                 tabControl1.TabPages.Remove(tpAccounts);
             }
-            dtPickerFrom.Value = dtPickerTo.Value - TimeSpan.FromDays(30);
+            //dtPickerFrom.Value = dtPickerTo.Value - TimeSpan.FromDays(30);
         }
 
         private void подключениеКБДToolStripMenuItem_Click(object sender, EventArgs e)
@@ -90,8 +90,9 @@ namespace WindowsFormsApp1
                     this.readersTableAdapter.Fill(this.library451DataSet.Readers);
                     this.booksTableAdapter.Fill(this.library451DataSet.Books);
                     this.autTableAdapter.Fill(this.library451DataSet.aut);
-                    this.debtsTableAdapter1.Fill(this.library451DataSet.Debts);
-                    this.задолженностиTableAdapter.Fill(this.library451DWHDataSet.Задолженности);
+                    this.debtsTableAdapter.Fill(this.library451DataSet.Debts);
+                    this.booksHistoryTableAdapter.Fill(this.library451DWHDataSet.BooksHistory);
+                    this.readersHistoryTableAdapter.Fill(this.library451DWHDataSet.ReadersHistory);
                 }
                 if (type == TypeOfLoadDB.book)
                 {
@@ -100,7 +101,7 @@ namespace WindowsFormsApp1
                 if (type == TypeOfLoadDB.debts)
                 {
                     this.reades_debtsTableAdapter.Fill(this.library451DataSet.reades_debts);
-                    this.debtsTableAdapter1.Fill(this.library451DataSet.Debts);
+                    this.debtsTableAdapter.Fill(this.library451DataSet.Debts);
                 }
                 if (type == TypeOfLoadDB.readers)
                 {
@@ -112,7 +113,8 @@ namespace WindowsFormsApp1
                 }
                 if(type == TypeOfLoadDB.reports)
                 {
-                    this.задолженностиTableAdapter.Fill(this.library451DWHDataSet.Задолженности);
+                    this.booksHistoryTableAdapter.Fill(this.library451DWHDataSet.BooksHistory);
+                    this.readersHistoryTableAdapter.Fill(this.library451DWHDataSet.ReadersHistory);
                 }
             }
             catch (Exception ex)
@@ -125,13 +127,13 @@ namespace WindowsFormsApp1
             //обновление строк подключения
             try
             {
-                this.задолженностиTableAdapter.Connection.ConnectionString = Properties.Settings.Default.DWH_ConnectionString;
+               //this.задолженностиTableAdapter.Connection.ConnectionString = Properties.Settings.Default.DWH_ConnectionString;
 
                 this.booksTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
                 this.autTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
                 this.readersTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
                 this.reades_debtsTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
-                this.debtsTableAdapter1.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
+                this.debtsTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
             }
             catch (Exception ex)
             {
@@ -383,7 +385,7 @@ namespace WindowsFormsApp1
                 {
                     try
                     {
-                        this.debtsTableAdapter1.Delete(Int32.Parse(iDTextBox.Text), Int32.Parse(reades_debtsDataGridView.CurrentRow.Cells["dataGridViewTextBoxColumn7"].Value.ToString()),
+                        this.debtsTableAdapter.Delete(Int32.Parse(iDTextBox.Text), Int32.Parse(reades_debtsDataGridView.CurrentRow.Cells["dataGridViewTextBoxColumn7"].Value.ToString()),
                             Int32.Parse(reades_debtsDataGridView.CurrentRow.Cells["Book_ID"].Value.ToString()),
                             дата_выдачиDateTimePicker.Value, дата_возвратаDateTimePicker.Value, возвращеноCheckBox.Checked);
                         this.library451DataSet.AcceptChanges();
@@ -430,7 +432,7 @@ namespace WindowsFormsApp1
                     this.reades_debtsBindingSource.EndEdit();
                     this.library451DataSet.Debts.FindByDebts_ID(Int32.Parse(iDTextBox.Text)).Issue_Date = this.дата_выдачиDateTimePicker.Value;
                     this.library451DataSet.Debts.FindByDebts_ID(Int32.Parse(iDTextBox.Text)).Return_Date = this.дата_возвратаDateTimePicker.Value;
-                    this.debtsTableAdapter1.Update(this.library451DataSet.Debts);
+                    this.debtsTableAdapter.Update(this.library451DataSet.Debts);
                     this.library451DataSet.AcceptChanges();
                     LoadFromDB(TypeOfLoadDB.debts);
                     debtsStateChanger(false);
@@ -453,36 +455,18 @@ namespace WindowsFormsApp1
         {
             //закрываем задолженность и освобождаем книгу
             
-            //DateTime today = dateTimePicker1.Value;
             try
             {
-                dimActionTypeTableAdapter.Fill(this.library451DWHDataSet.DimActionType);
-                dimBookTableAdapter.Fill(this.library451DWHDataSet.DimBook);
-                dimDateTableAdapter.Fill(this.library451DWHDataSet.DimDate);
-                dimReaderTableAdapter.Fill(this.library451DWHDataSet.DimReader);
-
                 //this.reades_debtsBindingSource.EndEdit();
                 возвращеноCheckBox.Checked = true;
                 this.library451DataSet.Debts.FindByDebts_ID(Int32.Parse(iDTextBox.Text)).Closed = true;
 
                 int book_id = this.library451DataSet.Debts.FindByDebts_ID(Int32.Parse(iDTextBox.Text)).Book_ID;
-                int reader_id = this.library451DataSet.Debts.FindByDebts_ID(Int32.Parse(iDTextBox.Text)).Reader_ID;
 
                 this.library451DataSet.Books.FindByBook_ID(book_id).Availability = true;
                 this.booksTableAdapter.Update(this.library451DataSet.Books);
-                this.debtsTableAdapter1.Update(this.library451DataSet.Debts);
+                this.debtsTableAdapter.Update(this.library451DataSet.Debts);
                 this.library451DataSet.AcceptChanges();
-
-
-                if (library451DWHDataSet.DimDate.Last().action_date != DateTime.Today)
-                {
-                    int week = (int)DateTime.Today.DayOfWeek / 7 + 1;
-                    library451DWHDataSet.DimDate.AddDimDateRow(DateTime.Today, week, DateTime.Today.Month, DateTime.Today.Year);
-                    dimDateTableAdapter.Update(library451DWHDataSet.DimDate);
-                    this.library451DWHDataSet.FactDebts.AddFactDebtsRow(library451DWHDataSet.DimReader.FindByReader_ID(reader_id), library451DWHDataSet.DimBook.FindBybook_id(book_id), library451DWHDataSet.DimDate.Last(), library451DWHDataSet.DimActionType.FindByID(2));
-                }
-                else this.library451DWHDataSet.FactDebts.AddFactDebtsRow(library451DWHDataSet.DimReader.FindByReader_ID(reader_id), library451DWHDataSet.DimBook.FindBybook_id(book_id), library451DWHDataSet.DimDate.Last(), library451DWHDataSet.DimActionType.FindByID(2));
-                this.factDebtsTableAdapter.Update(this.library451DWHDataSet.FactDebts);
             }
             catch(Exception ex)
             {
@@ -667,7 +651,7 @@ namespace WindowsFormsApp1
             else textBox.UseSystemPasswordChar = true;
         }
 
-        private void butCreateReport_Click(object sender, EventArgs e)
+        private void CreateReport(DataGridView dataGridView, string Type, string name, string id, DateTimePicker from, DateTimePicker to, string count)
         {
             Stream fs;
             try
@@ -688,15 +672,31 @@ namespace WindowsFormsApp1
                         Font fntHead = new Font(bfnt, 16, 1, BaseColor.BLACK);
                         Paragraph prgHead = new Paragraph();
                         prgHead.Alignment = Element.ALIGN_CENTER;
-                        prgHead.Add(new Chunk("ОТЧЕТ", fntHead));
+                        prgHead.Add(new Chunk("ОТЧЕТ О " + Type.ToUpper(), fntHead));
                         doc.Add(prgHead);
 
-                        //dates
+                        //info
+                        Font fntInfo = new Font(bfnt, 14, 1, BaseColor.BLACK);
+
+                        Paragraph prgName = new Paragraph();
+                        prgName.Alignment = Element.ALIGN_CENTER;
+                        prgName.Add(new Chunk(name, fntInfo));
+                        doc.Add(prgName);
+
+                        Paragraph prgID = new Paragraph();
+                        prgID.Alignment = Element.ALIGN_CENTER;
+                        prgID.Add(new Chunk("Учетный номер: " + id, fntInfo));
+                        doc.Add(prgID);
+
                         Paragraph prgDates = new Paragraph();
-                        Font fntDates = new Font(bfnt, 14, 1, BaseColor.BLACK);
                         prgDates.Alignment = Element.ALIGN_CENTER;
-                        prgDates.Add(new Chunk("В период с " + dtPickerFrom.Value.ToShortDateString() + " по " + dtPickerTo.Value.ToShortDateString(), fntDates));
+                        prgDates.Add(new Chunk("В период с " + from.Value.ToShortDateString() + " по " + to.Value.ToShortDateString(), fntInfo));
                         doc.Add(prgDates);
+
+                        Paragraph prgCount = new Paragraph();
+                        prgCount.Alignment = Element.ALIGN_CENTER;
+                        prgCount.Add(new Chunk(count, fntInfo));
+                        doc.Add(prgCount);
 
                         //line   
                         Paragraph prgLine = new Paragraph(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.BLACK, Element.ALIGN_CENTER, 0F)));
@@ -705,28 +705,32 @@ namespace WindowsFormsApp1
                         //line break
                         doc.Add(new Chunk("\n", fntHead));
 
-                        Font fntTable = new Font(bfnt, 5, 1, BaseColor.BLACK);
-                        PdfPTable table = new PdfPTable(задолженностиDataGridView.Columns.Count);
-                        for (int i = 0; i < задолженностиDataGridView.Columns.Count; i++)
+                        //Data table
+                        Font fntTable = new Font(bfnt, 10, 1, BaseColor.BLACK);
+                        PdfPTable table = new PdfPTable(dataGridView.Columns.Count-2);
+                        table.TotalWidth = 1000f;
+                        table.SetWidths(new float[] { 180f,660f,160f});  
+                        for (int i = 2; i < dataGridView.Columns.Count; i++)
                         {
                             PdfPCell cell = new PdfPCell();
                             cell.BackgroundColor = BaseColor.WHITE;
-                            cell.AddElement(new Chunk(задолженностиDataGridView.Columns[i].HeaderText, fntTable));
+                            cell.Phrase = new Phrase(dataGridView.Columns[i].HeaderText, fntTable);
+                            cell.HorizontalAlignment = Element.ALIGN_CENTER;
                             table.AddCell(cell);
                         }
-                        for (int i = 0; i < задолженностиDataGridView.Rows.Count; i++)
+                        for (int i = 0; i < dataGridView.Rows.Count; i++)
                         {
-                            for (int j = 0; j < задолженностиDataGridView.Columns.Count; j++)
+                            for (int j = 2; j < dataGridView.Columns.Count; j++)
                             {
                                 PdfPCell content_cell = new PdfPCell();
-                                if (задолженностиDataGridView.Rows[i].Cells[j].Value.GetType() == DateTime.Today.GetType())
+                                if (dataGridView.Rows[i].Cells[j].Value.GetType() == DateTime.Today.GetType())
                                 {
-                                    content_cell.AddElement(new Chunk(((DateTime)задолженностиDataGridView.Rows[i].Cells[j].Value).ToShortDateString(), fntTable));
+                                    content_cell.AddElement(new Chunk(" " + ((DateTime)dataGridView.Rows[i].Cells[j].Value).ToShortDateString(), fntTable));
                                     table.AddCell(content_cell);
                                 }
                                 else
                                 {
-                                    content_cell.AddElement(new Chunk(задолженностиDataGridView.Rows[i].Cells[j].Value.ToString(), fntTable));
+                                    content_cell.AddElement(new Chunk(" " + dataGridView.Rows[i].Cells[j].Value.ToString(), fntTable));
                                     table.AddCell(content_cell);
                                 }
                             }
@@ -735,6 +739,7 @@ namespace WindowsFormsApp1
 
                         doc.Add(table);
 
+                        //line
                         doc.Add(new Chunk("\n", fntHead));
                         doc.Add(prgLine);
                         doc.Add(new Chunk("\n", fntHead));
@@ -742,7 +747,7 @@ namespace WindowsFormsApp1
                         //footer
                         Paragraph prgFooter = new Paragraph();
                         prgFooter.Alignment = Element.ALIGN_RIGHT;
-                        prgFooter.Add(new Chunk(UserFIO + "    " + DateTime.Today.ToShortDateString(), fntDates));
+                        prgFooter.Add(new Chunk(UserFIO + "    " + DateTime.Today.ToShortDateString(), fntInfo));
                         doc.Add(prgFooter);
 
                         doc.Close();
@@ -761,12 +766,69 @@ namespace WindowsFormsApp1
 
         private void dtPickerFrom_ValueChanged(object sender, EventArgs e)
         {
-            задолженностиBindingSource.Filter = string.Format("[action_date] >=  '{0}' AND [action_date] <= '{1}'", dtPickerFrom.Value.ToShortDateString(), dtPickerTo.Value.ToShortDateString());
+            booksHistoryBindingSource.Filter = string.Format("[Date] >=  '{0}' AND [Date] <= '{1}' AND [book_id] = {2}", dtPickerFrom.Value.ToShortDateString(), dtPickerTo.Value.ToShortDateString(), Int32.Parse(book_IDTextBox1.Text));
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             autForm.Show();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            ReportReadersBindingSource.Filter = string.Format("[FIO] LIKE '%{0}%'", textBox1.Text);
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            ReportBooksBindingSource.Filter = string.Format("[Book_Name] LIKE '%{0}%'", textBox2.Text);
+        }
+
+        private void readersDataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            readersHistoryBindingSource.Filter = string.Format("[Date] >=  '{0}' AND [Date] <= '{1}' AND [Reader_ID] = {2}", dateTimePicker2.Value.ToShortDateString(), dateTimePicker1.Value.ToShortDateString(), Int32.Parse(reader_IDTextBox1.Text));
+            tbCountBooks.Text = readersHistoryDataGridView.Rows.Count.ToString();
+        }
+
+        private void booksDataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            booksHistoryBindingSource.Filter = string.Format("[Date] >=  '{0}' AND [Date] <= '{1}' AND [book_id] = {2}", dtPickerFrom.Value.ToShortDateString(), dtPickerTo.Value.ToShortDateString(), Int32.Parse(book_IDTextBox1.Text));
+            tbCountBookGive.Text = booksHistoryDataGridView.Rows.Count.ToString();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            this.booksHistoryTableAdapter.Fill(this.library451DWHDataSet.BooksHistory);
+            this.readersHistoryTableAdapter.Fill(this.library451DWHDataSet.ReadersHistory);
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            //очистка поиска для отчета по читателям
+            textBox1.Text = "";
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //очистка поиска для отчета по книгам
+            textBox2.Text = "";
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            //отчет для читателя
+            CreateReport(readersHistoryDataGridView,"читатале", fIOTextBox1.Text, reader_IDTextBox1.Text, dateTimePicker2, dateTimePicker1,"Кол-во взятых книг: " + tbCountBooks.Text);
+        }
+
+        private void butCreateReport_Click(object sender, EventArgs e)
+        {
+            //отчет для книги
+            CreateReport(booksHistoryDataGridView, "книге", book_NameTextBox1.Text, book_IDTextBox1.Text, dtPickerFrom, dtPickerTo, "Кол-во взятых раз: " + tbCountBooks.Text);
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            readersHistoryBindingSource.Filter = string.Format("[Date] >=  '{0}' AND [Date] <= '{1}' AND [Reader_ID] = {2}", dateTimePicker2.Value.ToShortDateString(), dateTimePicker1.Value.ToShortDateString(), Int32.Parse(reader_IDTextBox1.Text));
         }
     }
 }

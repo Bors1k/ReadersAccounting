@@ -70,20 +70,12 @@ namespace WindowsFormsApp1
             this.but_book_chages_back = new System.Windows.Forms.Button();
             this.but_save_book_changes = new System.Windows.Forms.Button();
             this.availabilityCheckBox = new System.Windows.Forms.CheckBox();
-            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.library451DataSet = new WindowsFormsApp1.Library451DataSet();
             this.book_IDTextBox = new System.Windows.Forms.TextBox();
             this.book_NameTextBox = new System.Windows.Forms.TextBox();
             this.booksDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tp_readers = new System.Windows.Forms.TabPage();
             this.but_add_new_reader = new System.Windows.Forms.Button();
             this.readersDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.readersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pASSPORTTextBox = new System.Windows.Forms.MaskedTextBox();
             this.tELEPHONETextBox = new System.Windows.Forms.MaskedTextBox();
@@ -106,42 +98,46 @@ namespace WindowsFormsApp1
             this.butChangeDebt = new System.Windows.Forms.Button();
             this.butDeleteDebt = new System.Windows.Forms.Button();
             this.iDTextBox = new System.Windows.Forms.TextBox();
-            this.reades_debtsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.книгаTextBox = new System.Windows.Forms.TextBox();
             this.дата_выдачиDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.дата_возвратаDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.возвращеноCheckBox = new System.Windows.Forms.CheckBox();
             this.butAddDebt = new System.Windows.Forms.Button();
             this.reades_debtsDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Возвращено = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Book_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tpOtchet = new System.Windows.Forms.TabPage();
-            this.задолженностиDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.задолженностиBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.library451DWHDataSet = new WindowsFormsApp1.Library451DWHDataSet();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.tcReports = new System.Windows.Forms.TabControl();
+            this.tpReportBooks = new System.Windows.Forms.TabPage();
+            this.tbCountBooks = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.readersHistoryDataGridView = new System.Windows.Forms.DataGridView();
+            this.button3 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.readersDataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.reader_IDTextBox1 = new System.Windows.Forms.TextBox();
+            this.tpReportReaders = new System.Windows.Forms.TabPage();
+            this.tbCountBookGive = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.booksHistoryDataGridView = new System.Windows.Forms.DataGridView();
+            this.button5 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.booksDataGridView2 = new System.Windows.Forms.DataGridView();
             this.dtPickerFrom = new System.Windows.Forms.DateTimePicker();
             this.dtPickerTo = new System.Windows.Forms.DateTimePicker();
             this.butCreateReport = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.book_IDTextBox1 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.tpAccounts = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.butDeletAcc = new System.Windows.Forms.Button();
             this.butCancelNewAcc = new System.Windows.Forms.Button();
             this.iDAccTextBox = new System.Windows.Forms.TextBox();
-            this.autBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.butSaveNewAcc = new System.Windows.Forms.Button();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.loginTextBox1 = new System.Windows.Forms.TextBox();
@@ -161,8 +157,43 @@ namespace WindowsFormsApp1
             this.tbAccSearch = new System.Windows.Forms.TextBox();
             this.butChangeAccounts = new System.Windows.Forms.Button();
             this.autDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.library451DataSet = new WindowsFormsApp1.Library451DataSet();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.readersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.reades_debtsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.readersHistoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.library451DWHDataSet = new WindowsFormsApp1.Library451DWHDataSet();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReportReadersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.readerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fIODataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.booksHistoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReportBooksBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.autBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -171,15 +202,12 @@ namespace WindowsFormsApp1
             this.autTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.autTableAdapter();
             this.readersTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.ReadersTableAdapter();
             this.reades_debtsTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.reades_debtsTableAdapter();
-            this.debtsTableAdapter1 = new WindowsFormsApp1.Library451DataSetTableAdapters.DebtsTableAdapter();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.dimActionTypeTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimActionTypeTableAdapter();
-            this.dimBookTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimBookTableAdapter();
-            this.dimDateTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimDateTableAdapter();
-            this.dimReaderTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimReaderTableAdapter();
-            this.factDebtsTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.FactDebtsTableAdapter();
-            this.задолженностиTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.ЗадолженностиTableAdapter();
+            this.debtsTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.DebtsTableAdapter();
+            this.readersHistoryTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.ReadersHistoryTableAdapter();
             this.tableAdapterManager1 = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.TableAdapterManager();
+            this.booksHistoryTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.BooksHistoryTableAdapter();
+            this.fIOTextBox1 = new System.Windows.Forms.TextBox();
+            this.book_NameTextBox1 = new System.Windows.Forms.TextBox();
             reader_IDLabel = new System.Windows.Forms.Label();
             fIOLabel = new System.Windows.Forms.Label();
             pASSPORTLabel = new System.Windows.Forms.Label();
@@ -206,25 +234,34 @@ namespace WindowsFormsApp1
             this.tabControl1.SuspendLayout();
             this.tp_books.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataGridView)).BeginInit();
             this.tp_readers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.readersDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.readersBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.reades_debtsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reades_debtsDataGridView)).BeginInit();
             this.tpOtchet.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.задолженностиDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.задолженностиBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.library451DWHDataSet)).BeginInit();
+            this.tcReports.SuspendLayout();
+            this.tpReportBooks.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.readersHistoryDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.readersDataGridView1)).BeginInit();
+            this.tpReportReaders.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.booksHistoryDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.booksDataGridView2)).BeginInit();
             this.tpAccounts.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.autBindingSource)).BeginInit();
             this.gbNewAcc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.autDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.readersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reades_debtsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.readersHistoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.library451DWHDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportReadersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.booksHistoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportBooksBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.autBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reader_IDLabel
@@ -610,16 +647,6 @@ namespace WindowsFormsApp1
             this.availabilityCheckBox.TabIndex = 12;
             this.availabilityCheckBox.UseVisualStyleBackColor = true;
             // 
-            // booksBindingSource
-            // 
-            this.booksBindingSource.DataMember = "Books";
-            this.booksBindingSource.DataSource = this.library451DataSet;
-            // 
-            // library451DataSet
-            // 
-            this.library451DataSet.DataSetName = "Library451DataSet";
-            this.library451DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // book_IDTextBox
             // 
             this.book_IDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.booksBindingSource, "Book_ID", true));
@@ -656,30 +683,6 @@ namespace WindowsFormsApp1
             this.booksDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.booksDataGridView.Size = new System.Drawing.Size(707, 565);
             this.booksDataGridView.TabIndex = 7;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Book_ID";
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Book_Name";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Книга";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Availability";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Доступность";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.Width = 80;
             // 
             // tp_readers
             // 
@@ -727,27 +730,6 @@ namespace WindowsFormsApp1
             this.readersDataGridView.Size = new System.Drawing.Size(643, 313);
             this.readersDataGridView.TabIndex = 23;
             this.readersDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rEADERSDataGridView_CellClick);
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Reader_ID";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Учетный номер";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Width = 110;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "FIO";
-            this.dataGridViewTextBoxColumn9.HeaderText = "ФИО";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // readersBindingSource
-            // 
-            this.readersBindingSource.DataMember = "Readers";
-            this.readersBindingSource.DataSource = this.library451DataSet;
             // 
             // groupBox1
             // 
@@ -998,11 +980,6 @@ namespace WindowsFormsApp1
             this.iDTextBox.Size = new System.Drawing.Size(461, 20);
             this.iDTextBox.TabIndex = 25;
             // 
-            // reades_debtsBindingSource
-            // 
-            this.reades_debtsBindingSource.DataMember = "reades_debts";
-            this.reades_debtsBindingSource.DataSource = this.library451DataSet;
-            // 
             // книгаTextBox
             // 
             this.книгаTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.reades_debtsBindingSource, "Книга", true));
@@ -1073,50 +1050,12 @@ namespace WindowsFormsApp1
             this.reades_debtsDataGridView.Size = new System.Drawing.Size(640, 191);
             this.reades_debtsDataGridView.TabIndex = 23;
             // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "ID";
-            this.dataGridViewTextBoxColumn3.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Книга";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Книга";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Дата выдачи";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Дата выдачи";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Дата возврата";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Дата возврата";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
             // Возвращено
             // 
             this.Возвращено.DataPropertyName = "Возвращено";
             this.Возвращено.HeaderText = "Возвращено";
             this.Возвращено.Name = "Возвращено";
             this.Возвращено.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Reader_ID";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Reader_ID";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTextBoxColumn7.Visible = false;
             // 
             // Book_ID
             // 
@@ -1129,12 +1068,8 @@ namespace WindowsFormsApp1
             // tpOtchet
             // 
             this.tpOtchet.AutoScroll = true;
-            this.tpOtchet.Controls.Add(this.задолженностиDataGridView);
+            this.tpOtchet.Controls.Add(this.tcReports);
             this.tpOtchet.Controls.Add(this.label8);
-            this.tpOtchet.Controls.Add(this.label7);
-            this.tpOtchet.Controls.Add(this.dtPickerFrom);
-            this.tpOtchet.Controls.Add(this.dtPickerTo);
-            this.tpOtchet.Controls.Add(this.butCreateReport);
             this.tpOtchet.Location = new System.Drawing.Point(4, 23);
             this.tpOtchet.Name = "tpOtchet";
             this.tpOtchet.Padding = new System.Windows.Forms.Padding(3);
@@ -1143,113 +1078,256 @@ namespace WindowsFormsApp1
             this.tpOtchet.Text = "Отчет";
             this.tpOtchet.UseVisualStyleBackColor = true;
             // 
-            // задолженностиDataGridView
+            // tcReports
             // 
-            this.задолженностиDataGridView.AllowUserToAddRows = false;
-            this.задолженностиDataGridView.AllowUserToDeleteRows = false;
-            this.задолженностиDataGridView.AutoGenerateColumns = false;
-            this.задолженностиDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.задолженностиDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tcReports.Controls.Add(this.tpReportBooks);
+            this.tcReports.Controls.Add(this.tpReportReaders);
+            this.tcReports.Location = new System.Drawing.Point(0, 3);
+            this.tcReports.Multiline = true;
+            this.tcReports.Name = "tcReports";
+            this.tcReports.SelectedIndex = 0;
+            this.tcReports.Size = new System.Drawing.Size(1253, 616);
+            this.tcReports.TabIndex = 6;
+            // 
+            // tpReportBooks
+            // 
+            this.tpReportBooks.AutoScroll = true;
+            this.tpReportBooks.Controls.Add(this.tbCountBooks);
+            this.tpReportBooks.Controls.Add(this.label2);
+            this.tpReportBooks.Controls.Add(this.readersHistoryDataGridView);
+            this.tpReportBooks.Controls.Add(this.button3);
+            this.tpReportBooks.Controls.Add(this.textBox1);
+            this.tpReportBooks.Controls.Add(this.readersDataGridView1);
+            this.tpReportBooks.Controls.Add(this.label1);
+            this.tpReportBooks.Controls.Add(this.dateTimePicker1);
+            this.tpReportBooks.Controls.Add(this.button2);
+            this.tpReportBooks.Controls.Add(this.dateTimePicker2);
+            this.tpReportBooks.Controls.Add(this.reader_IDTextBox1);
+            this.tpReportBooks.Controls.Add(this.fIOTextBox1);
+            this.tpReportBooks.Location = new System.Drawing.Point(4, 23);
+            this.tpReportBooks.Name = "tpReportBooks";
+            this.tpReportBooks.Padding = new System.Windows.Forms.Padding(3);
+            this.tpReportBooks.Size = new System.Drawing.Size(1245, 589);
+            this.tpReportBooks.TabIndex = 0;
+            this.tpReportBooks.Text = "Отчет о читателе";
+            this.tpReportBooks.UseVisualStyleBackColor = true;
+            // 
+            // tbCountBooks
+            // 
+            this.tbCountBooks.Location = new System.Drawing.Point(1135, 510);
+            this.tbCountBooks.Name = "tbCountBooks";
+            this.tbCountBooks.ReadOnly = true;
+            this.tbCountBooks.Size = new System.Drawing.Size(100, 20);
+            this.tbCountBooks.TabIndex = 18;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1136, 481);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 14);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Кол-во взятых книг";
+            // 
+            // readersHistoryDataGridView
+            // 
+            this.readersHistoryDataGridView.AllowUserToAddRows = false;
+            this.readersHistoryDataGridView.AllowUserToDeleteRows = false;
+            this.readersHistoryDataGridView.AutoGenerateColumns = false;
+            this.readersHistoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.readersHistoryDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn13,
             this.dataGridViewTextBoxColumn14,
             this.dataGridViewTextBoxColumn15,
             this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn19});
+            this.readersHistoryDataGridView.DataSource = this.readersHistoryBindingSource;
+            this.readersHistoryDataGridView.Location = new System.Drawing.Point(614, 44);
+            this.readersHistoryDataGridView.Name = "readersHistoryDataGridView";
+            this.readersHistoryDataGridView.ReadOnly = true;
+            this.readersHistoryDataGridView.Size = new System.Drawing.Size(625, 425);
+            this.readersHistoryDataGridView.TabIndex = 16;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(533, 17);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "Сбросить";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(6, 18);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(521, 20);
+            this.textBox1.TabIndex = 14;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // readersDataGridView1
+            // 
+            this.readersDataGridView1.AllowUserToAddRows = false;
+            this.readersDataGridView1.AllowUserToDeleteRows = false;
+            this.readersDataGridView1.AutoGenerateColumns = false;
+            this.readersDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.readersDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn19,
             this.dataGridViewTextBoxColumn18});
-            this.задолженностиDataGridView.DataSource = this.задолженностиBindingSource;
-            this.задолженностиDataGridView.Location = new System.Drawing.Point(8, 10);
-            this.задолженностиDataGridView.Name = "задолженностиDataGridView";
-            this.задолженностиDataGridView.ReadOnly = true;
-            this.задолженностиDataGridView.Size = new System.Drawing.Size(1240, 367);
-            this.задолженностиDataGridView.TabIndex = 5;
+            this.readersDataGridView1.DataSource = this.ReportReadersBindingSource;
+            this.readersDataGridView1.Location = new System.Drawing.Point(6, 44);
+            this.readersDataGridView1.Name = "readersDataGridView1";
+            this.readersDataGridView1.ReadOnly = true;
+            this.readersDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.readersDataGridView1.Size = new System.Drawing.Size(602, 537);
+            this.readersDataGridView1.TabIndex = 5;
+            this.readersDataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.readersDataGridView1_CellClick);
             // 
-            // dataGridViewTextBoxColumn13
+            // label1
             // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "ID";
-            this.dataGridViewTextBoxColumn13.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            this.dataGridViewTextBoxColumn13.Width = 50;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(800, 481);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(129, 14);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Указать отчетный период";
             // 
-            // dataGridViewTextBoxColumn14
+            // dateTimePicker1
             // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "Читательский номер";
-            this.dataGridViewTextBoxColumn14.HeaderText = "Читательский номер";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            this.dataGridViewTextBoxColumn14.Width = 80;
+            this.dateTimePicker1.Location = new System.Drawing.Point(876, 508);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 2;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
-            // dataGridViewTextBoxColumn15
+            // button2
             // 
-            this.dataGridViewTextBoxColumn15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "ФИО Читателя";
-            this.dataGridViewTextBoxColumn15.HeaderText = "ФИО Читателя";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            this.button2.Location = new System.Drawing.Point(836, 549);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Создать отчет";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // dataGridViewTextBoxColumn16
+            // dateTimePicker2
             // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "Учетый номер книги";
-            this.dataGridViewTextBoxColumn16.HeaderText = "Учетый номер книги";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            this.dataGridViewTextBoxColumn16.Width = 80;
+            this.dateTimePicker2.Location = new System.Drawing.Point(661, 508);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker2.TabIndex = 3;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
-            // dataGridViewTextBoxColumn17
+            // reader_IDTextBox1
             // 
-            this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "Книга";
-            this.dataGridViewTextBoxColumn17.HeaderText = "Книга";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            this.reader_IDTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ReportReadersBindingSource, "Reader_ID", true));
+            this.reader_IDTextBox1.Location = new System.Drawing.Point(86, 105);
+            this.reader_IDTextBox1.Name = "reader_IDTextBox1";
+            this.reader_IDTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.reader_IDTextBox1.TabIndex = 16;
             // 
-            // dataGridViewTextBoxColumn19
+            // tpReportReaders
             // 
-            this.dataGridViewTextBoxColumn19.DataPropertyName = "action_date";
-            this.dataGridViewTextBoxColumn19.HeaderText = "Дата";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            this.tpReportReaders.AutoScroll = true;
+            this.tpReportReaders.Controls.Add(this.tbCountBookGive);
+            this.tpReportReaders.Controls.Add(this.label9);
+            this.tpReportReaders.Controls.Add(this.booksHistoryDataGridView);
+            this.tpReportReaders.Controls.Add(this.button5);
+            this.tpReportReaders.Controls.Add(this.textBox2);
+            this.tpReportReaders.Controls.Add(this.booksDataGridView2);
+            this.tpReportReaders.Controls.Add(this.dtPickerFrom);
+            this.tpReportReaders.Controls.Add(this.dtPickerTo);
+            this.tpReportReaders.Controls.Add(this.butCreateReport);
+            this.tpReportReaders.Controls.Add(this.label7);
+            this.tpReportReaders.Controls.Add(this.book_IDTextBox1);
+            this.tpReportReaders.Controls.Add(this.book_NameTextBox1);
+            this.tpReportReaders.Location = new System.Drawing.Point(4, 23);
+            this.tpReportReaders.Name = "tpReportReaders";
+            this.tpReportReaders.Padding = new System.Windows.Forms.Padding(3);
+            this.tpReportReaders.Size = new System.Drawing.Size(1245, 589);
+            this.tpReportReaders.TabIndex = 1;
+            this.tpReportReaders.Text = "Отчет о книге";
+            this.tpReportReaders.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewTextBoxColumn18
+            // tbCountBookGive
             // 
-            this.dataGridViewTextBoxColumn18.DataPropertyName = "Действие";
-            this.dataGridViewTextBoxColumn18.HeaderText = "Действие";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            this.tbCountBookGive.Location = new System.Drawing.Point(1114, 517);
+            this.tbCountBookGive.Name = "tbCountBookGive";
+            this.tbCountBookGive.ReadOnly = true;
+            this.tbCountBookGive.Size = new System.Drawing.Size(100, 20);
+            this.tbCountBookGive.TabIndex = 20;
             // 
-            // задолженностиBindingSource
+            // label9
             // 
-            this.задолженностиBindingSource.DataMember = "Задолженности";
-            this.задолженностиBindingSource.DataSource = this.library451DWHDataSet;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(1101, 487);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(124, 14);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Сколько раз книгу брали";
             // 
-            // library451DWHDataSet
+            // booksHistoryDataGridView
             // 
-            this.library451DWHDataSet.DataSetName = "Library451DWHDataSet";
-            this.library451DWHDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.booksHistoryDataGridView.AllowUserToAddRows = false;
+            this.booksHistoryDataGridView.AllowUserToDeleteRows = false;
+            this.booksHistoryDataGridView.AutoGenerateColumns = false;
+            this.booksHistoryDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.booksHistoryDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.iDDataGridViewTextBoxColumn,
+            this.bookidDataGridViewTextBoxColumn,
+            this.readerIDDataGridViewTextBoxColumn,
+            this.fIODataGridViewTextBoxColumn,
+            this.dateDataGridViewTextBoxColumn});
+            this.booksHistoryDataGridView.DataSource = this.booksHistoryBindingSource;
+            this.booksHistoryDataGridView.Location = new System.Drawing.Point(614, 43);
+            this.booksHistoryDataGridView.Name = "booksHistoryDataGridView";
+            this.booksHistoryDataGridView.ReadOnly = true;
+            this.booksHistoryDataGridView.Size = new System.Drawing.Size(625, 429);
+            this.booksHistoryDataGridView.TabIndex = 10;
             // 
-            // label8
+            // button5
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(230, 430);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(15, 19);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "-";
+            this.button5.Location = new System.Drawing.Point(534, 15);
+            this.button5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(74, 25);
+            this.button5.TabIndex = 9;
+            this.button5.Text = "Сбросить";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // label7
+            // textBox2
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(173, 397);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(129, 14);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Указать отчетный период";
+            this.textBox2.Location = new System.Drawing.Point(6, 17);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(524, 20);
+            this.textBox2.TabIndex = 8;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // booksDataGridView2
+            // 
+            this.booksDataGridView2.AllowUserToAddRows = false;
+            this.booksDataGridView2.AllowUserToDeleteRows = false;
+            this.booksDataGridView2.AllowUserToOrderColumns = true;
+            this.booksDataGridView2.AutoGenerateColumns = false;
+            this.booksDataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.booksDataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn20,
+            this.dataGridViewTextBoxColumn24});
+            this.booksDataGridView2.DataSource = this.ReportBooksBindingSource;
+            this.booksDataGridView2.Location = new System.Drawing.Point(6, 43);
+            this.booksDataGridView2.Name = "booksDataGridView2";
+            this.booksDataGridView2.ReadOnly = true;
+            this.booksDataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.booksDataGridView2.Size = new System.Drawing.Size(602, 537);
+            this.booksDataGridView2.TabIndex = 5;
+            this.booksDataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.booksDataGridView2_CellClick);
             // 
             // dtPickerFrom
             // 
-            this.dtPickerFrom.Location = new System.Drawing.Point(24, 429);
+            this.dtPickerFrom.Location = new System.Drawing.Point(629, 517);
             this.dtPickerFrom.Name = "dtPickerFrom";
             this.dtPickerFrom.Size = new System.Drawing.Size(200, 20);
             this.dtPickerFrom.TabIndex = 3;
@@ -1257,7 +1335,7 @@ namespace WindowsFormsApp1
             // 
             // dtPickerTo
             // 
-            this.dtPickerTo.Location = new System.Drawing.Point(251, 429);
+            this.dtPickerTo.Location = new System.Drawing.Point(844, 517);
             this.dtPickerTo.Name = "dtPickerTo";
             this.dtPickerTo.Size = new System.Drawing.Size(200, 20);
             this.dtPickerTo.TabIndex = 2;
@@ -1265,13 +1343,40 @@ namespace WindowsFormsApp1
             // 
             // butCreateReport
             // 
-            this.butCreateReport.Location = new System.Drawing.Point(24, 595);
+            this.butCreateReport.Location = new System.Drawing.Point(798, 557);
             this.butCreateReport.Name = "butCreateReport";
             this.butCreateReport.Size = new System.Drawing.Size(75, 23);
             this.butCreateReport.TabIndex = 1;
             this.butCreateReport.Text = "Создать отчет";
             this.butCreateReport.UseVisualStyleBackColor = true;
             this.butCreateReport.Click += new System.EventHandler(this.butCreateReport_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(774, 487);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(129, 14);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Указать отчетный период";
+            // 
+            // book_IDTextBox1
+            // 
+            this.book_IDTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ReportBooksBindingSource, "Book_ID", true));
+            this.book_IDTextBox1.Location = new System.Drawing.Point(75, 86);
+            this.book_IDTextBox1.Name = "book_IDTextBox1";
+            this.book_IDTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.book_IDTextBox1.TabIndex = 10;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(209, 467);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(15, 19);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "-";
             // 
             // tpAccounts
             // 
@@ -1342,11 +1447,6 @@ namespace WindowsFormsApp1
             this.iDAccTextBox.ReadOnly = true;
             this.iDAccTextBox.Size = new System.Drawing.Size(226, 20);
             this.iDAccTextBox.TabIndex = 19;
-            // 
-            // autBindingSource
-            // 
-            this.autBindingSource.DataMember = "aut";
-            this.autBindingSource.DataSource = this.library451DataSet;
             // 
             // butSaveNewAcc
             // 
@@ -1544,14 +1644,6 @@ namespace WindowsFormsApp1
             this.autDataGridView.Size = new System.Drawing.Size(539, 356);
             this.autDataGridView.TabIndex = 0;
             // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "ID";
-            this.dataGridViewTextBoxColumn10.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            this.dataGridViewTextBoxColumn10.Width = 50;
-            // 
             // FIO
             // 
             this.FIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -1559,6 +1651,257 @@ namespace WindowsFormsApp1
             this.FIO.HeaderText = "ФИО";
             this.FIO.Name = "FIO";
             this.FIO.ReadOnly = true;
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileName = "Report";
+            this.saveFileDialog1.Filter = "PDF | *.pdf";
+            // 
+            // booksBindingSource
+            // 
+            this.booksBindingSource.DataMember = "Books";
+            this.booksBindingSource.DataSource = this.library451DataSet;
+            // 
+            // library451DataSet
+            // 
+            this.library451DataSet.DataSetName = "Library451DataSet";
+            this.library451DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Book_ID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Book_Name";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Книга";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "Availability";
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Доступность";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn1.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Reader_ID";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Учетный номер";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "FIO";
+            this.dataGridViewTextBoxColumn9.HeaderText = "ФИО";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // readersBindingSource
+            // 
+            this.readersBindingSource.DataMember = "Readers";
+            this.readersBindingSource.DataSource = this.library451DataSet;
+            // 
+            // reades_debtsBindingSource
+            // 
+            this.reades_debtsBindingSource.DataMember = "reades_debts";
+            this.reades_debtsBindingSource.DataSource = this.library451DataSet;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "ID";
+            this.dataGridViewTextBoxColumn3.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Книга";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Книга";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Дата выдачи";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Дата выдачи";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Дата возврата";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Дата возврата";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Reader_ID";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Reader_ID";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn7.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "ID";
+            this.dataGridViewTextBoxColumn13.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            this.dataGridViewTextBoxColumn13.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "Reader_ID";
+            this.dataGridViewTextBoxColumn14.HeaderText = "Reader_ID";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            this.dataGridViewTextBoxColumn14.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "Book_ID";
+            this.dataGridViewTextBoxColumn15.HeaderText = "Номер книги";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "book_name";
+            this.dataGridViewTextBoxColumn16.HeaderText = "Книга";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "Date";
+            this.dataGridViewTextBoxColumn19.HeaderText = "Дата";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            this.dataGridViewTextBoxColumn19.Width = 80;
+            // 
+            // readersHistoryBindingSource
+            // 
+            this.readersHistoryBindingSource.DataMember = "ReadersHistory";
+            this.readersHistoryBindingSource.DataSource = this.library451DWHDataSet;
+            // 
+            // library451DWHDataSet
+            // 
+            this.library451DWHDataSet.DataSetName = "Library451DWHDataSet";
+            this.library451DWHDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "Reader_ID";
+            this.dataGridViewTextBoxColumn17.HeaderText = "Учетный номер";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            this.dataGridViewTextBoxColumn17.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "FIO";
+            this.dataGridViewTextBoxColumn18.HeaderText = "ФИО";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            // 
+            // ReportReadersBindingSource
+            // 
+            this.ReportReadersBindingSource.DataMember = "Readers";
+            this.ReportReadersBindingSource.DataSource = this.library451DataSet;
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bookidDataGridViewTextBoxColumn
+            // 
+            this.bookidDataGridViewTextBoxColumn.DataPropertyName = "book_id";
+            this.bookidDataGridViewTextBoxColumn.HeaderText = "book_id";
+            this.bookidDataGridViewTextBoxColumn.Name = "bookidDataGridViewTextBoxColumn";
+            this.bookidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.bookidDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // readerIDDataGridViewTextBoxColumn
+            // 
+            this.readerIDDataGridViewTextBoxColumn.DataPropertyName = "Reader_ID";
+            this.readerIDDataGridViewTextBoxColumn.HeaderText = "Читательский номер";
+            this.readerIDDataGridViewTextBoxColumn.Name = "readerIDDataGridViewTextBoxColumn";
+            this.readerIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.readerIDDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // fIODataGridViewTextBoxColumn
+            // 
+            this.fIODataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.fIODataGridViewTextBoxColumn.DataPropertyName = "FIO";
+            this.fIODataGridViewTextBoxColumn.HeaderText = "ФИО";
+            this.fIODataGridViewTextBoxColumn.Name = "fIODataGridViewTextBoxColumn";
+            this.fIODataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Дата";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dateDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // booksHistoryBindingSource
+            // 
+            this.booksHistoryBindingSource.DataMember = "BooksHistory";
+            this.booksHistoryBindingSource.DataSource = this.library451DWHDataSet;
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            this.dataGridViewTextBoxColumn20.DataPropertyName = "Book_ID";
+            this.dataGridViewTextBoxColumn20.HeaderText = "Учетный номер";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            this.dataGridViewTextBoxColumn20.ReadOnly = true;
+            this.dataGridViewTextBoxColumn20.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn24
+            // 
+            this.dataGridViewTextBoxColumn24.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn24.DataPropertyName = "Book_Name";
+            this.dataGridViewTextBoxColumn24.HeaderText = "Книга";
+            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
+            this.dataGridViewTextBoxColumn24.ReadOnly = true;
+            // 
+            // ReportBooksBindingSource
+            // 
+            this.ReportBooksBindingSource.DataMember = "Books";
+            this.ReportBooksBindingSource.DataSource = this.library451DataSet;
+            // 
+            // autBindingSource
+            // 
+            this.autBindingSource.DataMember = "aut";
+            this.autBindingSource.DataSource = this.library451DataSet;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "ID";
+            this.dataGridViewTextBoxColumn10.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Width = 50;
             // 
             // dataGridViewTextBoxColumn11
             // 
@@ -1609,48 +1952,43 @@ namespace WindowsFormsApp1
             // 
             this.reades_debtsTableAdapter.ClearBeforeFill = true;
             // 
-            // debtsTableAdapter1
+            // debtsTableAdapter
             // 
-            this.debtsTableAdapter1.ClearBeforeFill = true;
+            this.debtsTableAdapter.ClearBeforeFill = true;
             // 
-            // saveFileDialog1
+            // readersHistoryTableAdapter
             // 
-            this.saveFileDialog1.FileName = "Report";
-            this.saveFileDialog1.Filter = "PDF | *.pdf";
-            // 
-            // dimActionTypeTableAdapter
-            // 
-            this.dimActionTypeTableAdapter.ClearBeforeFill = true;
-            // 
-            // dimBookTableAdapter
-            // 
-            this.dimBookTableAdapter.ClearBeforeFill = true;
-            // 
-            // dimDateTableAdapter
-            // 
-            this.dimDateTableAdapter.ClearBeforeFill = true;
-            // 
-            // dimReaderTableAdapter
-            // 
-            this.dimReaderTableAdapter.ClearBeforeFill = true;
-            // 
-            // factDebtsTableAdapter
-            // 
-            this.factDebtsTableAdapter.ClearBeforeFill = true;
-            // 
-            // задолженностиTableAdapter
-            // 
-            this.задолженностиTableAdapter.ClearBeforeFill = true;
+            this.readersHistoryTableAdapter.ClearBeforeFill = true;
             // 
             // tableAdapterManager1
             // 
             this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager1.DimActionTypeTableAdapter = this.dimActionTypeTableAdapter;
-            this.tableAdapterManager1.DimBookTableAdapter = this.dimBookTableAdapter;
-            this.tableAdapterManager1.DimDateTableAdapter = this.dimDateTableAdapter;
-            this.tableAdapterManager1.DimReaderTableAdapter = this.dimReaderTableAdapter;
-            this.tableAdapterManager1.FactDebtsTableAdapter = this.factDebtsTableAdapter;
+            this.tableAdapterManager1.Connection = null;
+            this.tableAdapterManager1.DimBookTableAdapter = null;
+            this.tableAdapterManager1.DimDateTableAdapter = null;
+            this.tableAdapterManager1.DimReaderTableAdapter = null;
+            this.tableAdapterManager1.FactsBookHistoryTableAdapter = null;
             this.tableAdapterManager1.UpdateOrder = WindowsFormsApp1.Library451DWHDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // booksHistoryTableAdapter
+            // 
+            this.booksHistoryTableAdapter.ClearBeforeFill = true;
+            // 
+            // fIOTextBox1
+            // 
+            this.fIOTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ReportReadersBindingSource, "FIO", true));
+            this.fIOTextBox1.Location = new System.Drawing.Point(86, 131);
+            this.fIOTextBox1.Name = "fIOTextBox1";
+            this.fIOTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.fIOTextBox1.TabIndex = 19;
+            // 
+            // book_NameTextBox1
+            // 
+            this.book_NameTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.ReportBooksBindingSource, "Book_Name", true));
+            this.book_NameTextBox1.Location = new System.Drawing.Point(75, 112);
+            this.book_NameTextBox1.Name = "book_NameTextBox1";
+            this.book_NameTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.book_NameTextBox1.TabIndex = 21;
             // 
             // MainForm
             // 
@@ -1669,6 +2007,7 @@ namespace WindowsFormsApp1
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Учет читателей";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -1676,32 +2015,43 @@ namespace WindowsFormsApp1
             this.tp_books.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataGridView)).EndInit();
             this.tp_readers.ResumeLayout(false);
             this.tp_readers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.readersDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.readersBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.reades_debtsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reades_debtsDataGridView)).EndInit();
             this.tpOtchet.ResumeLayout(false);
             this.tpOtchet.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.задолженностиDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.задолженностиBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.library451DWHDataSet)).EndInit();
+            this.tcReports.ResumeLayout(false);
+            this.tpReportBooks.ResumeLayout(false);
+            this.tpReportBooks.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.readersHistoryDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.readersDataGridView1)).EndInit();
+            this.tpReportReaders.ResumeLayout(false);
+            this.tpReportReaders.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.booksHistoryDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.booksDataGridView2)).EndInit();
             this.tpAccounts.ResumeLayout(false);
             this.tpAccounts.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.autBindingSource)).EndInit();
             this.gbNewAcc.ResumeLayout(false);
             this.gbNewAcc.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.autDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.library451DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.readersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reades_debtsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.readersHistoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.library451DWHDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportReadersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.booksHistoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportBooksBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.autBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1764,7 +2114,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.DateTimePicker дата_возвратаDateTimePicker;
         private System.Windows.Forms.CheckBox возвращеноCheckBox;
         private System.Windows.Forms.Button butDeleteDebt;
-        private Library451DataSetTableAdapters.DebtsTableAdapter debtsTableAdapter1;
+        private Library451DataSetTableAdapters.DebtsTableAdapter debtsTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
@@ -1812,30 +2162,58 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.CheckBox is_adminCheckBox;
         private System.Windows.Forms.TextBox tbNewAccFIO;
-        private Library451DWHDataSet library451DWHDataSet;
-        private Library451DWHDataSetTableAdapters.DimActionTypeTableAdapter dimActionTypeTableAdapter;
-        private Library451DWHDataSetTableAdapters.DimBookTableAdapter dimBookTableAdapter;
-        private Library451DWHDataSetTableAdapters.DimDateTableAdapter dimDateTableAdapter;
-        private Library451DWHDataSetTableAdapters.DimReaderTableAdapter dimReaderTableAdapter;
-        private Library451DWHDataSetTableAdapters.FactDebtsTableAdapter factDebtsTableAdapter;
         private System.Windows.Forms.TabPage tpOtchet;
-        private System.Windows.Forms.BindingSource задолженностиBindingSource;
-        private Library451DWHDataSetTableAdapters.ЗадолженностиTableAdapter задолженностиTableAdapter;
-        private Library451DWHDataSetTableAdapters.TableAdapterManager tableAdapterManager1;
         private System.Windows.Forms.Button butCreateReport;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dtPickerFrom;
         private System.Windows.Forms.DateTimePicker dtPickerTo;
-        private System.Windows.Forms.DataGridView задолженностиDataGridView;
+        private System.Windows.Forms.TabControl tcReports;
+        private System.Windows.Forms.TabPage tpReportBooks;
+        private System.Windows.Forms.TabPage tpReportReaders;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private Library451DWHDataSet library451DWHDataSet;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridView readersDataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.DataGridView booksDataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
+        private System.Windows.Forms.BindingSource ReportReadersBindingSource;
+        private System.Windows.Forms.BindingSource ReportBooksBindingSource;
+        private System.Windows.Forms.TextBox reader_IDTextBox1;
+        private System.Windows.Forms.TextBox book_IDTextBox1;
+        private System.Windows.Forms.BindingSource readersHistoryBindingSource;
+        private Library451DWHDataSetTableAdapters.ReadersHistoryTableAdapter readersHistoryTableAdapter;
+        private Library451DWHDataSetTableAdapters.TableAdapterManager tableAdapterManager1;
+        private System.Windows.Forms.DataGridView readersHistoryDataGridView;
+        private System.Windows.Forms.BindingSource booksHistoryBindingSource;
+        private Library451DWHDataSetTableAdapters.BooksHistoryTableAdapter booksHistoryTableAdapter;
+        private System.Windows.Forms.DataGridView booksHistoryDataGridView;
+        private System.Windows.Forms.TextBox tbCountBooks;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbCountBookGive;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn readerIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fIODataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox fIOTextBox1;
+        private System.Windows.Forms.TextBox book_NameTextBox1;
     }
 }
 

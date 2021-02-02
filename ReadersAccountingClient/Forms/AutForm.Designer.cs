@@ -64,6 +64,7 @@ namespace WindowsFormsApp1.Forms
             this.tb_password.Name = "tb_password";
             this.tb_password.Size = new System.Drawing.Size(100, 20);
             this.tb_password.TabIndex = 13;
+            this.tb_password.Text = "admin";
             this.tb_password.UseSystemPasswordChar = true;
             // 
             // tb_login
@@ -73,6 +74,7 @@ namespace WindowsFormsApp1.Forms
             this.tb_login.Name = "tb_login";
             this.tb_login.Size = new System.Drawing.Size(102, 20);
             this.tb_login.TabIndex = 12;
+            this.tb_login.Text = "admin";
             // 
             // label2
             // 

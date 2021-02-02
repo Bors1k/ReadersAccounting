@@ -24,25 +24,23 @@ namespace WindowsFormsApp1 {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class Library451DWHDataSet : global::System.Data.DataSet {
         
-        private DimActionTypeDataTable tableDimActionType;
-        
         private DimBookDataTable tableDimBook;
-        
-        private DimDateDataTable tableDimDate;
         
         private DimReaderDataTable tableDimReader;
         
-        private FactDebtsDataTable tableFactDebts;
+        private FactsBookHistoryDataTable tableFactsBookHistory;
         
-        private ЗадолженностиDataTable tableЗадолженности;
+        private DimDateDataTable tableDimDate;
         
-        private global::System.Data.DataRelation relationFK_FactDebts_DimActionType;
+        private BooksHistoryDataTable tableBooksHistory;
         
-        private global::System.Data.DataRelation relationFK_FactDebts_DimBook;
+        private ReadersHistoryDataTable tableReadersHistory;
         
-        private global::System.Data.DataRelation relationFK_FactDebts_DimDate;
+        private global::System.Data.DataRelation relationFK_FactsBookHistory_DimBook;
         
-        private global::System.Data.DataRelation relationFK_FactDebts_DimReader;
+        private global::System.Data.DataRelation relationFK_FactsBookHistory_DimReader;
+        
+        private global::System.Data.DataRelation relationFK_FactsBookHistory_DimDate1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -72,23 +70,23 @@ namespace WindowsFormsApp1 {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["DimActionType"] != null)) {
-                    base.Tables.Add(new DimActionTypeDataTable(ds.Tables["DimActionType"]));
-                }
                 if ((ds.Tables["DimBook"] != null)) {
                     base.Tables.Add(new DimBookDataTable(ds.Tables["DimBook"]));
-                }
-                if ((ds.Tables["DimDate"] != null)) {
-                    base.Tables.Add(new DimDateDataTable(ds.Tables["DimDate"]));
                 }
                 if ((ds.Tables["DimReader"] != null)) {
                     base.Tables.Add(new DimReaderDataTable(ds.Tables["DimReader"]));
                 }
-                if ((ds.Tables["FactDebts"] != null)) {
-                    base.Tables.Add(new FactDebtsDataTable(ds.Tables["FactDebts"]));
+                if ((ds.Tables["FactsBookHistory"] != null)) {
+                    base.Tables.Add(new FactsBookHistoryDataTable(ds.Tables["FactsBookHistory"]));
                 }
-                if ((ds.Tables["Задолженности"] != null)) {
-                    base.Tables.Add(new ЗадолженностиDataTable(ds.Tables["Задолженности"]));
+                if ((ds.Tables["DimDate"] != null)) {
+                    base.Tables.Add(new DimDateDataTable(ds.Tables["DimDate"]));
+                }
+                if ((ds.Tables["BooksHistory"] != null)) {
+                    base.Tables.Add(new BooksHistoryDataTable(ds.Tables["BooksHistory"]));
+                }
+                if ((ds.Tables["ReadersHistory"] != null)) {
+                    base.Tables.Add(new ReadersHistoryDataTable(ds.Tables["ReadersHistory"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -112,29 +110,9 @@ namespace WindowsFormsApp1 {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DimActionTypeDataTable DimActionType {
-            get {
-                return this.tableDimActionType;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public DimBookDataTable DimBook {
             get {
                 return this.tableDimBook;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DimDateDataTable DimDate {
-            get {
-                return this.tableDimDate;
             }
         }
         
@@ -152,9 +130,9 @@ namespace WindowsFormsApp1 {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public FactDebtsDataTable FactDebts {
+        public FactsBookHistoryDataTable FactsBookHistory {
             get {
-                return this.tableFactDebts;
+                return this.tableFactsBookHistory;
             }
         }
         
@@ -162,9 +140,29 @@ namespace WindowsFormsApp1 {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ЗадолженностиDataTable Задолженности {
+        public DimDateDataTable DimDate {
             get {
-                return this.tableЗадолженности;
+                return this.tableDimDate;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public BooksHistoryDataTable BooksHistory {
+            get {
+                return this.tableBooksHistory;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ReadersHistoryDataTable ReadersHistory {
+            get {
+                return this.tableReadersHistory;
             }
         }
         
@@ -235,23 +233,23 @@ namespace WindowsFormsApp1 {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["DimActionType"] != null)) {
-                    base.Tables.Add(new DimActionTypeDataTable(ds.Tables["DimActionType"]));
-                }
                 if ((ds.Tables["DimBook"] != null)) {
                     base.Tables.Add(new DimBookDataTable(ds.Tables["DimBook"]));
-                }
-                if ((ds.Tables["DimDate"] != null)) {
-                    base.Tables.Add(new DimDateDataTable(ds.Tables["DimDate"]));
                 }
                 if ((ds.Tables["DimReader"] != null)) {
                     base.Tables.Add(new DimReaderDataTable(ds.Tables["DimReader"]));
                 }
-                if ((ds.Tables["FactDebts"] != null)) {
-                    base.Tables.Add(new FactDebtsDataTable(ds.Tables["FactDebts"]));
+                if ((ds.Tables["FactsBookHistory"] != null)) {
+                    base.Tables.Add(new FactsBookHistoryDataTable(ds.Tables["FactsBookHistory"]));
                 }
-                if ((ds.Tables["Задолженности"] != null)) {
-                    base.Tables.Add(new ЗадолженностиDataTable(ds.Tables["Задолженности"]));
+                if ((ds.Tables["DimDate"] != null)) {
+                    base.Tables.Add(new DimDateDataTable(ds.Tables["DimDate"]));
+                }
+                if ((ds.Tables["BooksHistory"] != null)) {
+                    base.Tables.Add(new BooksHistoryDataTable(ds.Tables["BooksHistory"]));
+                }
+                if ((ds.Tables["ReadersHistory"] != null)) {
+                    base.Tables.Add(new ReadersHistoryDataTable(ds.Tables["ReadersHistory"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -286,22 +284,10 @@ namespace WindowsFormsApp1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableDimActionType = ((DimActionTypeDataTable)(base.Tables["DimActionType"]));
-            if ((initTable == true)) {
-                if ((this.tableDimActionType != null)) {
-                    this.tableDimActionType.InitVars();
-                }
-            }
             this.tableDimBook = ((DimBookDataTable)(base.Tables["DimBook"]));
             if ((initTable == true)) {
                 if ((this.tableDimBook != null)) {
                     this.tableDimBook.InitVars();
-                }
-            }
-            this.tableDimDate = ((DimDateDataTable)(base.Tables["DimDate"]));
-            if ((initTable == true)) {
-                if ((this.tableDimDate != null)) {
-                    this.tableDimDate.InitVars();
                 }
             }
             this.tableDimReader = ((DimReaderDataTable)(base.Tables["DimReader"]));
@@ -310,22 +296,33 @@ namespace WindowsFormsApp1 {
                     this.tableDimReader.InitVars();
                 }
             }
-            this.tableFactDebts = ((FactDebtsDataTable)(base.Tables["FactDebts"]));
+            this.tableFactsBookHistory = ((FactsBookHistoryDataTable)(base.Tables["FactsBookHistory"]));
             if ((initTable == true)) {
-                if ((this.tableFactDebts != null)) {
-                    this.tableFactDebts.InitVars();
+                if ((this.tableFactsBookHistory != null)) {
+                    this.tableFactsBookHistory.InitVars();
                 }
             }
-            this.tableЗадолженности = ((ЗадолженностиDataTable)(base.Tables["Задолженности"]));
+            this.tableDimDate = ((DimDateDataTable)(base.Tables["DimDate"]));
             if ((initTable == true)) {
-                if ((this.tableЗадолженности != null)) {
-                    this.tableЗадолженности.InitVars();
+                if ((this.tableDimDate != null)) {
+                    this.tableDimDate.InitVars();
                 }
             }
-            this.relationFK_FactDebts_DimActionType = this.Relations["FK_FactDebts_DimActionType"];
-            this.relationFK_FactDebts_DimBook = this.Relations["FK_FactDebts_DimBook"];
-            this.relationFK_FactDebts_DimDate = this.Relations["FK_FactDebts_DimDate"];
-            this.relationFK_FactDebts_DimReader = this.Relations["FK_FactDebts_DimReader"];
+            this.tableBooksHistory = ((BooksHistoryDataTable)(base.Tables["BooksHistory"]));
+            if ((initTable == true)) {
+                if ((this.tableBooksHistory != null)) {
+                    this.tableBooksHistory.InitVars();
+                }
+            }
+            this.tableReadersHistory = ((ReadersHistoryDataTable)(base.Tables["ReadersHistory"]));
+            if ((initTable == true)) {
+                if ((this.tableReadersHistory != null)) {
+                    this.tableReadersHistory.InitVars();
+                }
+            }
+            this.relationFK_FactsBookHistory_DimBook = this.Relations["FK_FactsBookHistory_DimBook"];
+            this.relationFK_FactsBookHistory_DimReader = this.Relations["FK_FactsBookHistory_DimReader"];
+            this.relationFK_FactsBookHistory_DimDate1 = this.Relations["FK_FactsBookHistory_DimDate1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -336,51 +333,35 @@ namespace WindowsFormsApp1 {
             this.Namespace = "http://tempuri.org/Library451DWHDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableDimActionType = new DimActionTypeDataTable();
-            base.Tables.Add(this.tableDimActionType);
             this.tableDimBook = new DimBookDataTable();
             base.Tables.Add(this.tableDimBook);
-            this.tableDimDate = new DimDateDataTable();
-            base.Tables.Add(this.tableDimDate);
             this.tableDimReader = new DimReaderDataTable();
             base.Tables.Add(this.tableDimReader);
-            this.tableFactDebts = new FactDebtsDataTable();
-            base.Tables.Add(this.tableFactDebts);
-            this.tableЗадолженности = new ЗадолженностиDataTable();
-            base.Tables.Add(this.tableЗадолженности);
-            this.relationFK_FactDebts_DimActionType = new global::System.Data.DataRelation("FK_FactDebts_DimActionType", new global::System.Data.DataColumn[] {
-                        this.tableDimActionType.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFactDebts.ActionType_IDColumn}, false);
-            this.Relations.Add(this.relationFK_FactDebts_DimActionType);
-            this.relationFK_FactDebts_DimBook = new global::System.Data.DataRelation("FK_FactDebts_DimBook", new global::System.Data.DataColumn[] {
+            this.tableFactsBookHistory = new FactsBookHistoryDataTable();
+            base.Tables.Add(this.tableFactsBookHistory);
+            this.tableDimDate = new DimDateDataTable();
+            base.Tables.Add(this.tableDimDate);
+            this.tableBooksHistory = new BooksHistoryDataTable();
+            base.Tables.Add(this.tableBooksHistory);
+            this.tableReadersHistory = new ReadersHistoryDataTable();
+            base.Tables.Add(this.tableReadersHistory);
+            this.relationFK_FactsBookHistory_DimBook = new global::System.Data.DataRelation("FK_FactsBookHistory_DimBook", new global::System.Data.DataColumn[] {
                         this.tableDimBook.book_idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFactDebts.Book_IDColumn}, false);
-            this.Relations.Add(this.relationFK_FactDebts_DimBook);
-            this.relationFK_FactDebts_DimDate = new global::System.Data.DataRelation("FK_FactDebts_DimDate", new global::System.Data.DataColumn[] {
-                        this.tableDimDate.time_idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFactDebts.Date_IDColumn}, false);
-            this.Relations.Add(this.relationFK_FactDebts_DimDate);
-            this.relationFK_FactDebts_DimReader = new global::System.Data.DataRelation("FK_FactDebts_DimReader", new global::System.Data.DataColumn[] {
+                        this.tableFactsBookHistory.Book_IDColumn}, false);
+            this.Relations.Add(this.relationFK_FactsBookHistory_DimBook);
+            this.relationFK_FactsBookHistory_DimReader = new global::System.Data.DataRelation("FK_FactsBookHistory_DimReader", new global::System.Data.DataColumn[] {
                         this.tableDimReader.Reader_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFactDebts.Reader_IDColumn}, false);
-            this.Relations.Add(this.relationFK_FactDebts_DimReader);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeDimActionType() {
-            return false;
+                        this.tableFactsBookHistory.Reader_IDColumn}, false);
+            this.Relations.Add(this.relationFK_FactsBookHistory_DimReader);
+            this.relationFK_FactsBookHistory_DimDate1 = new global::System.Data.DataRelation("FK_FactsBookHistory_DimDate1", new global::System.Data.DataColumn[] {
+                        this.tableDimDate.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFactsBookHistory.Date_IDColumn}, false);
+            this.Relations.Add(this.relationFK_FactsBookHistory_DimDate1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeDimBook() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeDimDate() {
             return false;
         }
         
@@ -392,13 +373,25 @@ namespace WindowsFormsApp1 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeFactDebts() {
+        private bool ShouldSerializeFactsBookHistory() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeЗадолженности() {
+        private bool ShouldSerializeDimDate() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeBooksHistory() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeReadersHistory() {
             return false;
         }
         
@@ -458,300 +451,22 @@ namespace WindowsFormsApp1 {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void DimActionTypeRowChangeEventHandler(object sender, DimActionTypeRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void DimBookRowChangeEventHandler(object sender, DimBookRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void DimDateRowChangeEventHandler(object sender, DimDateRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void DimReaderRowChangeEventHandler(object sender, DimReaderRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void FactDebtsRowChangeEventHandler(object sender, FactDebtsRowChangeEvent e);
+        public delegate void FactsBookHistoryRowChangeEventHandler(object sender, FactsBookHistoryRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void ЗадолженностиRowChangeEventHandler(object sender, ЗадолженностиRowChangeEvent e);
+        public delegate void DimDateRowChangeEventHandler(object sender, DimDateRowChangeEvent e);
         
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DimActionTypeDataTable : global::System.Data.TypedTableBase<DimActionTypeRow> {
-            
-            private global::System.Data.DataColumn columnID;
-            
-            private global::System.Data.DataColumn columnAction_type;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DimActionTypeDataTable() {
-                this.TableName = "DimActionType";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal DimActionTypeDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected DimActionTypeDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
-                get {
-                    return this.columnID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Action_typeColumn {
-                get {
-                    return this.columnAction_type;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DimActionTypeRow this[int index] {
-                get {
-                    return ((DimActionTypeRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DimActionTypeRowChangeEventHandler DimActionTypeRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DimActionTypeRowChangeEventHandler DimActionTypeRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DimActionTypeRowChangeEventHandler DimActionTypeRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DimActionTypeRowChangeEventHandler DimActionTypeRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddDimActionTypeRow(DimActionTypeRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DimActionTypeRow AddDimActionTypeRow(string Action_type) {
-                DimActionTypeRow rowDimActionTypeRow = ((DimActionTypeRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        Action_type};
-                rowDimActionTypeRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDimActionTypeRow);
-                return rowDimActionTypeRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DimActionTypeRow FindByID(int ID) {
-                return ((DimActionTypeRow)(this.Rows.Find(new object[] {
-                            ID})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                DimActionTypeDataTable cln = ((DimActionTypeDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new DimActionTypeDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal void InitVars() {
-                this.columnID = base.Columns["ID"];
-                this.columnAction_type = base.Columns["Action_type"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
-                this.columnAction_type = new global::System.Data.DataColumn("Action_type", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAction_type);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID}, true));
-                this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
-                this.columnID.AllowDBNull = false;
-                this.columnID.ReadOnly = true;
-                this.columnID.Unique = true;
-                this.columnAction_type.AllowDBNull = false;
-                this.columnAction_type.MaxLength = 15;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DimActionTypeRow NewDimActionTypeRow() {
-                return ((DimActionTypeRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DimActionTypeRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(DimActionTypeRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.DimActionTypeRowChanged != null)) {
-                    this.DimActionTypeRowChanged(this, new DimActionTypeRowChangeEvent(((DimActionTypeRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.DimActionTypeRowChanging != null)) {
-                    this.DimActionTypeRowChanging(this, new DimActionTypeRowChangeEvent(((DimActionTypeRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.DimActionTypeRowDeleted != null)) {
-                    this.DimActionTypeRowDeleted(this, new DimActionTypeRowChangeEvent(((DimActionTypeRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.DimActionTypeRowDeleting != null)) {
-                    this.DimActionTypeRowDeleting(this, new DimActionTypeRowChangeEvent(((DimActionTypeRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveDimActionTypeRow(DimActionTypeRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                Library451DWHDataSet ds = new Library451DWHDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DimActionTypeDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void BooksHistoryRowChangeEventHandler(object sender, BooksHistoryRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void ReadersHistoryRowChangeEventHandler(object sender, ReadersHistoryRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -987,328 +702,6 @@ namespace WindowsFormsApp1 {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "DimBookDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DimDateDataTable : global::System.Data.TypedTableBase<DimDateRow> {
-            
-            private global::System.Data.DataColumn columntime_id;
-            
-            private global::System.Data.DataColumn columnaction_date;
-            
-            private global::System.Data.DataColumn columnaction_week;
-            
-            private global::System.Data.DataColumn columnaction_month;
-            
-            private global::System.Data.DataColumn columnaction_year;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DimDateDataTable() {
-                this.TableName = "DimDate";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal DimDateDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected DimDateDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn time_idColumn {
-                get {
-                    return this.columntime_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn action_dateColumn {
-                get {
-                    return this.columnaction_date;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn action_weekColumn {
-                get {
-                    return this.columnaction_week;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn action_monthColumn {
-                get {
-                    return this.columnaction_month;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn action_yearColumn {
-                get {
-                    return this.columnaction_year;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DimDateRow this[int index] {
-                get {
-                    return ((DimDateRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DimDateRowChangeEventHandler DimDateRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DimDateRowChangeEventHandler DimDateRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DimDateRowChangeEventHandler DimDateRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event DimDateRowChangeEventHandler DimDateRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddDimDateRow(DimDateRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DimDateRow AddDimDateRow(System.DateTime action_date, int action_week, int action_month, int action_year) {
-                DimDateRow rowDimDateRow = ((DimDateRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        action_date,
-                        action_week,
-                        action_month,
-                        action_year};
-                rowDimDateRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDimDateRow);
-                return rowDimDateRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DimDateRow FindBytime_id(int time_id) {
-                return ((DimDateRow)(this.Rows.Find(new object[] {
-                            time_id})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                DimDateDataTable cln = ((DimDateDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new DimDateDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal void InitVars() {
-                this.columntime_id = base.Columns["time_id"];
-                this.columnaction_date = base.Columns["action_date"];
-                this.columnaction_week = base.Columns["action_week"];
-                this.columnaction_month = base.Columns["action_month"];
-                this.columnaction_year = base.Columns["action_year"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            private void InitClass() {
-                this.columntime_id = new global::System.Data.DataColumn("time_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntime_id);
-                this.columnaction_date = new global::System.Data.DataColumn("action_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnaction_date);
-                this.columnaction_week = new global::System.Data.DataColumn("action_week", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnaction_week);
-                this.columnaction_month = new global::System.Data.DataColumn("action_month", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnaction_month);
-                this.columnaction_year = new global::System.Data.DataColumn("action_year", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnaction_year);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columntime_id}, true));
-                this.columntime_id.AutoIncrement = true;
-                this.columntime_id.AutoIncrementSeed = -1;
-                this.columntime_id.AutoIncrementStep = -1;
-                this.columntime_id.AllowDBNull = false;
-                this.columntime_id.ReadOnly = true;
-                this.columntime_id.Unique = true;
-                this.columnaction_date.AllowDBNull = false;
-                this.columnaction_week.ReadOnly = true;
-                this.columnaction_month.ReadOnly = true;
-                this.columnaction_year.ReadOnly = true;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DimDateRow NewDimDateRow() {
-                return ((DimDateRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DimDateRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(DimDateRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.DimDateRowChanged != null)) {
-                    this.DimDateRowChanged(this, new DimDateRowChangeEvent(((DimDateRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.DimDateRowChanging != null)) {
-                    this.DimDateRowChanging(this, new DimDateRowChangeEvent(((DimDateRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.DimDateRowDeleted != null)) {
-                    this.DimDateRowDeleted(this, new DimDateRowChangeEvent(((DimDateRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.DimDateRowDeleting != null)) {
-                    this.DimDateRowDeleting(this, new DimDateRowChangeEvent(((DimDateRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveDimDateRow(DimDateRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                Library451DWHDataSet ds = new Library451DWHDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DimDateDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1676,7 +1069,7 @@ namespace WindowsFormsApp1 {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class FactDebtsDataTable : global::System.Data.TypedTableBase<FactDebtsRow> {
+        public partial class FactsBookHistoryDataTable : global::System.Data.TypedTableBase<FactsBookHistoryRow> {
             
             private global::System.Data.DataColumn columnID;
             
@@ -1686,12 +1079,10 @@ namespace WindowsFormsApp1 {
             
             private global::System.Data.DataColumn columnDate_ID;
             
-            private global::System.Data.DataColumn columnActionType_ID;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public FactDebtsDataTable() {
-                this.TableName = "FactDebts";
+            public FactsBookHistoryDataTable() {
+                this.TableName = "FactsBookHistory";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1699,7 +1090,7 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal FactDebtsDataTable(global::System.Data.DataTable table) {
+            internal FactsBookHistoryDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1716,7 +1107,7 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected FactDebtsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected FactsBookHistoryDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1755,14 +1146,6 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ActionType_IDColumn {
-                get {
-                    return this.columnActionType_ID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1772,68 +1155,64 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public FactDebtsRow this[int index] {
+            public FactsBookHistoryRow this[int index] {
                 get {
-                    return ((FactDebtsRow)(this.Rows[index]));
+                    return ((FactsBookHistoryRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event FactDebtsRowChangeEventHandler FactDebtsRowChanging;
+            public event FactsBookHistoryRowChangeEventHandler FactsBookHistoryRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event FactDebtsRowChangeEventHandler FactDebtsRowChanged;
+            public event FactsBookHistoryRowChangeEventHandler FactsBookHistoryRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event FactDebtsRowChangeEventHandler FactDebtsRowDeleting;
+            public event FactsBookHistoryRowChangeEventHandler FactsBookHistoryRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event FactDebtsRowChangeEventHandler FactDebtsRowDeleted;
+            public event FactsBookHistoryRowChangeEventHandler FactsBookHistoryRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddFactDebtsRow(FactDebtsRow row) {
+            public void AddFactsBookHistoryRow(FactsBookHistoryRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public FactDebtsRow AddFactDebtsRow(DimReaderRow parentDimReaderRowByFK_FactDebts_DimReader, DimBookRow parentDimBookRowByFK_FactDebts_DimBook, DimDateRow parentDimDateRowByFK_FactDebts_DimDate, DimActionTypeRow parentDimActionTypeRowByFK_FactDebts_DimActionType) {
-                FactDebtsRow rowFactDebtsRow = ((FactDebtsRow)(this.NewRow()));
+            public FactsBookHistoryRow AddFactsBookHistoryRow(DimReaderRow parentDimReaderRowByFK_FactsBookHistory_DimReader, DimBookRow parentDimBookRowByFK_FactsBookHistory_DimBook, DimDateRow parentDimDateRowByFK_FactsBookHistory_DimDate1) {
+                FactsBookHistoryRow rowFactsBookHistoryRow = ((FactsBookHistoryRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         null,
-                        null,
                         null};
-                if ((parentDimReaderRowByFK_FactDebts_DimReader != null)) {
-                    columnValuesArray[1] = parentDimReaderRowByFK_FactDebts_DimReader[0];
+                if ((parentDimReaderRowByFK_FactsBookHistory_DimReader != null)) {
+                    columnValuesArray[1] = parentDimReaderRowByFK_FactsBookHistory_DimReader[0];
                 }
-                if ((parentDimBookRowByFK_FactDebts_DimBook != null)) {
-                    columnValuesArray[2] = parentDimBookRowByFK_FactDebts_DimBook[0];
+                if ((parentDimBookRowByFK_FactsBookHistory_DimBook != null)) {
+                    columnValuesArray[2] = parentDimBookRowByFK_FactsBookHistory_DimBook[0];
                 }
-                if ((parentDimDateRowByFK_FactDebts_DimDate != null)) {
-                    columnValuesArray[3] = parentDimDateRowByFK_FactDebts_DimDate[0];
+                if ((parentDimDateRowByFK_FactsBookHistory_DimDate1 != null)) {
+                    columnValuesArray[3] = parentDimDateRowByFK_FactsBookHistory_DimDate1[0];
                 }
-                if ((parentDimActionTypeRowByFK_FactDebts_DimActionType != null)) {
-                    columnValuesArray[4] = parentDimActionTypeRowByFK_FactDebts_DimActionType[0];
-                }
-                rowFactDebtsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowFactDebtsRow);
-                return rowFactDebtsRow;
+                rowFactsBookHistoryRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowFactsBookHistoryRow);
+                return rowFactsBookHistoryRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public FactDebtsRow FindByID(int ID) {
-                return ((FactDebtsRow)(this.Rows.Find(new object[] {
+            public FactsBookHistoryRow FindByID(int ID) {
+                return ((FactsBookHistoryRow)(this.Rows.Find(new object[] {
                             ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                FactDebtsDataTable cln = ((FactDebtsDataTable)(base.Clone()));
+                FactsBookHistoryDataTable cln = ((FactsBookHistoryDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1841,7 +1220,7 @@ namespace WindowsFormsApp1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new FactDebtsDataTable();
+                return new FactsBookHistoryDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1851,7 +1230,6 @@ namespace WindowsFormsApp1 {
                 this.columnReader_ID = base.Columns["Reader_ID"];
                 this.columnBook_ID = base.Columns["Book_ID"];
                 this.columnDate_ID = base.Columns["Date_ID"];
-                this.columnActionType_ID = base.Columns["ActionType_ID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1865,8 +1243,6 @@ namespace WindowsFormsApp1 {
                 base.Columns.Add(this.columnBook_ID);
                 this.columnDate_ID = new global::System.Data.DataColumn("Date_ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDate_ID);
-                this.columnActionType_ID = new global::System.Data.DataColumn("ActionType_ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnActionType_ID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -1878,33 +1254,32 @@ namespace WindowsFormsApp1 {
                 this.columnReader_ID.AllowDBNull = false;
                 this.columnBook_ID.AllowDBNull = false;
                 this.columnDate_ID.AllowDBNull = false;
-                this.columnActionType_ID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public FactDebtsRow NewFactDebtsRow() {
-                return ((FactDebtsRow)(this.NewRow()));
+            public FactsBookHistoryRow NewFactsBookHistoryRow() {
+                return ((FactsBookHistoryRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new FactDebtsRow(builder);
+                return new FactsBookHistoryRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(FactDebtsRow);
+                return typeof(FactsBookHistoryRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.FactDebtsRowChanged != null)) {
-                    this.FactDebtsRowChanged(this, new FactDebtsRowChangeEvent(((FactDebtsRow)(e.Row)), e.Action));
+                if ((this.FactsBookHistoryRowChanged != null)) {
+                    this.FactsBookHistoryRowChanged(this, new FactsBookHistoryRowChangeEvent(((FactsBookHistoryRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1912,8 +1287,8 @@ namespace WindowsFormsApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.FactDebtsRowChanging != null)) {
-                    this.FactDebtsRowChanging(this, new FactDebtsRowChangeEvent(((FactDebtsRow)(e.Row)), e.Action));
+                if ((this.FactsBookHistoryRowChanging != null)) {
+                    this.FactsBookHistoryRowChanging(this, new FactsBookHistoryRowChangeEvent(((FactsBookHistoryRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1921,8 +1296,8 @@ namespace WindowsFormsApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.FactDebtsRowDeleted != null)) {
-                    this.FactDebtsRowDeleted(this, new FactDebtsRowChangeEvent(((FactDebtsRow)(e.Row)), e.Action));
+                if ((this.FactsBookHistoryRowDeleted != null)) {
+                    this.FactsBookHistoryRowDeleted(this, new FactsBookHistoryRowChangeEvent(((FactsBookHistoryRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1930,14 +1305,14 @@ namespace WindowsFormsApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.FactDebtsRowDeleting != null)) {
-                    this.FactDebtsRowDeleting(this, new FactDebtsRowChangeEvent(((FactDebtsRow)(e.Row)), e.Action));
+                if ((this.FactsBookHistoryRowDeleting != null)) {
+                    this.FactsBookHistoryRowDeleting(this, new FactsBookHistoryRowChangeEvent(((FactsBookHistoryRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveFactDebtsRow(FactDebtsRow row) {
+            public void RemoveFactsBookHistoryRow(FactsBookHistoryRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1964,7 +1339,7 @@ namespace WindowsFormsApp1 {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "FactDebtsDataTable";
+                attribute2.FixedValue = "FactsBookHistoryDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2010,26 +1385,22 @@ namespace WindowsFormsApp1 {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ЗадолженностиDataTable : global::System.Data.TypedTableBase<ЗадолженностиRow> {
+        public partial class DimDateDataTable : global::System.Data.TypedTableBase<DimDateRow> {
             
             private global::System.Data.DataColumn columnID;
             
-            private global::System.Data.DataColumn columnЧитательский_номер;
+            private global::System.Data.DataColumn columnDate;
             
-            private global::System.Data.DataColumn columnФИО_Читателя;
+            private global::System.Data.DataColumn columndate_year;
             
-            private global::System.Data.DataColumn columnУчетый_номер_книги;
+            private global::System.Data.DataColumn columndate_month;
             
-            private global::System.Data.DataColumn columnКнига;
-            
-            private global::System.Data.DataColumn columnДействие;
-            
-            private global::System.Data.DataColumn columnaction_date;
+            private global::System.Data.DataColumn columndate_week;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ЗадолженностиDataTable() {
-                this.TableName = "Задолженности";
+            public DimDateDataTable() {
+                this.TableName = "DimDate";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -2037,7 +1408,7 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal ЗадолженностиDataTable(global::System.Data.DataTable table) {
+            internal DimDateDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -2054,7 +1425,7 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected ЗадолженностиDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected DimDateDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -2069,49 +1440,33 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Читательский_номерColumn {
+            public global::System.Data.DataColumn DateColumn {
                 get {
-                    return this.columnЧитательский_номер;
+                    return this.columnDate;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ФИО_ЧитателяColumn {
+            public global::System.Data.DataColumn date_yearColumn {
                 get {
-                    return this.columnФИО_Читателя;
+                    return this.columndate_year;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Учетый_номер_книгиColumn {
+            public global::System.Data.DataColumn date_monthColumn {
                 get {
-                    return this.columnУчетый_номер_книги;
+                    return this.columndate_month;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn КнигаColumn {
+            public global::System.Data.DataColumn date_weekColumn {
                 get {
-                    return this.columnКнига;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ДействиеColumn {
-                get {
-                    return this.columnДействие;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn action_dateColumn {
-                get {
-                    return this.columnaction_date;
+                    return this.columndate_week;
                 }
             }
             
@@ -2126,51 +1481,56 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ЗадолженностиRow this[int index] {
+            public DimDateRow this[int index] {
                 get {
-                    return ((ЗадолженностиRow)(this.Rows[index]));
+                    return ((DimDateRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event ЗадолженностиRowChangeEventHandler ЗадолженностиRowChanging;
+            public event DimDateRowChangeEventHandler DimDateRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event ЗадолженностиRowChangeEventHandler ЗадолженностиRowChanged;
+            public event DimDateRowChangeEventHandler DimDateRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event ЗадолженностиRowChangeEventHandler ЗадолженностиRowDeleting;
+            public event DimDateRowChangeEventHandler DimDateRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event ЗадолженностиRowChangeEventHandler ЗадолженностиRowDeleted;
+            public event DimDateRowChangeEventHandler DimDateRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddЗадолженностиRow(ЗадолженностиRow row) {
+            public void AddDimDateRow(DimDateRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ЗадолженностиRow AddЗадолженностиRow(int ID, int Читательский_номер, string ФИО_Читателя, int Учетый_номер_книги, string Книга, string Действие, System.DateTime action_date) {
-                ЗадолженностиRow rowЗадолженностиRow = ((ЗадолженностиRow)(this.NewRow()));
+            public DimDateRow AddDimDateRow(System.DateTime Date, int date_year, int date_month, int date_week) {
+                DimDateRow rowDimDateRow = ((DimDateRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
-                        Читательский_номер,
-                        ФИО_Читателя,
-                        Учетый_номер_книги,
-                        Книга,
-                        Действие,
-                        action_date};
-                rowЗадолженностиRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowЗадолженностиRow);
-                return rowЗадолженностиRow;
+                        null,
+                        Date,
+                        date_year,
+                        date_month,
+                        date_week};
+                rowDimDateRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDimDateRow);
+                return rowDimDateRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DimDateRow FindByID(int ID) {
+                return ((DimDateRow)(this.Rows.Find(new object[] {
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                ЗадолженностиDataTable cln = ((ЗадолженностиDataTable)(base.Clone()));
+                DimDateDataTable cln = ((DimDateDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -2178,19 +1538,17 @@ namespace WindowsFormsApp1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new ЗадолженностиDataTable();
+                return new DimDateDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
-                this.columnЧитательский_номер = base.Columns["Читательский номер"];
-                this.columnФИО_Читателя = base.Columns["ФИО Читателя"];
-                this.columnУчетый_номер_книги = base.Columns["Учетый номер книги"];
-                this.columnКнига = base.Columns["Книга"];
-                this.columnДействие = base.Columns["Действие"];
-                this.columnaction_date = base.Columns["action_date"];
+                this.columnDate = base.Columns["Date"];
+                this.columndate_year = base.Columns["date_year"];
+                this.columndate_month = base.Columns["date_month"];
+                this.columndate_week = base.Columns["date_week"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2198,54 +1556,52 @@ namespace WindowsFormsApp1 {
             private void InitClass() {
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.columnЧитательский_номер = new global::System.Data.DataColumn("Читательский номер", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnЧитательский_номер);
-                this.columnФИО_Читателя = new global::System.Data.DataColumn("ФИО Читателя", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnФИО_Читателя);
-                this.columnУчетый_номер_книги = new global::System.Data.DataColumn("Учетый номер книги", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnУчетый_номер_книги);
-                this.columnКнига = new global::System.Data.DataColumn("Книга", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnКнига);
-                this.columnДействие = new global::System.Data.DataColumn("Действие", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnДействие);
-                this.columnaction_date = new global::System.Data.DataColumn("action_date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnaction_date);
+                this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDate);
+                this.columndate_year = new global::System.Data.DataColumn("date_year", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndate_year);
+                this.columndate_month = new global::System.Data.DataColumn("date_month", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndate_month);
+                this.columndate_week = new global::System.Data.DataColumn("date_week", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndate_week);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
                 this.columnID.AllowDBNull = false;
-                this.columnЧитательский_номер.AllowDBNull = false;
-                this.columnФИО_Читателя.AllowDBNull = false;
-                this.columnФИО_Читателя.MaxLength = 2147483647;
-                this.columnУчетый_номер_книги.AllowDBNull = false;
-                this.columnКнига.AllowDBNull = false;
-                this.columnКнига.MaxLength = 2147483647;
-                this.columnДействие.AllowDBNull = false;
-                this.columnДействие.MaxLength = 15;
-                this.columnaction_date.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
+                this.columnDate.AllowDBNull = false;
+                this.columndate_year.AllowDBNull = false;
+                this.columndate_month.AllowDBNull = false;
+                this.columndate_week.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ЗадолженностиRow NewЗадолженностиRow() {
-                return ((ЗадолженностиRow)(this.NewRow()));
+            public DimDateRow NewDimDateRow() {
+                return ((DimDateRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ЗадолженностиRow(builder);
+                return new DimDateRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(ЗадолженностиRow);
+                return typeof(DimDateRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.ЗадолженностиRowChanged != null)) {
-                    this.ЗадолженностиRowChanged(this, new ЗадолженностиRowChangeEvent(((ЗадолженностиRow)(e.Row)), e.Action));
+                if ((this.DimDateRowChanged != null)) {
+                    this.DimDateRowChanged(this, new DimDateRowChangeEvent(((DimDateRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2253,8 +1609,8 @@ namespace WindowsFormsApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.ЗадолженностиRowChanging != null)) {
-                    this.ЗадолженностиRowChanging(this, new ЗадолженностиRowChangeEvent(((ЗадолженностиRow)(e.Row)), e.Action));
+                if ((this.DimDateRowChanging != null)) {
+                    this.DimDateRowChanging(this, new DimDateRowChangeEvent(((DimDateRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2262,8 +1618,8 @@ namespace WindowsFormsApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.ЗадолженностиRowDeleted != null)) {
-                    this.ЗадолженностиRowDeleted(this, new ЗадолженностиRowChangeEvent(((ЗадолженностиRow)(e.Row)), e.Action));
+                if ((this.DimDateRowDeleted != null)) {
+                    this.DimDateRowDeleted(this, new DimDateRowChangeEvent(((DimDateRow)(e.Row)), e.Action));
                 }
             }
             
@@ -2271,14 +1627,14 @@ namespace WindowsFormsApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.ЗадолженностиRowDeleting != null)) {
-                    this.ЗадолженностиRowDeleting(this, new ЗадолженностиRowChangeEvent(((ЗадолженностиRow)(e.Row)), e.Action));
+                if ((this.DimDateRowDeleting != null)) {
+                    this.DimDateRowDeleting(this, new DimDateRowChangeEvent(((DimDateRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveЗадолженностиRow(ЗадолженностиRow row) {
+            public void RemoveDimDateRow(DimDateRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -2305,7 +1661,625 @@ namespace WindowsFormsApp1 {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ЗадолженностиDataTable";
+                attribute2.FixedValue = "DimDateDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class BooksHistoryDataTable : global::System.Data.TypedTableBase<BooksHistoryRow> {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnbook_id;
+            
+            private global::System.Data.DataColumn columnReader_ID;
+            
+            private global::System.Data.DataColumn columnFIO;
+            
+            private global::System.Data.DataColumn columnDate;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public BooksHistoryDataTable() {
+                this.TableName = "BooksHistory";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal BooksHistoryDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected BooksHistoryDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn book_idColumn {
+                get {
+                    return this.columnbook_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Reader_IDColumn {
+                get {
+                    return this.columnReader_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FIOColumn {
+                get {
+                    return this.columnFIO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DateColumn {
+                get {
+                    return this.columnDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public BooksHistoryRow this[int index] {
+                get {
+                    return ((BooksHistoryRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event BooksHistoryRowChangeEventHandler BooksHistoryRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event BooksHistoryRowChangeEventHandler BooksHistoryRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event BooksHistoryRowChangeEventHandler BooksHistoryRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event BooksHistoryRowChangeEventHandler BooksHistoryRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddBooksHistoryRow(BooksHistoryRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public BooksHistoryRow AddBooksHistoryRow(int ID, int book_id, int Reader_ID, string FIO, System.DateTime Date) {
+                BooksHistoryRow rowBooksHistoryRow = ((BooksHistoryRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        ID,
+                        book_id,
+                        Reader_ID,
+                        FIO,
+                        Date};
+                rowBooksHistoryRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowBooksHistoryRow);
+                return rowBooksHistoryRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                BooksHistoryDataTable cln = ((BooksHistoryDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new BooksHistoryDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnbook_id = base.Columns["book_id"];
+                this.columnReader_ID = base.Columns["Reader_ID"];
+                this.columnFIO = base.Columns["FIO"];
+                this.columnDate = base.Columns["Date"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnbook_id = new global::System.Data.DataColumn("book_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbook_id);
+                this.columnReader_ID = new global::System.Data.DataColumn("Reader_ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReader_ID);
+                this.columnFIO = new global::System.Data.DataColumn("FIO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFIO);
+                this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDate);
+                this.columnID.AllowDBNull = false;
+                this.columnbook_id.AllowDBNull = false;
+                this.columnReader_ID.AllowDBNull = false;
+                this.columnFIO.AllowDBNull = false;
+                this.columnFIO.MaxLength = 2147483647;
+                this.columnDate.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public BooksHistoryRow NewBooksHistoryRow() {
+                return ((BooksHistoryRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new BooksHistoryRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(BooksHistoryRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.BooksHistoryRowChanged != null)) {
+                    this.BooksHistoryRowChanged(this, new BooksHistoryRowChangeEvent(((BooksHistoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.BooksHistoryRowChanging != null)) {
+                    this.BooksHistoryRowChanging(this, new BooksHistoryRowChangeEvent(((BooksHistoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.BooksHistoryRowDeleted != null)) {
+                    this.BooksHistoryRowDeleted(this, new BooksHistoryRowChangeEvent(((BooksHistoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.BooksHistoryRowDeleting != null)) {
+                    this.BooksHistoryRowDeleting(this, new BooksHistoryRowChangeEvent(((BooksHistoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveBooksHistoryRow(BooksHistoryRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                Library451DWHDataSet ds = new Library451DWHDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "BooksHistoryDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ReadersHistoryDataTable : global::System.Data.TypedTableBase<ReadersHistoryRow> {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnReader_ID;
+            
+            private global::System.Data.DataColumn columnBook_ID;
+            
+            private global::System.Data.DataColumn columnbook_name;
+            
+            private global::System.Data.DataColumn columnDate;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ReadersHistoryDataTable() {
+                this.TableName = "ReadersHistory";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal ReadersHistoryDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected ReadersHistoryDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Reader_IDColumn {
+                get {
+                    return this.columnReader_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Book_IDColumn {
+                get {
+                    return this.columnBook_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn book_nameColumn {
+                get {
+                    return this.columnbook_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DateColumn {
+                get {
+                    return this.columnDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ReadersHistoryRow this[int index] {
+                get {
+                    return ((ReadersHistoryRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event ReadersHistoryRowChangeEventHandler ReadersHistoryRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event ReadersHistoryRowChangeEventHandler ReadersHistoryRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event ReadersHistoryRowChangeEventHandler ReadersHistoryRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event ReadersHistoryRowChangeEventHandler ReadersHistoryRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddReadersHistoryRow(ReadersHistoryRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ReadersHistoryRow AddReadersHistoryRow(int ID, int Reader_ID, int Book_ID, string book_name, System.DateTime Date) {
+                ReadersHistoryRow rowReadersHistoryRow = ((ReadersHistoryRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        ID,
+                        Reader_ID,
+                        Book_ID,
+                        book_name,
+                        Date};
+                rowReadersHistoryRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowReadersHistoryRow);
+                return rowReadersHistoryRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ReadersHistoryDataTable cln = ((ReadersHistoryDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ReadersHistoryDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnReader_ID = base.Columns["Reader_ID"];
+                this.columnBook_ID = base.Columns["Book_ID"];
+                this.columnbook_name = base.Columns["book_name"];
+                this.columnDate = base.Columns["Date"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnReader_ID = new global::System.Data.DataColumn("Reader_ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReader_ID);
+                this.columnBook_ID = new global::System.Data.DataColumn("Book_ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBook_ID);
+                this.columnbook_name = new global::System.Data.DataColumn("book_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbook_name);
+                this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDate);
+                this.columnID.AllowDBNull = false;
+                this.columnReader_ID.AllowDBNull = false;
+                this.columnBook_ID.AllowDBNull = false;
+                this.columnbook_name.AllowDBNull = false;
+                this.columnbook_name.MaxLength = 2147483647;
+                this.columnDate.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ReadersHistoryRow NewReadersHistoryRow() {
+                return ((ReadersHistoryRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ReadersHistoryRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ReadersHistoryRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ReadersHistoryRowChanged != null)) {
+                    this.ReadersHistoryRowChanged(this, new ReadersHistoryRowChangeEvent(((ReadersHistoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ReadersHistoryRowChanging != null)) {
+                    this.ReadersHistoryRowChanging(this, new ReadersHistoryRowChangeEvent(((ReadersHistoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ReadersHistoryRowDeleted != null)) {
+                    this.ReadersHistoryRowDeleted(this, new ReadersHistoryRowChangeEvent(((ReadersHistoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ReadersHistoryRowDeleting != null)) {
+                    this.ReadersHistoryRowDeleting(this, new ReadersHistoryRowChangeEvent(((ReadersHistoryRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveReadersHistoryRow(ReadersHistoryRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                Library451DWHDataSet ds = new Library451DWHDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ReadersHistoryDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2349,54 +2323,6 @@ namespace WindowsFormsApp1 {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class DimActionTypeRow : global::System.Data.DataRow {
-            
-            private DimActionTypeDataTable tableDimActionType;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal DimActionTypeRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDimActionType = ((DimActionTypeDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int ID {
-                get {
-                    return ((int)(this[this.tableDimActionType.IDColumn]));
-                }
-                set {
-                    this[this.tableDimActionType.IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Action_type {
-                get {
-                    return ((string)(this[this.tableDimActionType.Action_typeColumn]));
-                }
-                set {
-                    this[this.tableDimActionType.Action_typeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public FactDebtsRow[] GetFactDebtsRows() {
-                if ((this.Table.ChildRelations["FK_FactDebts_DimActionType"] == null)) {
-                    return new FactDebtsRow[0];
-                }
-                else {
-                    return ((FactDebtsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_FactDebts_DimActionType"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
         public partial class DimBookRow : global::System.Data.DataRow {
             
             private DimBookDataTable tableDimBook;
@@ -2432,144 +2358,12 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public FactDebtsRow[] GetFactDebtsRows() {
-                if ((this.Table.ChildRelations["FK_FactDebts_DimBook"] == null)) {
-                    return new FactDebtsRow[0];
+            public FactsBookHistoryRow[] GetFactsBookHistoryRows() {
+                if ((this.Table.ChildRelations["FK_FactsBookHistory_DimBook"] == null)) {
+                    return new FactsBookHistoryRow[0];
                 }
                 else {
-                    return ((FactDebtsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_FactDebts_DimBook"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class DimDateRow : global::System.Data.DataRow {
-            
-            private DimDateDataTable tableDimDate;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal DimDateRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableDimDate = ((DimDateDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int time_id {
-                get {
-                    return ((int)(this[this.tableDimDate.time_idColumn]));
-                }
-                set {
-                    this[this.tableDimDate.time_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime action_date {
-                get {
-                    return ((global::System.DateTime)(this[this.tableDimDate.action_dateColumn]));
-                }
-                set {
-                    this[this.tableDimDate.action_dateColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int action_week {
-                get {
-                    try {
-                        return ((int)(this[this.tableDimDate.action_weekColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'action_week\' в таблице \'DimDate\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDimDate.action_weekColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int action_month {
-                get {
-                    try {
-                        return ((int)(this[this.tableDimDate.action_monthColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'action_month\' в таблице \'DimDate\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDimDate.action_monthColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int action_year {
-                get {
-                    try {
-                        return ((int)(this[this.tableDimDate.action_yearColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'action_year\' в таблице \'DimDate\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDimDate.action_yearColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Isaction_weekNull() {
-                return this.IsNull(this.tableDimDate.action_weekColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Setaction_weekNull() {
-                this[this.tableDimDate.action_weekColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Isaction_monthNull() {
-                return this.IsNull(this.tableDimDate.action_monthColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Setaction_monthNull() {
-                this[this.tableDimDate.action_monthColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Isaction_yearNull() {
-                return this.IsNull(this.tableDimDate.action_yearColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Setaction_yearNull() {
-                this[this.tableDimDate.action_yearColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public FactDebtsRow[] GetFactDebtsRows() {
-                if ((this.Table.ChildRelations["FK_FactDebts_DimDate"] == null)) {
-                    return new FactDebtsRow[0];
-                }
-                else {
-                    return ((FactDebtsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_FactDebts_DimDate"])));
+                    return ((FactsBookHistoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK_FactsBookHistory_DimBook"])));
                 }
             }
         }
@@ -2645,12 +2439,12 @@ namespace WindowsFormsApp1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public FactDebtsRow[] GetFactDebtsRows() {
-                if ((this.Table.ChildRelations["FK_FactDebts_DimReader"] == null)) {
-                    return new FactDebtsRow[0];
+            public FactsBookHistoryRow[] GetFactsBookHistoryRows() {
+                if ((this.Table.ChildRelations["FK_FactsBookHistory_DimReader"] == null)) {
+                    return new FactsBookHistoryRow[0];
                 }
                 else {
-                    return ((FactDebtsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_FactDebts_DimReader"])));
+                    return ((FactsBookHistoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK_FactsBookHistory_DimReader"])));
                 }
             }
         }
@@ -2658,25 +2452,25 @@ namespace WindowsFormsApp1 {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class FactDebtsRow : global::System.Data.DataRow {
+        public partial class FactsBookHistoryRow : global::System.Data.DataRow {
             
-            private FactDebtsDataTable tableFactDebts;
+            private FactsBookHistoryDataTable tableFactsBookHistory;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal FactDebtsRow(global::System.Data.DataRowBuilder rb) : 
+            internal FactsBookHistoryRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableFactDebts = ((FactDebtsDataTable)(this.Table));
+                this.tableFactsBookHistory = ((FactsBookHistoryDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int ID {
                 get {
-                    return ((int)(this[this.tableFactDebts.IDColumn]));
+                    return ((int)(this[this.tableFactsBookHistory.IDColumn]));
                 }
                 set {
-                    this[this.tableFactDebts.IDColumn] = value;
+                    this[this.tableFactsBookHistory.IDColumn] = value;
                 }
             }
             
@@ -2684,10 +2478,10 @@ namespace WindowsFormsApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int Reader_ID {
                 get {
-                    return ((int)(this[this.tableFactDebts.Reader_IDColumn]));
+                    return ((int)(this[this.tableFactsBookHistory.Reader_IDColumn]));
                 }
                 set {
-                    this[this.tableFactDebts.Reader_IDColumn] = value;
+                    this[this.tableFactsBookHistory.Reader_IDColumn] = value;
                 }
             }
             
@@ -2695,10 +2489,10 @@ namespace WindowsFormsApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int Book_ID {
                 get {
-                    return ((int)(this[this.tableFactDebts.Book_IDColumn]));
+                    return ((int)(this[this.tableFactsBookHistory.Book_IDColumn]));
                 }
                 set {
-                    this[this.tableFactDebts.Book_IDColumn] = value;
+                    this[this.tableFactsBookHistory.Book_IDColumn] = value;
                 }
             }
             
@@ -2706,32 +2500,10 @@ namespace WindowsFormsApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int Date_ID {
                 get {
-                    return ((int)(this[this.tableFactDebts.Date_IDColumn]));
+                    return ((int)(this[this.tableFactsBookHistory.Date_IDColumn]));
                 }
                 set {
-                    this[this.tableFactDebts.Date_IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int ActionType_ID {
-                get {
-                    return ((int)(this[this.tableFactDebts.ActionType_IDColumn]));
-                }
-                set {
-                    this[this.tableFactDebts.ActionType_IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DimActionTypeRow DimActionTypeRow {
-                get {
-                    return ((DimActionTypeRow)(this.GetParentRow(this.Table.ParentRelations["FK_FactDebts_DimActionType"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_FactDebts_DimActionType"]);
+                    this[this.tableFactsBookHistory.Date_IDColumn] = value;
                 }
             }
             
@@ -2739,21 +2511,10 @@ namespace WindowsFormsApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DimBookRow DimBookRow {
                 get {
-                    return ((DimBookRow)(this.GetParentRow(this.Table.ParentRelations["FK_FactDebts_DimBook"])));
+                    return ((DimBookRow)(this.GetParentRow(this.Table.ParentRelations["FK_FactsBookHistory_DimBook"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_FactDebts_DimBook"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DimDateRow DimDateRow {
-                get {
-                    return ((DimDateRow)(this.GetParentRow(this.Table.ParentRelations["FK_FactDebts_DimDate"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_FactDebts_DimDate"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_FactsBookHistory_DimBook"]);
                 }
             }
             
@@ -2761,10 +2522,21 @@ namespace WindowsFormsApp1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DimReaderRow DimReaderRow {
                 get {
-                    return ((DimReaderRow)(this.GetParentRow(this.Table.ParentRelations["FK_FactDebts_DimReader"])));
+                    return ((DimReaderRow)(this.GetParentRow(this.Table.ParentRelations["FK_FactsBookHistory_DimReader"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_FactDebts_DimReader"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_FactsBookHistory_DimReader"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DimDateRow DimDateRow {
+                get {
+                    return ((DimDateRow)(this.GetParentRow(this.Table.ParentRelations["FK_FactsBookHistory_DimDate1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_FactsBookHistory_DimDate1"]);
                 }
             }
         }
@@ -2772,125 +2544,220 @@ namespace WindowsFormsApp1 {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class ЗадолженностиRow : global::System.Data.DataRow {
+        public partial class DimDateRow : global::System.Data.DataRow {
             
-            private ЗадолженностиDataTable tableЗадолженности;
+            private DimDateDataTable tableDimDate;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal ЗадолженностиRow(global::System.Data.DataRowBuilder rb) : 
+            internal DimDateRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableЗадолженности = ((ЗадолженностиDataTable)(this.Table));
+                this.tableDimDate = ((DimDateDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int ID {
                 get {
-                    return ((int)(this[this.tableЗадолженности.IDColumn]));
+                    return ((int)(this[this.tableDimDate.IDColumn]));
                 }
                 set {
-                    this[this.tableЗадолженности.IDColumn] = value;
+                    this[this.tableDimDate.IDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Читательский_номер {
+            public System.DateTime Date {
                 get {
-                    return ((int)(this[this.tableЗадолженности.Читательский_номерColumn]));
+                    return ((global::System.DateTime)(this[this.tableDimDate.DateColumn]));
                 }
                 set {
-                    this[this.tableЗадолженности.Читательский_номерColumn] = value;
+                    this[this.tableDimDate.DateColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string ФИО_Читателя {
+            public int date_year {
                 get {
-                    return ((string)(this[this.tableЗадолженности.ФИО_ЧитателяColumn]));
+                    return ((int)(this[this.tableDimDate.date_yearColumn]));
                 }
                 set {
-                    this[this.tableЗадолженности.ФИО_ЧитателяColumn] = value;
+                    this[this.tableDimDate.date_yearColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Учетый_номер_книги {
+            public int date_month {
                 get {
-                    return ((int)(this[this.tableЗадолженности.Учетый_номер_книгиColumn]));
+                    return ((int)(this[this.tableDimDate.date_monthColumn]));
                 }
                 set {
-                    this[this.tableЗадолженности.Учетый_номер_книгиColumn] = value;
+                    this[this.tableDimDate.date_monthColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Книга {
+            public int date_week {
                 get {
-                    return ((string)(this[this.tableЗадолженности.КнигаColumn]));
+                    return ((int)(this[this.tableDimDate.date_weekColumn]));
                 }
                 set {
-                    this[this.tableЗадолженности.КнигаColumn] = value;
+                    this[this.tableDimDate.date_weekColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Действие {
-                get {
-                    return ((string)(this[this.tableЗадолженности.ДействиеColumn]));
+            public FactsBookHistoryRow[] GetFactsBookHistoryRows() {
+                if ((this.Table.ChildRelations["FK_FactsBookHistory_DimDate1"] == null)) {
+                    return new FactsBookHistoryRow[0];
                 }
-                set {
-                    this[this.tableЗадолженности.ДействиеColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime action_date {
-                get {
-                    return ((global::System.DateTime)(this[this.tableЗадолженности.action_dateColumn]));
-                }
-                set {
-                    this[this.tableЗадолженности.action_dateColumn] = value;
+                else {
+                    return ((FactsBookHistoryRow[])(base.GetChildRows(this.Table.ChildRelations["FK_FactsBookHistory_DimDate1"])));
                 }
             }
         }
         
         /// <summary>
-        ///Row event argument class
+        ///Represents strongly named DataRow class.
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class DimActionTypeRowChangeEvent : global::System.EventArgs {
+        public partial class BooksHistoryRow : global::System.Data.DataRow {
             
-            private DimActionTypeRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
+            private BooksHistoryDataTable tableBooksHistory;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DimActionTypeRowChangeEvent(DimActionTypeRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
+            internal BooksHistoryRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableBooksHistory = ((BooksHistoryDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DimActionTypeRow Row {
+            public int ID {
                 get {
-                    return this.eventRow;
+                    return ((int)(this[this.tableBooksHistory.IDColumn]));
+                }
+                set {
+                    this[this.tableBooksHistory.IDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataRowAction Action {
+            public int book_id {
                 get {
-                    return this.eventAction;
+                    return ((int)(this[this.tableBooksHistory.book_idColumn]));
+                }
+                set {
+                    this[this.tableBooksHistory.book_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Reader_ID {
+                get {
+                    return ((int)(this[this.tableBooksHistory.Reader_IDColumn]));
+                }
+                set {
+                    this[this.tableBooksHistory.Reader_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string FIO {
+                get {
+                    return ((string)(this[this.tableBooksHistory.FIOColumn]));
+                }
+                set {
+                    this[this.tableBooksHistory.FIOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime Date {
+                get {
+                    return ((global::System.DateTime)(this[this.tableBooksHistory.DateColumn]));
+                }
+                set {
+                    this[this.tableBooksHistory.DateColumn] = value;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ReadersHistoryRow : global::System.Data.DataRow {
+            
+            private ReadersHistoryDataTable tableReadersHistory;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal ReadersHistoryRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableReadersHistory = ((ReadersHistoryDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int ID {
+                get {
+                    return ((int)(this[this.tableReadersHistory.IDColumn]));
+                }
+                set {
+                    this[this.tableReadersHistory.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Reader_ID {
+                get {
+                    return ((int)(this[this.tableReadersHistory.Reader_IDColumn]));
+                }
+                set {
+                    this[this.tableReadersHistory.Reader_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Book_ID {
+                get {
+                    return ((int)(this[this.tableReadersHistory.Book_IDColumn]));
+                }
+                set {
+                    this[this.tableReadersHistory.Book_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string book_name {
+                get {
+                    return ((string)(this[this.tableReadersHistory.book_nameColumn]));
+                }
+                set {
+                    this[this.tableReadersHistory.book_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime Date {
+                get {
+                    return ((global::System.DateTime)(this[this.tableReadersHistory.DateColumn]));
+                }
+                set {
+                    this[this.tableReadersHistory.DateColumn] = value;
                 }
             }
         }
@@ -2915,40 +2782,6 @@ namespace WindowsFormsApp1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DimBookRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class DimDateRowChangeEvent : global::System.EventArgs {
-            
-            private DimDateRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DimDateRowChangeEvent(DimDateRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DimDateRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3001,22 +2834,22 @@ namespace WindowsFormsApp1 {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class FactDebtsRowChangeEvent : global::System.EventArgs {
+        public class FactsBookHistoryRowChangeEvent : global::System.EventArgs {
             
-            private FactDebtsRow eventRow;
+            private FactsBookHistoryRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public FactDebtsRowChangeEvent(FactDebtsRow row, global::System.Data.DataRowAction action) {
+            public FactsBookHistoryRowChangeEvent(FactsBookHistoryRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public FactDebtsRow Row {
+            public FactsBookHistoryRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3035,22 +2868,90 @@ namespace WindowsFormsApp1 {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class ЗадолженностиRowChangeEvent : global::System.EventArgs {
+        public class DimDateRowChangeEvent : global::System.EventArgs {
             
-            private ЗадолженностиRow eventRow;
+            private DimDateRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ЗадолженностиRowChangeEvent(ЗадолженностиRow row, global::System.Data.DataRowAction action) {
+            public DimDateRowChangeEvent(DimDateRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public ЗадолженностиRow Row {
+            public DimDateRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class BooksHistoryRowChangeEvent : global::System.EventArgs {
+            
+            private BooksHistoryRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public BooksHistoryRowChangeEvent(BooksHistoryRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public BooksHistoryRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class ReadersHistoryRowChangeEvent : global::System.EventArgs {
+            
+            private ReadersHistoryRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ReadersHistoryRowChangeEvent(ReadersHistoryRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public ReadersHistoryRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3068,324 +2969,6 @@ namespace WindowsFormsApp1 {
 }
 namespace WindowsFormsApp1.Library451DWHDataSetTableAdapters {
     
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class DimActionTypeTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public DimActionTypeTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "DimActionType";
-            tableMapping.ColumnMappings.Add("ID", "ID");
-            tableMapping.ColumnMappings.Add("Action_type", "Action_type");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[DimActionType] WHERE (([ID] = @Original_ID) AND ([Action_type]" +
-                " = @Original_Action_type))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Action_type", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Action_type", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[DimActionType] ([Action_type]) VALUES (@Action_type);\r\nSELECT " +
-                "ID, Action_type FROM DimActionType WHERE (ID = SCOPE_IDENTITY())";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Action_type", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Action_type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[DimActionType] SET [Action_type] = @Action_type WHERE (([ID] = @Ori" +
-                "ginal_ID) AND ([Action_type] = @Original_Action_type));\r\nSELECT ID, Action_type " +
-                "FROM DimActionType WHERE (ID = @ID)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Action_type", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Action_type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Action_type", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Action_type", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.DWH_ConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, Action_type FROM dbo.DimActionType";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(Library451DWHDataSet.DimActionTypeDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual Library451DWHDataSet.DimActionTypeDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            Library451DWHDataSet.DimActionTypeDataTable dataTable = new Library451DWHDataSet.DimActionTypeDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(Library451DWHDataSet.DimActionTypeDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(Library451DWHDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "DimActionType");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, string Original_Action_type) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
-            if ((Original_Action_type == null)) {
-                throw new global::System.ArgumentNullException("Original_Action_type");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Action_type));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Action_type) {
-            if ((Action_type == null)) {
-                throw new global::System.ArgumentNullException("Action_type");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Action_type));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Action_type, int Original_ID, string Original_Action_type, int ID) {
-            if ((Action_type == null)) {
-                throw new global::System.ArgumentNullException("Action_type");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Action_type));
-            }
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_ID));
-            if ((Original_Action_type == null)) {
-                throw new global::System.ArgumentNullException("Original_Action_type");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_Action_type));
-            }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(ID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Action_type, int Original_ID, string Original_Action_type) {
-            return this.Update(Action_type, Original_ID, Original_Action_type, Original_ID);
-        }
-    }
     
     /// <summary>
     ///Represents the connection and commands used to retrieve and save data.
@@ -3538,7 +3121,7 @@ namespace WindowsFormsApp1.Library451DWHDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.DWH_ConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.Library451DWHConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3689,367 +3272,6 @@ namespace WindowsFormsApp1.Library451DWHDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string book_name, int Original_book_id) {
             return this.Update(Original_book_id, book_name, Original_book_id);
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class DimDateTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public DimDateTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "DimDate";
-            tableMapping.ColumnMappings.Add("time_id", "time_id");
-            tableMapping.ColumnMappings.Add("action_date", "action_date");
-            tableMapping.ColumnMappings.Add("action_week", "action_week");
-            tableMapping.ColumnMappings.Add("action_month", "action_month");
-            tableMapping.ColumnMappings.Add("action_year", "action_year");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[DimDate] WHERE (([time_id] = @Original_time_id) AND ([action_date] = @Original_action_date) AND ((@IsNull_action_week = 1 AND [action_week] IS NULL) OR ([action_week] = @Original_action_week)) AND ((@IsNull_action_month = 1 AND [action_month] IS NULL) OR ([action_month] = @Original_action_month)) AND ((@IsNull_action_year = 1 AND [action_year] IS NULL) OR ([action_year] = @Original_action_year)))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_time_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "time_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_action_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "action_date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_action_week", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "action_week", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_action_week", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "action_week", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_action_month", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "action_month", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_action_month", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "action_month", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_action_year", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "action_year", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_action_year", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "action_year", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[DimDate] ([action_date]) VALUES (@action_date);\r\nSELECT time_i" +
-                "d, action_date, action_week, action_month, action_year FROM DimDate WHERE (time_" +
-                "id = SCOPE_IDENTITY())";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@action_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "action_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[DimDate] SET [action_date] = @action_date WHERE (([time_id] = @Original_time_id) AND ([action_date] = @Original_action_date) AND ((@IsNull_action_week = 1 AND [action_week] IS NULL) OR ([action_week] = @Original_action_week)) AND ((@IsNull_action_month = 1 AND [action_month] IS NULL) OR ([action_month] = @Original_action_month)) AND ((@IsNull_action_year = 1 AND [action_year] IS NULL) OR ([action_year] = @Original_action_year)));
-SELECT time_id, action_date, action_week, action_month, action_year FROM DimDate WHERE (time_id = @time_id)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@action_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "action_date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_time_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "time_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_action_date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "action_date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_action_week", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "action_week", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_action_week", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "action_week", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_action_month", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "action_month", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_action_month", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "action_month", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_action_year", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "action_year", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_action_year", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "action_year", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@time_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "time_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.DWH_ConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT time_id, action_date, action_week, action_month, action_year FROM dbo.DimD" +
-                "ate";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(Library451DWHDataSet.DimDateDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual Library451DWHDataSet.DimDateDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            Library451DWHDataSet.DimDateDataTable dataTable = new Library451DWHDataSet.DimDateDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(Library451DWHDataSet.DimDateDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(Library451DWHDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "DimDate");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_time_id, System.DateTime Original_action_date, global::System.Nullable<int> Original_action_week, global::System.Nullable<int> Original_action_month, global::System.Nullable<int> Original_action_year) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_time_id));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_action_date));
-            if ((Original_action_week.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_action_week.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            if ((Original_action_month.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_action_month.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            if ((Original_action_year.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_action_year.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(System.DateTime action_date) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(action_date));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime action_date, int Original_time_id, System.DateTime Original_action_date, global::System.Nullable<int> Original_action_week, global::System.Nullable<int> Original_action_month, global::System.Nullable<int> Original_action_year, int time_id) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(action_date));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_time_id));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(Original_action_date));
-            if ((Original_action_week.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_action_week.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((Original_action_month.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_action_month.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((Original_action_year.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_action_year.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(time_id));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(System.DateTime action_date, int Original_time_id, System.DateTime Original_action_date, global::System.Nullable<int> Original_action_week, global::System.Nullable<int> Original_action_month, global::System.Nullable<int> Original_action_year) {
-            return this.Update(action_date, Original_time_id, Original_action_date, Original_action_week, Original_action_month, Original_action_year, Original_time_id);
         }
     }
     
@@ -4214,7 +3436,7 @@ SELECT Reader_ID, FIO, PASSPORT, ADDRESS, TELEPHONE FROM DimReader WHERE (Reader
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.DWH_ConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.Library451DWHConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4413,7 +3635,7 @@ SELECT Reader_ID, FIO, PASSPORT, ADDRESS, TELEPHONE FROM DimReader WHERE (Reader
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class FactDebtsTableAdapter : global::System.ComponentModel.Component {
+    public partial class FactsBookHistoryTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -4427,7 +3649,7 @@ SELECT Reader_ID, FIO, PASSPORT, ADDRESS, TELEPHONE FROM DimReader WHERE (Reader
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public FactDebtsTableAdapter() {
+        public FactsBookHistoryTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -4524,48 +3746,43 @@ SELECT Reader_ID, FIO, PASSPORT, ADDRESS, TELEPHONE FROM DimReader WHERE (Reader
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "FactDebts";
+            tableMapping.DataSetTable = "FactsBookHistory";
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("Reader_ID", "Reader_ID");
             tableMapping.ColumnMappings.Add("Book_ID", "Book_ID");
             tableMapping.ColumnMappings.Add("Date_ID", "Date_ID");
-            tableMapping.ColumnMappings.Add("ActionType_ID", "ActionType_ID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[FactDebts] WHERE (([ID] = @Original_ID) AND ([Reader_ID] = @Or" +
-                "iginal_Reader_ID) AND ([Book_ID] = @Original_Book_ID) AND ([Date_ID] = @Original" +
-                "_Date_ID) AND ([ActionType_ID] = @Original_ActionType_ID))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[FactsBookHistory] WHERE (([ID] = @Original_ID) AND ([Reader_ID" +
+                "] = @Original_Reader_ID) AND ([Book_ID] = @Original_Book_ID) AND ([Date_ID] = @O" +
+                "riginal_Date_ID))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Reader_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Reader_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Book_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Book_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Date_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ActionType_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ActionType_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[FactDebts] ([Reader_ID], [Book_ID], [Date_ID], [ActionType_ID]" +
-                ") VALUES (@Reader_ID, @Book_ID, @Date_ID, @ActionType_ID);\r\nSELECT ID, Reader_ID" +
-                ", Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[FactsBookHistory] ([Reader_ID], [Book_ID], [Date_ID]) VALUES (" +
+                "@Reader_ID, @Book_ID, @Date_ID);\r\nSELECT ID, Reader_ID, Book_ID, Date_ID FROM Fa" +
+                "ctsBookHistory WHERE (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Reader_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Reader_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Book_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Book_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ActionType_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ActionType_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[FactDebts] SET [Reader_ID] = @Reader_ID, [Book_ID] = @Book_ID, [Date_ID] = @Date_ID, [ActionType_ID] = @ActionType_ID WHERE (([ID] = @Original_ID) AND ([Reader_ID] = @Original_Reader_ID) AND ([Book_ID] = @Original_Book_ID) AND ([Date_ID] = @Original_Date_ID) AND ([ActionType_ID] = @Original_ActionType_ID));
-SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[FactsBookHistory] SET [Reader_ID] = @Reader_ID, [Book_ID] = @Book_ID, [Date_ID] = @Date_ID WHERE (([ID] = @Original_ID) AND ([Reader_ID] = @Original_Reader_ID) AND ([Book_ID] = @Original_Book_ID) AND ([Date_ID] = @Original_Date_ID));
+SELECT ID, Reader_ID, Book_ID, Date_ID FROM FactsBookHistory WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Reader_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Reader_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Book_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Book_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ActionType_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ActionType_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Reader_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Reader_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Book_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Book_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Date_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ActionType_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ActionType_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -4573,7 +3790,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.DWH_ConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.Library451DWHConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4582,7 +3799,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM dbo.FactDebts";
+            this._commandCollection[0].CommandText = "SELECT ID, Reader_ID, Book_ID, Date_ID FROM dbo.FactsBookHistory";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4590,7 +3807,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(Library451DWHDataSet.FactDebtsDataTable dataTable) {
+        public virtual int Fill(Library451DWHDataSet.FactsBookHistoryDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4603,9 +3820,9 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual Library451DWHDataSet.FactDebtsDataTable GetData() {
+        public virtual Library451DWHDataSet.FactsBookHistoryDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            Library451DWHDataSet.FactDebtsDataTable dataTable = new Library451DWHDataSet.FactDebtsDataTable();
+            Library451DWHDataSet.FactsBookHistoryDataTable dataTable = new Library451DWHDataSet.FactsBookHistoryDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4613,7 +3830,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(Library451DWHDataSet.FactDebtsDataTable dataTable) {
+        public virtual int Update(Library451DWHDataSet.FactsBookHistoryDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -4621,7 +3838,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(Library451DWHDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "FactDebts");
+            return this.Adapter.Update(dataSet, "FactsBookHistory");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4643,12 +3860,11 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, int Original_Reader_ID, int Original_Book_ID, int Original_Date_ID, int Original_ActionType_ID) {
+        public virtual int Delete(int Original_ID, int Original_Reader_ID, int Original_Book_ID, int Original_Date_ID) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_Reader_ID));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Book_ID));
             this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_Date_ID));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_ActionType_ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4669,11 +3885,10 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Reader_ID, int Book_ID, int Date_ID, int ActionType_ID) {
+        public virtual int Insert(int Reader_ID, int Book_ID, int Date_ID) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Reader_ID));
             this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Book_ID));
             this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Date_ID));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(ActionType_ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4694,17 +3909,15 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Reader_ID, int Book_ID, int Date_ID, int ActionType_ID, int Original_ID, int Original_Reader_ID, int Original_Book_ID, int Original_Date_ID, int Original_ActionType_ID, int ID) {
+        public virtual int Update(int Reader_ID, int Book_ID, int Date_ID, int Original_ID, int Original_Reader_ID, int Original_Book_ID, int Original_Date_ID, int ID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Reader_ID));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Book_ID));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Date_ID));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(ActionType_ID));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_ID));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Reader_ID));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Book_ID));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Date_ID));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_ActionType_ID));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(ID));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Reader_ID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Book_ID));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Date_ID));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4725,8 +3938,8 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Reader_ID, int Book_ID, int Date_ID, int ActionType_ID, int Original_ID, int Original_Reader_ID, int Original_Book_ID, int Original_Date_ID, int Original_ActionType_ID) {
-            return this.Update(Reader_ID, Book_ID, Date_ID, ActionType_ID, Original_ID, Original_Reader_ID, Original_Book_ID, Original_Date_ID, Original_ActionType_ID, Original_ID);
+        public virtual int Update(int Reader_ID, int Book_ID, int Date_ID, int Original_ID, int Original_Reader_ID, int Original_Book_ID, int Original_Date_ID) {
+            return this.Update(Reader_ID, Book_ID, Date_ID, Original_ID, Original_Reader_ID, Original_Book_ID, Original_Date_ID, Original_ID);
         }
     }
     
@@ -4739,7 +3952,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ЗадолженностиTableAdapter : global::System.ComponentModel.Component {
+    public partial class DimDateTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -4753,7 +3966,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public ЗадолженностиTableAdapter() {
+        public DimDateTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -4850,22 +4063,56 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Задолженности";
+            tableMapping.DataSetTable = "DimDate";
             tableMapping.ColumnMappings.Add("ID", "ID");
-            tableMapping.ColumnMappings.Add("Читательский номер", "Читательский номер");
-            tableMapping.ColumnMappings.Add("ФИО Читателя", "ФИО Читателя");
-            tableMapping.ColumnMappings.Add("Учетый номер книги", "Учетый номер книги");
-            tableMapping.ColumnMappings.Add("Книга", "Книга");
-            tableMapping.ColumnMappings.Add("Действие", "Действие");
-            tableMapping.ColumnMappings.Add("action_date", "action_date");
+            tableMapping.ColumnMappings.Add("Date", "Date");
+            tableMapping.ColumnMappings.Add("date_year", "date_year");
+            tableMapping.ColumnMappings.Add("date_month", "date_month");
+            tableMapping.ColumnMappings.Add("date_week", "date_week");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[DimDate] WHERE (([ID] = @Original_ID) AND ([Date] = @Original_" +
+                "Date) AND ([date_year] = @Original_date_year) AND ([date_month] = @Original_date" +
+                "_month) AND ([date_week] = @Original_date_week))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date_year", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_year", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date_month", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_month", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date_week", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_week", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[DimDate] ([Date], [date_year], [date_month], [date_week]) VALU" +
+                "ES (@Date, @date_year, @date_month, @date_week);\r\nSELECT ID, Date, date_year, da" +
+                "te_month, date_week FROM DimDate WHERE (ID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date_year", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_year", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date_month", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_month", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date_week", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_week", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[DimDate] SET [Date] = @Date, [date_year] = @date_year, [date_month] = @date_month, [date_week] = @date_week WHERE (([ID] = @Original_ID) AND ([Date] = @Original_Date) AND ([date_year] = @Original_date_year) AND ([date_month] = @Original_date_month) AND ([date_week] = @Original_date_week));
+SELECT ID, Date, date_year, date_month, date_week FROM DimDate WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date_year", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_year", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date_month", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_month", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date_week", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_week", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date_year", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_year", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date_month", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_month", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date_week", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date_week", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.DWH_ConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.Library451DWHConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4874,8 +4121,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, [Читательский номер], [ФИО Читателя], [Учетый номер книги], Книга, Дей" +
-                "ствие, action_date FROM Задолженности";
+            this._commandCollection[0].CommandText = "SELECT ID, Date, date_year, date_month, date_week FROM dbo.DimDate";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4883,7 +4129,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(Library451DWHDataSet.ЗадолженностиDataTable dataTable) {
+        public virtual int Fill(Library451DWHDataSet.DimDateDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4896,9 +4142,470 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual Library451DWHDataSet.ЗадолженностиDataTable GetData() {
+        public virtual Library451DWHDataSet.DimDateDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            Library451DWHDataSet.ЗадолженностиDataTable dataTable = new Library451DWHDataSet.ЗадолженностиDataTable();
+            Library451DWHDataSet.DimDateDataTable dataTable = new Library451DWHDataSet.DimDateDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(Library451DWHDataSet.DimDateDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(Library451DWHDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "DimDate");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_ID, System.DateTime Original_Date, int Original_date_year, int Original_date_month, int Original_date_week) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_Date));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_date_year));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_date_month));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_date_week));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(System.DateTime Date, int date_year, int date_month, int date_week) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(Date));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(date_year));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(date_month));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(date_week));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(System.DateTime Date, int date_year, int date_month, int date_week, int Original_ID, System.DateTime Original_Date, int Original_date_year, int Original_date_month, int Original_date_week, int ID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(Date));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(date_year));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(date_month));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(date_week));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(Original_Date));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_date_year));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_date_month));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_date_week));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(ID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(System.DateTime Date, int date_year, int date_month, int date_week, int Original_ID, System.DateTime Original_Date, int Original_date_year, int Original_date_month, int Original_date_week) {
+            return this.Update(Date, date_year, date_month, date_week, Original_ID, Original_Date, Original_date_year, Original_date_month, Original_date_week, Original_ID);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class BooksHistoryTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public BooksHistoryTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "BooksHistory";
+            tableMapping.ColumnMappings.Add("ID", "ID");
+            tableMapping.ColumnMappings.Add("book_id", "book_id");
+            tableMapping.ColumnMappings.Add("Reader_ID", "Reader_ID");
+            tableMapping.ColumnMappings.Add("FIO", "FIO");
+            tableMapping.ColumnMappings.Add("Date", "Date");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.Library451DWHConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT ID, book_id, Reader_ID, FIO, Date FROM dbo.BooksHistory";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(Library451DWHDataSet.BooksHistoryDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual Library451DWHDataSet.BooksHistoryDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            Library451DWHDataSet.BooksHistoryDataTable dataTable = new Library451DWHDataSet.BooksHistoryDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ReadersHistoryTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public ReadersHistoryTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ReadersHistory";
+            tableMapping.ColumnMappings.Add("ID", "ID");
+            tableMapping.ColumnMappings.Add("Reader_ID", "Reader_ID");
+            tableMapping.ColumnMappings.Add("Book_ID", "Book_ID");
+            tableMapping.ColumnMappings.Add("book_name", "book_name");
+            tableMapping.ColumnMappings.Add("Date", "Date");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.Library451DWHConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT ID, Reader_ID, Book_ID, book_name, Date FROM dbo.ReadersHistory";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(Library451DWHDataSet.ReadersHistoryDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual Library451DWHDataSet.ReadersHistoryDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            Library451DWHDataSet.ReadersHistoryDataTable dataTable = new Library451DWHDataSet.ReadersHistoryDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4916,15 +4623,13 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         
         private UpdateOrderOption _updateOrder;
         
-        private DimActionTypeTableAdapter _dimActionTypeTableAdapter;
-        
         private DimBookTableAdapter _dimBookTableAdapter;
-        
-        private DimDateTableAdapter _dimDateTableAdapter;
         
         private DimReaderTableAdapter _dimReaderTableAdapter;
         
-        private FactDebtsTableAdapter _factDebtsTableAdapter;
+        private FactsBookHistoryTableAdapter _factsBookHistoryTableAdapter;
+        
+        private DimDateTableAdapter _dimDateTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -4938,20 +4643,6 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
             }
             set {
                 this._updateOrder = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public DimActionTypeTableAdapter DimActionTypeTableAdapter {
-            get {
-                return this._dimActionTypeTableAdapter;
-            }
-            set {
-                this._dimActionTypeTableAdapter = value;
             }
         }
         
@@ -4974,20 +4665,6 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public DimDateTableAdapter DimDateTableAdapter {
-            get {
-                return this._dimDateTableAdapter;
-            }
-            set {
-                this._dimDateTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
         public DimReaderTableAdapter DimReaderTableAdapter {
             get {
                 return this._dimReaderTableAdapter;
@@ -5002,12 +4679,26 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public FactDebtsTableAdapter FactDebtsTableAdapter {
+        public FactsBookHistoryTableAdapter FactsBookHistoryTableAdapter {
             get {
-                return this._factDebtsTableAdapter;
+                return this._factsBookHistoryTableAdapter;
             }
             set {
-                this._factDebtsTableAdapter = value;
+                this._factsBookHistoryTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public DimDateTableAdapter DimDateTableAdapter {
+            get {
+                return this._dimDateTableAdapter;
+            }
+            set {
+                this._dimDateTableAdapter = value;
             }
         }
         
@@ -5030,25 +4721,21 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._dimActionTypeTableAdapter != null) 
-                            && (this._dimActionTypeTableAdapter.Connection != null))) {
-                    return this._dimActionTypeTableAdapter.Connection;
-                }
                 if (((this._dimBookTableAdapter != null) 
                             && (this._dimBookTableAdapter.Connection != null))) {
                     return this._dimBookTableAdapter.Connection;
-                }
-                if (((this._dimDateTableAdapter != null) 
-                            && (this._dimDateTableAdapter.Connection != null))) {
-                    return this._dimDateTableAdapter.Connection;
                 }
                 if (((this._dimReaderTableAdapter != null) 
                             && (this._dimReaderTableAdapter.Connection != null))) {
                     return this._dimReaderTableAdapter.Connection;
                 }
-                if (((this._factDebtsTableAdapter != null) 
-                            && (this._factDebtsTableAdapter.Connection != null))) {
-                    return this._factDebtsTableAdapter.Connection;
+                if (((this._factsBookHistoryTableAdapter != null) 
+                            && (this._factsBookHistoryTableAdapter.Connection != null))) {
+                    return this._factsBookHistoryTableAdapter.Connection;
+                }
+                if (((this._dimDateTableAdapter != null) 
+                            && (this._dimDateTableAdapter.Connection != null))) {
+                    return this._dimDateTableAdapter.Connection;
                 }
                 return null;
             }
@@ -5063,19 +4750,16 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._dimActionTypeTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 if ((this._dimBookTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._dimDateTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._dimReaderTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._factDebtsTableAdapter != null)) {
+                if ((this._factsBookHistoryTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._dimDateTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -5089,30 +4773,12 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateUpdatedRows(Library451DWHDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._dimActionTypeTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.DimActionType.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._dimActionTypeTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._dimBookTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.DimBook.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._dimBookTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._dimDateTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.DimDate.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._dimDateTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -5125,12 +4791,21 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._factDebtsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.FactDebts.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._dimDateTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.DimDate.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._factDebtsTableAdapter.Update(updatedRows));
+                    result = (result + this._dimDateTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._factsBookHistoryTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.FactsBookHistory.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._factsBookHistoryTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -5144,27 +4819,11 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateInsertedRows(Library451DWHDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._dimActionTypeTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.DimActionType.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._dimActionTypeTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._dimBookTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.DimBook.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._dimBookTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._dimDateTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.DimDate.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._dimDateTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -5176,11 +4835,19 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._factDebtsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.FactDebts.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._dimDateTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.DimDate.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._factDebtsTableAdapter.Update(addedRows));
+                    result = (result + this._dimDateTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._factsBookHistoryTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.FactsBookHistory.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._factsBookHistoryTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -5194,19 +4861,11 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateDeletedRows(Library451DWHDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._factDebtsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.FactDebts.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._factsBookHistoryTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.FactsBookHistory.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._factDebtsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._dimReaderTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.DimReader.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._dimReaderTableAdapter.Update(deletedRows));
+                    result = (result + this._factsBookHistoryTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -5218,19 +4877,19 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._dimReaderTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.DimReader.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._dimReaderTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._dimBookTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.DimBook.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._dimBookTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._dimActionTypeTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.DimActionType.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._dimActionTypeTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -5273,18 +4932,8 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._dimActionTypeTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._dimActionTypeTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
-                        "r, должны использовать одинаковую строку подключения.");
-            }
             if (((this._dimBookTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._dimBookTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
-                        "r, должны использовать одинаковую строку подключения.");
-            }
-            if (((this._dimDateTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._dimDateTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
@@ -5293,8 +4942,13 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
-            if (((this._factDebtsTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._factDebtsTableAdapter.Connection) == false))) {
+            if (((this._factsBookHistoryTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._factsBookHistoryTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
+            if (((this._dimDateTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._dimDateTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
@@ -5330,15 +4984,6 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._dimActionTypeTableAdapter != null)) {
-                    revertConnections.Add(this._dimActionTypeTableAdapter, this._dimActionTypeTableAdapter.Connection);
-                    this._dimActionTypeTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._dimActionTypeTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._dimActionTypeTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._dimActionTypeTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._dimActionTypeTableAdapter.Adapter);
-                    }
-                }
                 if ((this._dimBookTableAdapter != null)) {
                     revertConnections.Add(this._dimBookTableAdapter, this._dimBookTableAdapter.Connection);
                     this._dimBookTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
@@ -5346,15 +4991,6 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
                     if (this._dimBookTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._dimBookTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._dimBookTableAdapter.Adapter);
-                    }
-                }
-                if ((this._dimDateTableAdapter != null)) {
-                    revertConnections.Add(this._dimDateTableAdapter, this._dimDateTableAdapter.Connection);
-                    this._dimDateTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._dimDateTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._dimDateTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._dimDateTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._dimDateTableAdapter.Adapter);
                     }
                 }
                 if ((this._dimReaderTableAdapter != null)) {
@@ -5366,13 +5002,22 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
                         adaptersWithAcceptChangesDuringUpdate.Add(this._dimReaderTableAdapter.Adapter);
                     }
                 }
-                if ((this._factDebtsTableAdapter != null)) {
-                    revertConnections.Add(this._factDebtsTableAdapter, this._factDebtsTableAdapter.Connection);
-                    this._factDebtsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._factDebtsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._factDebtsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._factDebtsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._factDebtsTableAdapter.Adapter);
+                if ((this._factsBookHistoryTableAdapter != null)) {
+                    revertConnections.Add(this._factsBookHistoryTableAdapter, this._factsBookHistoryTableAdapter.Connection);
+                    this._factsBookHistoryTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._factsBookHistoryTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._factsBookHistoryTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._factsBookHistoryTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._factsBookHistoryTableAdapter.Adapter);
+                    }
+                }
+                if ((this._dimDateTableAdapter != null)) {
+                    revertConnections.Add(this._dimDateTableAdapter, this._dimDateTableAdapter.Connection);
+                    this._dimDateTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._dimDateTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._dimDateTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._dimDateTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._dimDateTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -5433,25 +5078,21 @@ SELECT ID, Reader_ID, Book_ID, Date_ID, ActionType_ID FROM FactDebts WHERE (ID =
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._dimActionTypeTableAdapter != null)) {
-                    this._dimActionTypeTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._dimActionTypeTableAdapter]));
-                    this._dimActionTypeTableAdapter.Transaction = null;
-                }
                 if ((this._dimBookTableAdapter != null)) {
                     this._dimBookTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._dimBookTableAdapter]));
                     this._dimBookTableAdapter.Transaction = null;
-                }
-                if ((this._dimDateTableAdapter != null)) {
-                    this._dimDateTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._dimDateTableAdapter]));
-                    this._dimDateTableAdapter.Transaction = null;
                 }
                 if ((this._dimReaderTableAdapter != null)) {
                     this._dimReaderTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._dimReaderTableAdapter]));
                     this._dimReaderTableAdapter.Transaction = null;
                 }
-                if ((this._factDebtsTableAdapter != null)) {
-                    this._factDebtsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._factDebtsTableAdapter]));
-                    this._factDebtsTableAdapter.Transaction = null;
+                if ((this._factsBookHistoryTableAdapter != null)) {
+                    this._factsBookHistoryTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._factsBookHistoryTableAdapter]));
+                    this._factsBookHistoryTableAdapter.Transaction = null;
+                }
+                if ((this._dimDateTableAdapter != null)) {
+                    this._dimDateTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._dimDateTableAdapter]));
+                    this._dimDateTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

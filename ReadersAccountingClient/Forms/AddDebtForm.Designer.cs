@@ -46,19 +46,18 @@ namespace WindowsFormsApp1
             this.book_IDTextBox = new System.Windows.Forms.TextBox();
             this.book_NameTextBox = new System.Windows.Forms.TextBox();
             this.availabilityCheckBox = new System.Windows.Forms.CheckBox();
-            this.debtsTableAdapter1 = new WindowsFormsApp1.Library451DataSetTableAdapters.DebtsTableAdapter();
+            this.debtsTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.DebtsTableAdapter();
             this.butAddNewDebt = new System.Windows.Forms.Button();
             this.butClose = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.readersTableAdapter1 = new WindowsFormsApp1.Library451DataSetTableAdapters.ReadersTableAdapter();
+            this.readersTableAdapter = new WindowsFormsApp1.Library451DataSetTableAdapters.ReadersTableAdapter();
             this.tbSearchBook = new System.Windows.Forms.TextBox();
             this.butResetSearch = new System.Windows.Forms.Button();
             this.library451DWHDataSet = new WindowsFormsApp1.Library451DWHDataSet();
-            this.factDebtsTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.FactDebtsTableAdapter();
             this.dimReaderTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimReaderTableAdapter();
             this.dimDateTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimDateTableAdapter();
             this.dimBookTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimBookTableAdapter();
-            this.dimActionTypeTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.DimActionTypeTableAdapter();
+            this.factsBookHistoryTableAdapter = new WindowsFormsApp1.Library451DWHDataSetTableAdapters.FactsBookHistoryTableAdapter();
             book_IDLabel = new System.Windows.Forms.Label();
             book_NameLabel = new System.Windows.Forms.Label();
             availabilityLabel = new System.Windows.Forms.Label();
@@ -199,9 +198,9 @@ namespace WindowsFormsApp1
             this.availabilityCheckBox.TabIndex = 6;
             this.availabilityCheckBox.UseVisualStyleBackColor = true;
             // 
-            // debtsTableAdapter1
+            // debtsTableAdapter
             // 
-            this.debtsTableAdapter1.ClearBeforeFill = true;
+            this.debtsTableAdapter.ClearBeforeFill = true;
             // 
             // butAddNewDebt
             // 
@@ -230,9 +229,9 @@ namespace WindowsFormsApp1
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 9;
             // 
-            // readersTableAdapter1
+            // readersTableAdapter
             // 
-            this.readersTableAdapter1.ClearBeforeFill = true;
+            this.readersTableAdapter.ClearBeforeFill = true;
             // 
             // tbSearchBook
             // 
@@ -257,10 +256,6 @@ namespace WindowsFormsApp1
             this.library451DWHDataSet.DataSetName = "Library451DWHDataSet";
             this.library451DWHDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // factDebtsTableAdapter
-            // 
-            this.factDebtsTableAdapter.ClearBeforeFill = true;
-            // 
             // dimReaderTableAdapter
             // 
             this.dimReaderTableAdapter.ClearBeforeFill = true;
@@ -273,9 +268,9 @@ namespace WindowsFormsApp1
             // 
             this.dimBookTableAdapter.ClearBeforeFill = true;
             // 
-            // dimActionTypeTableAdapter
+            // factsBookHistoryTableAdapter
             // 
-            this.dimActionTypeTableAdapter.ClearBeforeFill = true;
+            this.factsBookHistoryTableAdapter.ClearBeforeFill = true;
             // 
             // AddDebtForm
             // 
@@ -323,18 +318,17 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox book_IDTextBox;
         private System.Windows.Forms.TextBox book_NameTextBox;
         private System.Windows.Forms.CheckBox availabilityCheckBox;
-        private Library451DataSetTableAdapters.DebtsTableAdapter debtsTableAdapter1;
+        private Library451DataSetTableAdapters.DebtsTableAdapter debtsTableAdapter;
         private System.Windows.Forms.Button butAddNewDebt;
         private System.Windows.Forms.Button butClose;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private Library451DataSetTableAdapters.ReadersTableAdapter readersTableAdapter1;
+        private Library451DataSetTableAdapters.ReadersTableAdapter readersTableAdapter;
         private System.Windows.Forms.TextBox tbSearchBook;
         private System.Windows.Forms.Button butResetSearch;
         private Library451DWHDataSet library451DWHDataSet;
-        private Library451DWHDataSetTableAdapters.FactDebtsTableAdapter factDebtsTableAdapter;
         private Library451DWHDataSetTableAdapters.DimReaderTableAdapter dimReaderTableAdapter;
         private Library451DWHDataSetTableAdapters.DimDateTableAdapter dimDateTableAdapter;
         private Library451DWHDataSetTableAdapters.DimBookTableAdapter dimBookTableAdapter;
-        private Library451DWHDataSetTableAdapters.DimActionTypeTableAdapter dimActionTypeTableAdapter;
+        private Library451DWHDataSetTableAdapters.FactsBookHistoryTableAdapter factsBookHistoryTableAdapter;
     }
 }
