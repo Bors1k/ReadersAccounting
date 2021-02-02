@@ -448,21 +448,21 @@ namespace WindowsFormsApp1
             // подключениеКБДToolStripMenuItem
             // 
             this.подключениеКБДToolStripMenuItem.Name = "подключениеКБДToolStripMenuItem";
-            this.подключениеКБДToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.подключениеКБДToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.подключениеКБДToolStripMenuItem.Text = "Подключение к БД";
             this.подключениеКБДToolStripMenuItem.Click += new System.EventHandler(this.подключениеКБДToolStripMenuItem_Click);
             // 
             // обновитьДанныеToolStripMenuItem
             // 
             this.обновитьДанныеToolStripMenuItem.Name = "обновитьДанныеToolStripMenuItem";
-            this.обновитьДанныеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.обновитьДанныеToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.обновитьДанныеToolStripMenuItem.Text = "Обновить данные";
             this.обновитьДанныеToolStripMenuItem.Click += new System.EventHandler(this.обновитьДанныеToolStripMenuItem_Click);
             // 
             // разлогинитьсяToolStripMenuItem
             // 
             this.разлогинитьсяToolStripMenuItem.Name = "разлогинитьсяToolStripMenuItem";
-            this.разлогинитьсяToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.разлогинитьсяToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.разлогинитьсяToolStripMenuItem.Text = "Разлогиниться";
             this.разлогинитьсяToolStripMenuItem.Click += new System.EventHandler(this.разлогинитьсяToolStripMenuItem_Click);
             // 

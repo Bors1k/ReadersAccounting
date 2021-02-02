@@ -43,7 +43,7 @@ namespace WindowsFormsApp1
 
         private void butAddNewDebt_Click(object sender, EventArgs e)
         {
-            
+            //DateTime today = dateTimePicker2.Value;
             Functions func = new Functions();
             try
             {
