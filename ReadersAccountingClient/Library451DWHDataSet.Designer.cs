@@ -3121,7 +3121,7 @@ namespace WindowsFormsApp1.Library451DWHDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.Library451DWHConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.DWH_ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3436,7 +3436,7 @@ SELECT Reader_ID, FIO, PASSPORT, ADDRESS, TELEPHONE FROM DimReader WHERE (Reader
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.Library451DWHConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.DWH_ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3790,7 +3790,7 @@ SELECT ID, Reader_ID, Book_ID, Date_ID FROM FactsBookHistory WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.Library451DWHConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.DWH_ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4112,7 +4112,7 @@ SELECT ID, Date, date_year, date_month, date_week FROM DimDate WHERE (ID = @ID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.Library451DWHConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.DWH_ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4402,7 +4402,7 @@ SELECT ID, Date, date_year, date_month, date_week FROM DimDate WHERE (ID = @ID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.Library451DWHConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.DWH_ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4573,7 +4573,7 @@ SELECT ID, Date, date_year, date_month, date_week FROM DimDate WHERE (ID = @ID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.Library451DWHConnectionString;
+            this._connection.ConnectionString = global::WindowsFormsApp1.Properties.Settings.Default.DWH_ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

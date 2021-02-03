@@ -86,6 +86,8 @@ namespace WindowsFormsApp1
             // 
             // chb_avl
             // 
+            this.chb_avl.Checked = true;
+            this.chb_avl.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chb_avl.Location = new System.Drawing.Point(92, 47);
             this.chb_avl.Name = "chb_avl";
             this.chb_avl.Size = new System.Drawing.Size(104, 24);

@@ -127,7 +127,8 @@ namespace WindowsFormsApp1
             //обновление строк подключения
             try
             {
-               //this.задолженностиTableAdapter.Connection.ConnectionString = Properties.Settings.Default.DWH_ConnectionString;
+                this.booksHistoryTableAdapter.Connection.ConnectionString = Properties.Settings.Default.DWH_ConnectionString;
+                this.readersHistoryTableAdapter.Connection.ConnectionString = Properties.Settings.Default.DWH_ConnectionString;
 
                 this.booksTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
                 this.autTableAdapter.Connection.ConnectionString = Properties.Settings.Default.ConnectionString;
@@ -574,6 +575,14 @@ namespace WindowsFormsApp1
             //сохраняем изменения у пользователя
             try
             {
+                if (!func.ValidateLogin(loginTextBox1.Text))
+                {
+                    throw new Exception("Логин введен неверно, он должен содержать минимум 8 симоволов.");
+                }
+                if (!func.ValidatePassword(passwordTextBox.Text))
+                {
+                    throw new Exception("Пароль введен неверно, он должен содержать минимум 8 симоволов, и минимум по 1 символу: верхнего регистра, нижнего регистра, цифры");
+                }
                 this.autBindingSource.EndEdit();
                 this.autTableAdapter.Update(this.library451DataSet.aut);
                 this.library451DataSet.AcceptChanges();
@@ -622,14 +631,6 @@ namespace WindowsFormsApp1
             {
                 try
                 {
-                    if (!func.ValidateLogin(loginTextBox1.Text))
-                    {
-                        throw new Exception("Логин введен неверно, он должен содержать минимум 8 симоволов.");
-                    }
-                    if (!func.ValidatePassword(passwordTextBox.Text))
-                    {
-                        throw new Exception("Пароль введен неверно, он должен содержать минимум 8 симоволов, и минимум по 1 символу: верхнего регистра, нижнего регистра, цифры");
-                    }
                     this.autBindingSource.EndEdit();
                     this.autTableAdapter.Delete(Int32.Parse(iDAccTextBox.Text), loginTextBox1.Text, passwordTextBox.Text, is_adminCheckBox.Checked);
                     this.library451DataSet.AcceptChanges();
@@ -823,7 +824,7 @@ namespace WindowsFormsApp1
         private void butCreateReport_Click(object sender, EventArgs e)
         {
             //отчет для книги
-            CreateReport(booksHistoryDataGridView, "книге", book_NameTextBox1.Text, book_IDTextBox1.Text, dtPickerFrom, dtPickerTo, "Кол-во взятых раз: " + tbCountBooks.Text);
+            CreateReport(booksHistoryDataGridView, "книге", book_NameTextBox1.Text, book_IDTextBox1.Text, dtPickerFrom, dtPickerTo, "Кол-во взятых раз: " + tbCountBookGive.Text);
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)

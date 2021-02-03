@@ -43,23 +43,24 @@ namespace WindowsFormsApp1
         private void butAddNewDebt_Click(object sender, EventArgs e)
         {
             Functions func = new Functions();
+            DateTime today = DateTime.Today;
             try
             {
-                if(func.CheckDates(DateTime.Today, dateTimePicker1.Value) == null)
+                if(func.CheckDates(today, dateTimePicker1.Value) == null)
                 {
                     if (library451DWHDataSet.DimDate.Count == 0)
                     {
-                        int week = (int)DateTime.Today.DayOfWeek / 7 + 1;
-                        library451DWHDataSet.DimDate.AddDimDateRow(DateTime.Today, week, DateTime.Today.Month, DateTime.Today.Year);
+                        int week = (int)today.DayOfWeek / 7 + 1;
+                        library451DWHDataSet.DimDate.AddDimDateRow(today, week, today.Month, today.Year);
                         dimDateTableAdapter.Update(library451DWHDataSet.DimDate);
                         this.library451DWHDataSet.FactsBookHistory.AddFactsBookHistoryRow(library451DWHDataSet.DimReader.FindByReader_ID(readerID), library451DWHDataSet.DimBook.FindBybook_id(Int32.Parse(book_IDTextBox.Text)), library451DWHDataSet.DimDate.Last());
                     }
                     else
                     {
-                        if (library451DWHDataSet.DimDate.Last().Date != DateTime.Today)
+                        if (library451DWHDataSet.DimDate.Last().Date != today)
                         {
-                            int week = (int)DateTime.Today.DayOfWeek / 7 + 1;
-                            library451DWHDataSet.DimDate.AddDimDateRow(DateTime.Today, week, DateTime.Today.Month, DateTime.Today.Year);
+                            int week = (int)today.DayOfWeek / 7 + 1;
+                            library451DWHDataSet.DimDate.AddDimDateRow(today, week, today.Month, today.Year);
                             dimDateTableAdapter.Update(library451DWHDataSet.DimDate);
                             this.library451DWHDataSet.FactsBookHistory.AddFactsBookHistoryRow(library451DWHDataSet.DimReader.FindByReader_ID(readerID), library451DWHDataSet.DimBook.FindBybook_id(Int32.Parse(book_IDTextBox.Text)), library451DWHDataSet.DimDate.Last());
                         }
@@ -67,7 +68,7 @@ namespace WindowsFormsApp1
                     }
                     this.factsBookHistoryTableAdapter.Update(this.library451DWHDataSet.FactsBookHistory);
 
-                    this.library451DataSet.Debts.AddDebtsRow(this.library451DataSet.Readers.FindByReader_ID(readerID), this.library451DataSet.Books.FindByBook_ID(Int32.Parse(book_IDTextBox.Text)), DateTime.Today, dateTimePicker1.Value, false);
+                    this.library451DataSet.Debts.AddDebtsRow(this.library451DataSet.Readers.FindByReader_ID(readerID), this.library451DataSet.Books.FindByBook_ID(Int32.Parse(book_IDTextBox.Text)), today, dateTimePicker1.Value, false);
                     this.availabilityCheckBox.Checked = false;
                     this.booksBindingSource.EndEdit();
                     this.booksTableAdapter.Update(library451DataSet.Books);
@@ -76,7 +77,7 @@ namespace WindowsFormsApp1
                 }
                 else
                 {
-                    throw func.CheckDates(DateTime.Today, dateTimePicker1.Value);
+                    throw func.CheckDates(today, dateTimePicker1.Value);
                 }
             }
             catch(Exception ex)
